@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optimización Ejecutiva – OptimizaTuCV.IA</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --negro: #0a0a0a;
+    --negro2: #111111;
+    --negro3: #161616;
+    --dorado: #C9A84C;
+    --dorado-claro: #E8C97A;
+    --dorado-oscuro: #9A7A30;
+    --dorado-tenue: rgba(201,168,76,0.08);
+    --blanco: #F5F0E8;
+    --gris: #888;
+    --gris-claro: #555;
+  }
+  body { background: var(--negro); color: var(--blanco); font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.8; }
+  .linea { width: 50px; height: 1px; background: var(--dorado); margin: 0 auto 2.5rem; }
+  header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; border-bottom: 1px solid #1a1a1a; }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; letter-spacing: 0.35em; color: var(--dorado); text-transform: uppercase; }
+  .header-cta { font-size: 0.68rem; letter-spacing: 0.15em; color: var(--gris); text-decoration: none; border-bottom: 1px solid #333; padding-bottom: 2px; transition: color 0.3s; }
+  .header-cta:hover { color: var(--dorado); }
+
+  .hero { text-align: center; padding: 7rem 2rem 6rem; max-width: 780px; margin: 0 auto; }
+  .badge { display: inline-flex; align-items: center; gap: 0.8rem; font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dorado); border: 1px solid var(--dorado-oscuro); padding: 0.5rem 1.5rem; margin-bottom: 2.5rem; }
+  .badge::before, .badge::after { content: ''; width: 20px; height: 1px; background: var(--dorado-oscuro); }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 7vw, 5rem); font-weight: 300; line-height: 1.1; margin-bottom: 1.5rem; }
+  h1 em { font-style: italic; color: var(--dorado); }
+  .hero-sub { font-size: 0.85rem; color: var(--gris); max-width: 520px; margin: 0 auto 3.5rem; line-height: 2; }
+  .precio-monto { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: var(--dorado); line-height: 1; }
+  .precio-label { font-size: 0.65rem; letter-spacing: 0.2em; color: var(--gris); text-transform: uppercase; margin: 0.5rem 0 2.5rem; }
+  .btn { display: inline-block; background: var(--dorado); color: var(--negro); font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; padding: 1.2rem 3.5rem; text-decoration: none; transition: all 0.3s; }
+  .btn:hover { background: var(--dorado-claro); transform: translateY(-2px); }
+  .entrega-nota { font-size: 0.65rem; color: var(--gris-claro); letter-spacing: 0.1em; margin-top: 1rem; }
+  .entrega-nota span { color: var(--dorado); }
+
+  .frase-bloque { border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; padding: 4.5rem 2rem; text-align: center; background: var(--negro2); }
+  .frase { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 300; font-style: italic; color: var(--blanco); max-width: 700px; margin: 0 auto; line-height: 1.6; }
+  .frase strong { color: var(--dorado); font-style: normal; font-weight: 400; }
+
+  .seccion { max-width: 900px; margin: 0 auto; padding: 6rem 2rem; }
+  .sec-titulo { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300; margin-bottom: 3rem; text-align: center; }
+  .sec-titulo em { color: var(--dorado); font-style: italic; }
+
+  .incluye-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5px; background: #1a1a1a; border: 1px solid #1a1a1a; }
+  .incluye-item { background: var(--negro); padding: 2rem; transition: background 0.3s; }
+  .incluye-item:hover { background: var(--negro3); }
+  .incluye-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--dorado-oscuro); font-weight: 300; line-height: 1; margin-bottom: 1rem; opacity: 0.4; }
+  .incluye-titulo { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dorado); margin-bottom: 0.8rem; }
+  .incluye-desc { font-size: 0.82rem; color: var(--gris); line-height: 1.8; }
+
+  .para-quien-bg { background: var(--negro2); }
+  .para-quien-inner { max-width: 780px; margin: 0 auto; padding: 6rem 2rem; }
+  .perfil-lista { list-style: none; }
+  .perfil-lista li { padding: 1.2rem 0; border-bottom: 1px solid #1e1e1e; font-size: 0.87rem; color: var(--gris); display: flex; align-items: flex-start; gap: 1.2rem; line-height: 1.8; }
+  .perfil-lista li::before { content: '—'; color: var(--dorado); flex-shrink: 0; }
+  .sectores { margin-top: 3rem; padding: 2rem; border: 1px solid #222; background: var(--dorado-tenue); }
+  .sectores-titulo { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--dorado); margin-bottom: 1rem; }
+  .sectores-lista { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+  .sector-tag { font-size: 0.68rem; letter-spacing: 0.08em; color: var(--gris); border: 1px solid #2a2a2a; padding: 0.35rem 0.9rem; }
+
+  .proceso-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; margin-top: 3rem; }
+  .paso { text-align: center; }
+  .paso-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--dorado-oscuro); opacity: 0.35; line-height: 1; margin-bottom: 0.5rem; }
+  .paso-titulo { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blanco); margin-bottom: 0.5rem; }
+  .paso-desc { font-size: 0.78rem; color: var(--gris); }
+
+  .garantia-bloque { border: 1px solid #222; padding: 3rem; max-width: 680px; margin: 0 auto; text-align: center; background: var(--dorado-tenue); }
+  .garantia-titulo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--dorado); margin-bottom: 1rem; font-weight: 300; }
+  .garantia-texto { font-size: 0.82rem; color: var(--gris); line-height: 1.9; }
+
+  .karin-seccion { text-align: center; padding: 6rem 2rem; max-width: 700px; margin: 0 auto; }
+  .karin-inicial { width: 70px; height: 70px; border-radius: 50%; background: var(--dorado-tenue); border: 1px solid var(--dorado-oscuro); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--dorado); margin: 0 auto 2rem; }
+  .karin-nombre { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 400; color: var(--dorado); margin-bottom: 0.3rem; }
+  .karin-cargo { font-size: 0.62rem; letter-spacing: 0.2em; color: var(--gris); text-transform: uppercase; margin-bottom: 2rem; }
+  .karin-bio { font-size: 0.85rem; color: var(--gris); line-height: 2; margin-bottom: 1rem; }
+  .cifras-row { display: flex; justify-content: center; gap: 3rem; margin-top: 2.5rem; }
+  .karin-cifra { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--dorado); line-height: 1; }
+  .karin-cifra-label { font-size: 0.62rem; letter-spacing: 0.15em; color: var(--gris); text-transform: uppercase; margin-top: 0.3rem; }
+
+  .testimonios-bg { background: var(--negro2); }
+  .testimonios-inner { max-width: 900px; margin: 0 auto; padding: 6rem 2rem; }
+  .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: #1e1e1e; }
+  .test-item { background: var(--negro2); padding: 2rem; }
+  .test-estrellas { color: var(--dorado); font-size: 0.55rem; letter-spacing: 0.2em; margin-bottom: 1rem; }
+  .test-texto { font-size: 0.83rem; color: var(--gris); font-style: italic; line-height: 1.9; margin-bottom: 1.5rem; }
+  .test-nombre { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blanco); }
+  .test-servicio { font-size: 0.62rem; letter-spacing: 0.08em; color: var(--dorado-oscuro); margin-top: 0.2rem; }
+
+  .cta-final { text-align: center; padding: 7rem 2rem; border-top: 1px solid #1a1a1a; }
+  .cta-sub { font-size: 0.85rem; color: var(--gris); max-width: 480px; margin: 0 auto 3rem; }
+  .btn-grande { padding: 1.3rem 4rem; font-size: 0.72rem; }
+  .cta-email { display: block; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--gris-claro); text-decoration: none; margin-top: 1.5rem; }
+  .cta-email:hover { color: var(--dorado); }
+
+  .divisor { height: 1px; background: linear-gradient(to right, transparent, #222, transparent); }
+  footer { text-align: center; padding: 2rem; font-size: 0.62rem; color: #333; letter-spacing: 0.1em; border-top: 1px solid #111; }
+
+  @media (max-width: 600px) {
+    header { padding: 1.2rem 1.5rem; }
+    .precio-monto { font-size: 3rem; }
+    .cifras-row { gap: 1.5rem; }
+    .garantia-bloque { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">OptimizaTuCV.IA</div>
+  <a href="mailto:optimizatucv.ia@gmail.com" class="header-cta">¿Dudas? Escríbeme</a>
+</header>
+
+<section class="hero">
+  <div class="badge">Servicio Ejecutivo</div>
+  <h1>Optimización<br><em>Ejecutiva</em></h1>
+  <p class="hero-sub">Para directivos, gerentes y profesionales de alta responsabilidad que saben que su trayectoria vale mucho más de lo que su CV actualmente comunica.</p>
+  <div class="precio-monto">$80.000</div>
+  <div class="precio-label">Pesos chilenos · Inversión única</div>
+  <a href="TU_LINK_MERCADOPAGO_AQUI" class="btn">Quiero transformar mi CV</a>
+  <div class="entrega-nota">Entrega en <span>5 días hábiles</span> · Una ronda de revisión incluida</div>
+</section>
+
+<div class="frase-bloque">
+  <p class="frase">"No se trata de lo que hiciste,<br>sino de <strong>cómo lo comunicas al mundo.</strong>"</p>
+</div>
+
+<section class="seccion">
+  <div class="linea"></div>
+  <h2 class="sec-titulo">Qué <em>recibirás</em></h2>
+  <div class="incluye-grid">
+    <div class="incluye-item">
+      <div class="incluye-num">01</div>
+      <div class="incluye-titulo">CV ejecutivo completo</div>
+      <div class="incluye-desc">1 CV redactado con enfoque directivo, destacando liderazgo, toma de decisiones, gestión de equipos, administración de presupuestos y planificación corporativa. Diseñado para generar impacto desde los primeros segundos de lectura.</div>
+    </div>
+    <div class="incluye-item">
+      <div class="incluye-num">02</div>
+      <div class="incluye-titulo">Carta de presentación</div>
+      <div class="incluye-desc">1 carta personalizada que proyecta autoridad y visión estratégica, adaptada al tipo de cargo y sector al que postulas. Redacción de alto nivel con narrativa ejecutiva.</div>
+    </div>
+    <div class="incluye-item">
+      <div class="incluye-num">03</div>
+      <div class="incluye-titulo">Palabras clave C-Level</div>
+      <div class="incluye-desc">Integración de términos estratégicos para cargos de dirección general, gerencias, consultorías ejecutivas y perfiles C-Level. El lenguaje exacto que usan headhunters y empresas de primer nivel.</div>
+    </div>
+    <div class="incluye-item">
+      <div class="incluye-num">04</div>
+      <div class="incluye-titulo">Logros con impacto medible</div>
+      <div class="incluye-desc">Reestructuración de tu contenido para poner en primer plano tus logros cuantificables: cifras, porcentajes, equipos dirigidos y resultados que te diferencian de otros candidatos con igual o mayor experiencia.</div>
+    </div>
+    <div class="incluye-item">
+      <div class="incluye-num">05</div>
+      <div class="incluye-titulo">100% compatible con ATS</div>
+      <div class="incluye-desc">Formato diseñado para pasar los filtros automáticos de las empresas más exigentes del mercado. Tu CV no solo se verá bien, también será leído por los sistemas que deciden si llegas a la siguiente etapa.</div>
+    </div>
+    <div class="incluye-item">
+      <div class="incluye-num">06</div>
+      <div class="incluye-titulo">Revisión gratuita incluida</div>
+      <div class="incluye-desc">Una ronda completa de ajustes sin costo adicional: formato, redacción, tono e información. El objetivo es que el resultado te represente al 100% antes de que salgas a postular.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divisor"></div>
+
+<section class="para-quien-bg">
+  <div class="para-quien-inner">
+    <div class="linea"></div>
+    <h2 class="sec-titulo">Este servicio es <em>para ti</em></h2>
+    <ul class="perfil-lista">
+      <li>Has ocupado cargos de alta responsabilidad, pero tu CV no refleja con claridad la magnitud de tu trayectoria ni el nivel de impacto de tus decisiones.</li>
+      <li>Estás postulando a gerencias, direcciones o posiciones C-Level y necesitas proyectar autoridad, visión estratégica y capacidad de gestión integral.</li>
+      <li>Sientes que reclutadores o headhunters no valoran tu perfil porque tu CV no transmite el peso ni la madurez de tu experiencia directiva.</li>
+      <li>Te cuesta mostrar tus logros con datos concretos y estructurar tu experiencia de manera estratégica para distintos procesos de selección.</li>
+      <li>Buscas posicionarte con fuerza en empresas de primer nivel o multinacionales, y sabes que necesitas un documento a la altura de esos desafíos.</li>
+    </ul>
+    <div class="sectores">
+      <div class="sectores-titulo">Sectores donde este servicio genera más impacto</div>
+      <div class="sectores-lista">
+        <span class="sector-tag">Minería</span>
+        <span class="sector-tag">Banca y finanzas</span>
+        <span class="sector-tag">Salud</span>
+        <span class="sector-tag">Tecnología</span>
+        <span class="sector-tag">Retail</span>
+        <span class="sector-tag">Industria</span>
+        <span class="sector-tag">Servicios corporativos</span>
+        <span class="sector-tag">Consultoría ejecutiva</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divisor"></div>
+
+<section class="seccion">
+  <div class="linea"></div>
+  <h2 class="sec-titulo">Cómo <em>funciona</em></h2>
+  <div class="proceso-grid">
+    <div class="paso">
+      <div class="paso-num">01</div>
+      <div class="paso-titulo">Cuestionario</div>
+      <div class="paso-desc">Completas un formulario detallado con tu historial, logros, indicadores de impacto y objetivos profesionales.</div>
+    </div>
+    <div class="paso">
+      <div class="paso-num">02</div>
+      <div class="paso-titulo">Pago</div>
+      <div class="paso-desc">Realizas el pago y envías el comprobante. Desde ese momento comienza el proceso de optimización.</div>
+    </div>
+    <div class="paso">
+      <div class="paso-num">03</div>
+      <div class="paso-titulo">Optimización</div>
+      <div class="paso-desc">Trabajo en tu CV durante 5 días hábiles con revisión estratégica completa y enfoque ejecutivo.</div>
+    </div>
+    <div class="paso">
+      <div class="paso-num">04</div>
+      <div class="paso-titulo">Entrega y ajustes</div>
+      <div class="paso-desc">Recibes tu CV final con derecho a una ronda de ajustes gratuitos hasta que el resultado sea exactamente lo que necesitas.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divisor"></div>
+
+<section class="seccion" style="padding-top: 4rem; padding-bottom: 5rem;">
+  <div class="garantia-bloque">
+    <div class="garantia-titulo">Garantía de resultados</div>
+    <p class="garantia-texto">Si después de dos meses de haber recibido tu CV optimizado no has sido llamado a entrevistas, puedes solicitar una readecuación gratuita. Esta garantía está vigente hasta tres meses posteriores a la entrega. Mi objetivo es que tu CV funcione, no solo que se vea bien.</p>
+  </div>
+</section>
+
+<div class="divisor"></div>
+
+<section>
+  <div class="karin-seccion">
+    <div class="karin-inicial">K</div>
+    <div class="karin-nombre">Karin Sandoval</div>
+    <div class="karin-cargo">Especialista en optimización de CV con IA · OptimizaTuCV.IA</div>
+    <p class="karin-bio">Pasé 7 meses enviando postulaciones sin recibir una sola llamada. Hasta que entendí cómo funcionaban los sistemas ATS y rehíce mi CV desde cero. En una semana tenía varias entrevistas. Cuando sumé inteligencia artificial al proceso, fue como ponerle turbo al motor. Hoy ayudo a ejecutivos y profesionales a transformar su CV en una herramienta estratégica real.</p>
+    <p class="karin-bio" style="font-style: italic;">"Cada CV que entrego lo hago como si fuera para una amiga, porque sé que detrás hay una historia, una urgencia, una familia y un deseo real de avanzar."</p>
+    <div class="cifras-row">
+      <div><div class="karin-cifra">+100</div><div class="karin-cifra-label">Clientes</div></div>
+      <div><div class="karin-cifra">5</div><div class="karin-cifra-label">Días hábiles</div></div>
+      <div><div class="karin-cifra">100%</div><div class="karin-cifra-label">ATS friendly</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divisor"></div>
+
+<section class="testimonios-bg">
+  <div class="testimonios-inner">
+    <div class="linea"></div>
+    <h2 class="sec-titulo">Resultados <em>reales</em></h2>
+    <div class="test-grid">
+      <div class="test-item">
+        <div class="test-estrellas">★ ★ ★ ★ ★</div>
+        <p class="test-texto">"Llevaba 7 meses sin ninguna entrevista, hoy tengo varias. Ya tengo 2 ofertas laborales con carta de oferta. Muchas gracias por todo."</p>
+        <div class="test-nombre">Gonzalo Flores</div>
+        <div class="test-servicio">Optimización completa</div>
+      </div>
+      <div class="test-item">
+        <div class="test-estrellas">★ ★ ★ ★ ★</div>
+        <p class="test-texto">"En menos de un mes tenía tres ofertas de trabajo. Tuve que decidir entre ellas. En cada entrevista me felicitaban por el CV. 100% recomendable."</p>
+        <div class="test-nombre">Cliente anónimo</div>
+        <div class="test-servicio">Optimización completa de CV</div>
+      </div>
+      <div class="test-item">
+        <div class="test-estrellas">★ ★ ★ ★ ★</div>
+        <p class="test-texto">"Contacté a Karin para optimizar mi CV. En 1 semana me contactaron dos empresas del rubro Forestal. Tuve que escoger la mejor propuesta."</p>
+        <div class="test-nombre">Cliente verificado</div>
+        <div class="test-servicio">Optimización de CV</div>
+      </div>
+      <div class="test-item">
+        <div class="test-estrellas">★ ★ ★ ★ ★</div>
+        <p class="test-texto">"A los 2 días de aplicar los cambios, me llamaron. Con el CV antiguo estuve un año y medio sin que me llamara nadie."</p>
+        <div class="test-nombre">Robert Fuentes</div>
+        <div class="test-servicio">Diagnóstico + Redacción optimizada</div>
+      </div>
+      <div class="test-item">
+        <div class="test-estrellas">★ ★ ★ ★ ★</div>
+        <p class="test-texto">"Tu impulso me permitió quedar en el puesto que buscaba, con buen sueldo y beneficios. Apliqué tus sugerencias y me llamaron de una gran empresa."</p>
+        <div class="test-nombre">Andrés Barckhahn</div>
+        <div class="test-servicio">Escaneo de CV</div>
+      </div>
+      <div class="test-item">
+        <div class="test-estrellas">★ ★ ★ ★ ★</div>
+        <p class="test-texto">"Realicé las modificaciones y me contactaron en 3 días. Realizas un hermoso trabajo de ayuda."</p>
+        <div class="test-nombre">Leonardo Pérez</div>
+        <div class="test-servicio">Diagnóstico profesional</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="linea"></div>
+  <h2 class="sec-titulo">¿Lista para que tu CV<br><em>hable por ti?</em></h2>
+  <p class="cta-sub">Tu experiencia ejecutiva merece un CV a su altura. Deja de postular al vacío y empieza a recibir llamadas reales.</p>
+  <a href="TU_LINK_MERCADOPAGO_AQUI" class="btn btn-grande">Contratar — $80.000 CLP</a>
+  <div class="entrega-nota" style="margin-top:1rem;">Entrega en <span>5 días hábiles</span> · Revisión incluida</div>
+  <a href="mailto:optimizatucv.ia@gmail.com" class="cta-email">¿Tienes preguntas? → optimizatucv.ia@gmail.com</a>
+</section>
+
+<footer>© 2025 OptimizaTuCV.IA · Karin Sandoval · optimizatucv.ia@gmail.com</footer>
+
+</body>
+</html>
