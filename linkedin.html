@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Potenciado – OptimizaTuCV.IA</title>
+<meta name="description" content="Optimización de LinkedIn con estrategia de negocio: perfil, publicaciones, segmento y alcance. Desde $65.000.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--black:#0a0a0a;--deep:#111111;--card:#161616;--gold:#c9a84c;--gold-light:#e2c06e;--gold-border:rgba(201,168,76,0.28);--gold-dim:rgba(201,168,76,0.08);--white:#f5f0e8;--muted:rgba(245,240,232,0.52);}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden;line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 60px;background:rgba(10,10,10,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--gold-border);}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:var(--gold);letter-spacing:0.04em;}
+  .nav-email{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;}
+  .nav-email:hover{color:var(--gold);}
+
+  /* HERO */
+  .hero-band{min-height:100vh;display:flex;flex-direction:column;justify-content:center;background:var(--deep);border-bottom:1px solid var(--gold-border);padding:140px 60px 80px;position:relative;overflow:hidden;}
+  .hero-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 65% 50%,rgba(201,168,76,0.06) 0%,transparent 65%);pointer-events:none;}
+  .hero-inner{max-width:1160px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+  .hero-left{}
+  .hero-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;opacity:0;animation:fadeUp 0.7s 0.1s forwards;}
+  .hero-band h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5.5vw,5rem);font-weight:300;line-height:1.06;opacity:0;animation:fadeUp 0.7s 0.25s forwards;}
+  .hero-band h1 em{font-style:italic;color:var(--gold);}
+  .hero-sub{margin-top:22px;font-size:1rem;color:var(--muted);line-height:1.8;opacity:0;animation:fadeUp 0.7s 0.4s forwards;}
+  .hero-actions{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fadeUp 0.7s 0.5s forwards;}
+  .btn-primary{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:16px 38px;display:inline-block;transition:background 0.2s,transform 0.2s;}
+  .btn-primary:hover{background:var(--gold-light);transform:translateY(-1px);}
+  .btn-ghost{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-border);padding:16px 38px;display:inline-block;transition:border-color 0.2s;}
+  .btn-ghost:hover{border-color:var(--gold);}
+
+  .hero-right{opacity:0;animation:fadeIn 0.8s 0.5s forwards;}
+  .problem-box{background:var(--card);border:1px solid var(--gold-border);padding:36px;}
+  .problem-box h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;margin-bottom:20px;}
+  .problem-item{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--gold-border);font-size:0.88rem;color:var(--muted);line-height:1.5;}
+  .problem-item:last-child{border-bottom:none;padding-bottom:0;}
+  .problem-item span{color:var(--gold);flex-shrink:0;}
+
+  /* QUOTE */
+  .quote-band{border-top:1px solid var(--gold-border);border-bottom:1px solid var(--gold-border);padding:44px 60px;text-align:center;}
+  .quote-band blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:300;font-style:italic;max-width:720px;margin:0 auto;line-height:1.5;}
+  .quote-band blockquote strong{font-style:normal;font-weight:500;color:var(--gold);}
+
+  /* SECTIONS */
+  .section{max-width:1160px;margin:0 auto;padding:80px 60px;}
+  .section-label{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;margin-bottom:48px;}
+  .section-title em{font-style:italic;color:var(--gold);}
+
+  /* QUÉ INCLUYE */
+  .incluye-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gold-border);border:1px solid var(--gold-border);}
+  .incluye-item{background:var(--deep);padding:36px 28px;transition:background 0.3s;}
+  .incluye-item:hover{background:var(--card);}
+  .incluye-icon{font-size:1.5rem;margin-bottom:14px;color:var(--gold);}
+  .incluye-item h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;margin-bottom:10px;}
+  .incluye-item p{font-size:0.86rem;color:var(--muted);line-height:1.65;}
+
+  /* PLANES */
+  .planes-intro{font-size:0.95rem;color:var(--muted);line-height:1.7;margin-bottom:36px;font-style:italic;border-left:2px solid var(--gold);padding-left:16px;}
+  .planes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .plan-card{background:var(--card);border:1px solid var(--gold-border);padding:36px 28px;position:relative;transition:border-color 0.3s,transform 0.3s;display:flex;flex-direction:column;}
+  .plan-card:hover{border-color:var(--gold);transform:translateY(-3px);}
+  .plan-card.featured{border-color:var(--gold);}
+  .plan-card.featured::before{content:'⭐ Más completo';position:absolute;top:-13px;left:24px;font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:var(--black);padding:4px 14px;font-weight:600;}
+  .plan-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .plan-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:6px;}
+  .plan-price{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:600;color:var(--gold);line-height:1;margin-bottom:18px;}
+  .plan-price span{font-size:0.85rem;font-weight:400;color:var(--muted);}
+  .plan-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin:0 0 28px;flex:1;}
+  .plan-features li{display:flex;gap:10px;align-items:flex-start;font-size:0.86rem;color:var(--muted);line-height:1.5;}
+  .plan-features li::before{content:'✦';color:var(--gold);font-size:0.55rem;flex-shrink:0;margin-top:4px;}
+  .plan-cta{display:block;text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;padding:14px 20px;transition:all 0.2s;margin-top:auto;}
+  .plan-cta.gold{background:var(--gold);color:var(--black);}
+  .plan-cta.gold:hover{background:var(--gold-light);}
+  .plan-cta.outline{border:1px solid var(--gold-border);color:var(--gold);}
+  .plan-cta.outline:hover{border-color:var(--gold);}
+
+  /* SALES NAV CALLOUT */
+  .sales-nav-box{background:var(--deep);border:1px solid var(--gold-border);padding:48px;margin-top:28px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;position:relative;overflow:hidden;}
+  .sales-nav-box::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:radial-gradient(circle,rgba(201,168,76,0.06) 0%,transparent 65%);pointer-events:none;}
+  .sn-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+  .sales-nav-box h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:12px;line-height:1.25;}
+  .sales-nav-box h3 em{font-style:italic;color:var(--gold);}
+  .sales-nav-box p{font-size:0.9rem;color:var(--muted);line-height:1.75;max-width:560px;}
+  .sn-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
+  .sn-chip{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--gold-border);color:var(--gold);padding:6px 14px;}
+  .sn-badge{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:8px 20px;white-space:nowrap;align-self:flex-start;}
+  .plan-cuotas{font-size:0.75rem;color:var(--gold);margin-bottom:16px;letter-spacing:0.02em;}
+  .cuotas-strip{display:flex;align-items:center;gap:10px;background:var(--gold-dim);border:1px solid var(--gold-border);padding:12px 18px;margin-top:16px;font-size:0.82rem;color:var(--muted);}
+  .cuotas-strip strong{color:var(--white);font-weight:400;}
+
+  /* PARA QUIÉN */
+  .para-quien-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .pq-card{background:var(--card);border:1px solid var(--gold-border);padding:28px 24px;}
+  .pq-num{font-family:'Barlow Condensed',sans-serif;font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .pq-card h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;margin-bottom:8px;}
+  .pq-card p{font-size:0.86rem;color:var(--muted);line-height:1.65;}
+
+  /* PROCESO */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--gold-border);border:1px solid var(--gold-border);}
+  .step{background:var(--deep);padding:32px 24px;transition:background 0.3s;}
+  .step:hover{background:var(--card);}
+  .step-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--gold-border);line-height:1;margin-bottom:14px;}
+  .step h3{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:500;margin-bottom:8px;}
+  .step p{font-size:0.84rem;color:var(--muted);line-height:1.65;}
+
+  /* BIO */
+  .bio-box{display:flex;gap:36px;align-items:flex-start;}
+  .bio-avatar{width:60px;height:60px;border-radius:50%;background:var(--card);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .bio-avatar span{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--gold);font-weight:300;}
+  .bio-content p{font-size:0.9rem;color:var(--muted);line-height:1.75;margin-bottom:12px;}
+  .bio-content blockquote{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--white);line-height:1.6;border-left:2px solid var(--gold);padding-left:16px;margin-top:16px;}
+
+  /* CTA FINAL */
+  .cta-final{background:var(--deep);border:1px solid var(--gold-border);padding:60px;text-align:center;}
+  .cta-final h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;margin-bottom:14px;}
+  .cta-final h2 em{font-style:italic;color:var(--gold);}
+  .cta-final p{color:var(--muted);max-width:500px;margin:0 auto 32px;line-height:1.75;font-size:0.95rem;}
+
+  footer{border-top:1px solid var(--gold-border);padding:36px 60px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold);font-weight:500;}
+  .footer-copy{font-size:0.78rem;color:var(--muted);}
+  .footer-email{font-size:0.78rem;color:var(--gold);}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+  @media(max-width:900px){
+    nav{padding:16px 24px;}
+    .hero-band{padding:120px 24px 60px;}
+    .hero-inner{grid-template-columns:1fr;gap:36px;}
+    .quote-band{padding:32px 24px;}
+    .section{padding:60px 24px;}
+    .incluye-grid{grid-template-columns:1fr;}
+    .planes-grid{grid-template-columns:1fr;}
+    .sales-nav-box{grid-template-columns:1fr;padding:32px 24px;}
+    .para-quien-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr 1fr;}
+    .cta-final{padding:44px 24px;}
+    footer{padding:28px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="inicio.html" class="nav-logo">OptimizaTuCV.IA</a>
+  <a href="mailto:optimizatucv.ia@gmail.com" class="nav-email">¿Dudas? Escríbeme</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero-band">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <p class="hero-tag">LinkedIn Potenciado · Asesoría estratégica</p>
+      <h1>Tu LinkedIn debería<br>trabajar <em>por ti</em><br>mientras duermes.</h1>
+      <p class="hero-sub">No se trata solo de tener un perfil bonito. Se trata de que te encuentren, te contacten y te reconozcan como referente en tu área — antes de que tú busques a nadie.</p>
+      <div class="hero-actions">
+        <a href="#planes" class="btn-primary">Ver planes</a>
+        <a href="https://tally.so/r/rjd8Rv" class="btn-ghost" target="_blank">Revisión gratuita primero</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="problem-box">
+        <h3>¿Te identificas?</h3>
+        <div class="problem-item"><span>—</span><span>Tienes perfil en LinkedIn pero nadie te contacta ni te encuentra.</span></div>
+        <div class="problem-item"><span>—</span><span>No sabes qué publicar ni con qué frecuencia para ganar visibilidad.</span></div>
+        <div class="problem-item"><span>—</span><span>Tu perfil existe, pero no comunica tu valor ni tu propuesta claramente.</span></div>
+        <div class="problem-item"><span>—</span><span>Quieres conseguir clientes o trabajo pero no sabes a quién dirigirte en LinkedIn.</span></div>
+        <div class="problem-item"><span>—</span><span>Tienes experiencia valiosa pero tu perfil parece el de un principiante.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="quote-band">
+  <blockquote>"LinkedIn no es una vitrina. Es una <strong>herramienta de posicionamiento, atracción y negocio</strong> — si sabes usarla."</blockquote>
+</div>
+
+<!-- QUÉ INCLUYE CADA SERVICIO -->
+<div class="section">
+  <p class="section-label">Lo que trabajamos</p>
+  <h2 class="section-title">Más que un perfil.<br>Una <em>estrategia completa.</em></h2>
+  <div class="incluye-grid">
+    <div class="incluye-item">
+      <div class="incluye-icon">◈</div>
+      <h3>Optimización de perfil</h3>
+      <p>Headline irresistible, resumen de alto impacto, experiencia reescrita con logros, habilidades y palabras clave para que te encuentren los reclutadores y clientes correctos.</p>
+    </div>
+    <div class="incluye-item">
+      <div class="incluye-icon">◈</div>
+      <h3>Auditoría y diagnóstico</h3>
+      <p>Análisis profundo de tu perfil actual: qué está funcionando, qué te está frenando, cómo te ven vs. cómo deberías ser percibido. Punto de partida para cada plan.</p>
+    </div>
+    <div class="incluye-item">
+      <div class="incluye-icon">◈</div>
+      <h3>Identificación de segmento</h3>
+      <p>¿A quién te diriges? Identificamos tu público objetivo ideal — sea para conseguir trabajo, clientes o posicionarte como referente — y orientamos todo el perfil hacia eso.</p>
+    </div>
+    <div class="incluye-item">
+      <div class="incluye-icon">◈</div>
+      <h3>12 publicaciones programadas</h3>
+      <p>Contenido estratégico listo para publicar durante 3 meses. Cada publicación diseñada para posicionarte, generar visibilidad y atraer a las personas correctas a tu perfil.</p>
+    </div>
+    <div class="incluye-item">
+      <div class="incluye-icon">◈</div>
+      <h3>Desarrollo de servicios</h3>
+      <p>Orientación sobre qué servicios puedes ofrecer según tu perfil, cómo estructurarlos y cómo comunicarlos en LinkedIn para que clientes potenciales entiendan exactamente qué haces.</p>
+    </div>
+    <div class="incluye-item">
+      <div class="incluye-icon">◈</div>
+      <h3>Asesoría de posicionamiento</h3>
+      <p>Estrategia personalizada para que tu perfil no solo exista, sino que trabaje activamente para atraer oportunidades laborales, clientes o contactos valiosos.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PLANES -->
+<div id="planes" class="section" style="padding-top:0;">
+  <p class="section-label">Elige tu plan</p>
+  <h2 class="section-title">Tres niveles de <em>impacto en LinkedIn</em></h2>
+  <p class="planes-intro">Yo siempre recomiendo partir por el plan Avanzado si tu objetivo es atraer oportunidades activamente — porque la optimización sin contenido no construye autoridad.</p>
+
+  <div class="planes-grid">
+
+    <!-- ESENCIAL -->
+    <div class="plan-card">
+      <p class="plan-tag">Esencial</p>
+      <p class="plan-name">LinkedIn Esencial</p>
+      <p class="plan-price">$65.000 <span>CLP · Pago único</span></p>
+      <p class="plan-cuotas">Hasta 12 cuotas con Mercado Pago</p>
+      <ul class="plan-features">
+        <li>Optimización completa de tu perfil LinkedIn</li>
+        <li>Headline profesional de alto impacto</li>
+        <li>Resumen "Acerca de" reescrito con tu propuesta de valor</li>
+        <li>Reescritura de experiencias con lenguaje de logros</li>
+        <li>Habilidades y palabras clave estratégicas</li>
+        <li>Recomendaciones para foto y banner</li>
+        <li>Entrega en 5 días hábiles</li>
+      </ul>
+      <!-- Actualizar link Mercado Pago -->
+      <a href="https://mpago.la/27WTdW8" class="plan-cta outline" target="_blank">Contratar LinkedIn Esencial</a>
+    </div>
+
+    <!-- AVANZADO -->
+    <div class="plan-card featured">
+      <p class="plan-tag">Avanzado</p>
+      <p class="plan-name">LinkedIn Avanzado</p>
+      <p class="plan-price">$110.000 <span>CLP · Pago único</span></p>
+      <p class="plan-cuotas">Hasta 12 cuotas con Mercado Pago</p>
+      <ul class="plan-features">
+        <li>Todo lo incluido en LinkedIn Esencial</li>
+        <li>Auditoría completa de tu perfil actual</li>
+        <li>Identificación de tu segmento objetivo ideal</li>
+        <li>Orientación sobre servicios a ofrecer según tu perfil</li>
+        <li>12 publicaciones estratégicas programadas (3 meses de contenido)</li>
+        <li>Estrategia de visibilidad y atracción de oportunidades</li>
+        <li>Entrega en 5 días hábiles</li>
+      </ul>
+      <!-- Actualizar link Mercado Pago -->
+      <a href="https://mpago.la/2M3a72M" class="plan-cta gold" target="_blank">Contratar LinkedIn Avanzado</a>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="plan-card">
+      <p class="plan-tag">Premium</p>
+      <p class="plan-name">LinkedIn Premium</p>
+      <p class="plan-price">$160.000 <span>CLP · Pago único</span></p>
+      <p class="plan-cuotas">Hasta 12 cuotas con Mercado Pago</p>
+      <ul class="plan-features">
+        <li>Todo lo incluido en LinkedIn Avanzado</li>
+        <li>Estrategia con Sales Navigator para alcance mundial</li>
+        <li>Identificación de prospectos y segmentos de alto valor</li>
+        <li>Guía de mensajes de conexión y propuesta de servicios</li>
+        <li>Posicionamiento como referente en tu nicho</li>
+        <li>Asesoría de negocio: cómo monetizar tu perfil y expertise</li>
+        <li>Entrega en 5 días hábiles</li>
+      </ul>
+      <!-- Actualizar link Mercado Pago -->
+      <a href="https://mpago.la/2V5KRKQ" class="plan-cta outline" target="_blank">Contratar LinkedIn Premium</a>
+    </div>
+
+  </div>
+  <div class="cuotas-strip">
+    <span>💳</span><span>Todos los planes disponibles en hasta <strong>12 cuotas</strong> con Mercado Pago — sin necesidad de tarjeta de crédito en todos los bancos.</span>
+  </div>
+</div>
+
+<!-- SALES NAVIGATOR CALLOUT -->
+<div class="section" style="padding-top:0;">
+  <div class="sales-nav-box">
+    <div>
+      <p class="sn-tag">Sales Navigator · Para quienes quieren alcance mundial</p>
+      <h3>Llega a quienes <em>toman decisiones</em> en cualquier parte del mundo.</h3>
+      <p>Sales Navigator es la herramienta premium de LinkedIn que te permite filtrar y contactar directamente a decisores en empresas específicas, por industria, cargo, país y tamaño de empresa. En el plan Premium te enseño a usarlo de forma estratégica para conseguir clientes, entrevistas o alianzas donde sea que estén.</p>
+      <div class="sn-chips">
+        <div class="sn-chip">Búsqueda avanzada de prospectos</div>
+        <div class="sn-chip">Alcance internacional</div>
+        <div class="sn-chip">Contacto directo con decisores</div>
+        <div class="sn-chip">Estrategia de mensajes</div>
+      </div>
+    </div>
+    <div class="sn-badge">Incluido en<br>Plan Premium</div>
+  </div>
+</div>
+
+<!-- PARA QUIÉN -->
+<div class="section" style="padding-top:0;">
+  <p class="section-label">Para quién es</p>
+  <h2 class="section-title">Este servicio es para <em>ti si</em></h2>
+  <div class="para-quien-grid">
+    <div class="pq-card"><p class="pq-num">Perfil 01</p><h3>Buscas empleo activamente</h3><p>Quieres que los reclutadores te encuentren antes de que tú los busques a ellos. Un perfil optimizado atrae, no espera.</p></div>
+    <div class="pq-card"><p class="pq-num">Perfil 02</p><h3>Quieres conseguir clientes</h3><p>Eres freelance, consultor, coach o tienes un servicio que ofrecer. LinkedIn es tu canal de ventas más poderoso — si está bien usado.</p></div>
+    <div class="pq-card"><p class="pq-num">Perfil 03</p><h3>Quieres posicionarte como referente</h3><p>Tienes conocimiento y experiencia valiosos. Quieres que tu industria te reconozca y que las oportunidades lleguen solas.</p></div>
+    <div class="pq-card"><p class="pq-num">Perfil 04</p><h3>Empezas tu negocio o servicio</h3><p>Estás comenzando y necesitas visibilidad, credibilidad y claridad sobre a quién dirigirte y qué ofrecerles.</p></div>
+    <div class="pq-card"><p class="pq-num">Perfil 05</p><h3>Tienes perfil pero no te llaman</h3><p>Existe tu perfil, pero no genera nada. Es hora de convertirlo en una herramienta activa que genere resultados reales.</p></div>
+    <div class="pq-card"><p class="pq-num">Perfil 06</p><h3>Ejecutivo o directivo</h3><p>Tu nivel de experiencia merece un LinkedIn que lo proyecte. Los headhunters buscan aquí primero — asegúrate de que te encuentren.</p></div>
+  </div>
+</div>
+
+<!-- CÓMO FUNCIONA -->
+<div class="section" style="padding-top:0;">
+  <p class="section-label">El proceso</p>
+  <h2 class="section-title">Cómo <em>funciona</em></h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><h3>Elige tu plan</h3><p>Selecciona el nivel de optimización que necesitas y realiza el pago para comenzar.</p></div>
+    <div class="step"><div class="step-num">02</div><h3>Cuestionario estratégico</h3><p>Completas un formulario con tus objetivos, experiencia, servicios que ofreces o quieres ofrecer, y a quién te quieres dirigir.</p></div>
+    <div class="step"><div class="step-num">03</div><h3>Optimización y contenido</h3><p>Trabajo en tu perfil y, según el plan, desarrollo tu estrategia de contenido y segmento durante 5 días hábiles.</p></div>
+    <div class="step"><div class="step-num">04</div><h3>Entrega y activación</h3><p>Recibes todo listo para implementar. Te explico cómo aplicar cada cambio para maximizar resultados desde el primer día.</p></div>
+  </div>
+</div>
+
+<!-- BIO -->
+<div class="section" style="padding-top:0;">
+  <div class="bio-box">
+    <div class="bio-avatar"><span>K</span></div>
+    <div class="bio-content">
+      <p style="font-size:0.8rem;color:var(--gold);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:8px;">Karin Sandoval · Especialista en optimización de CV con IA · OptimizaTuCV.IA</p>
+      <p>LinkedIn fue parte de mi propio proceso de reinvención. Aprendí que no basta con estar presente — hay que estar bien posicionado. Hoy aplico esa misma estrategia para ayudar a profesionales y emprendedores a transformar su perfil en una herramienta que trabaja por ellos, todos los días.</p>
+      <blockquote>"Un buen perfil de LinkedIn no dice lo que hiciste. Dice por qué tú, por qué ahora, y por qué eres exactamente lo que esa empresa o cliente está buscando."</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- CTA FINAL -->
+<div style="max-width:1160px;margin:0 auto;padding:0 60px 80px;">
+  <div class="cta-final">
+    <h2>Tu LinkedIn puede ser tu<br><em>mejor vendedor.</em></h2>
+    <p>No esperes que te encuentren por casualidad. Posiciónate estratégicamente y deja que las oportunidades lleguen a ti.</p>
+    <a href="https://mpago.la/2M3a72M" class="btn-primary" target="_blank">Contratar LinkedIn Avanzado — $110.000</a>
+    <p style="margin-top:14px;font-size:0.78rem;color:var(--muted);">Entrega en 5 días hábiles · Incluye 12 publicaciones · Estrategia de segmento</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">OptimizaTuCV.IA</div>
+  <div class="footer-copy">© 2025 OptimizaTuCV.IA · Karin Sandoval</div>
+  <a href="mailto:optimizatucv.ia@gmail.com" class="footer-email">optimizatucv.ia@gmail.com</a>
+</footer>
+
+</body>
+</html>

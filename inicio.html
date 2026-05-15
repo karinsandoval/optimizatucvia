@@ -4,290 +4,249 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OptimizaTuCV.IA – Karin Sandoval</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<meta name="description" content="Optimiza tu CV con inteligencia artificial. Revisión gratuita, resultados reales.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --negro: #0a0a0a; --negro2: #111111; --negro3: #161616;
-    --dorado: #C9A84C; --dorado-claro: #E8C97A; --dorado-oscuro: #9A7A30;
-    --dorado-tenue: rgba(201,168,76,0.08); --blanco: #F5F0E8; --gris: #888; --gris-claro: #555;
+    --black: #0a0a0a; --deep: #111111; --card: #161616;
+    --gold: #c9a84c; --gold-light: #e2c06e;
+    --gold-border: rgba(201,168,76,0.28); --gold-dim: rgba(201,168,76,0.08);
+    --white: #f5f0e8; --muted: rgba(245,240,232,0.52);
   }
-  body { background: var(--negro); color: var(--blanco); font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.8; }
-  .linea { width: 50px; height: 1px; background: var(--dorado); margin: 0 auto 2.5rem; }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--black); color:var(--white); font-family:'Barlow',sans-serif; font-weight:300; overflow-x:hidden; line-height:1.6; }
 
-  header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; border-bottom: 1px solid #1a1a1a; }
-  .logo { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; letter-spacing: 0.35em; color: var(--dorado); text-transform: uppercase; }
-  .header-social { font-size: 0.65rem; letter-spacing: 0.15em; color: var(--gris); }
+  a { color:inherit; text-decoration:none; }
+
+  /* NAV */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 60px;
+    background:rgba(10,10,10,0.94); backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--gold-border);
+  }
+  .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:500; color:var(--gold); letter-spacing:0.04em; }
+  .nav-tiktok {
+    font-family:'Barlow Condensed',sans-serif; font-size:0.75rem;
+    letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--muted); transition:color 0.2s;
+  }
+  .nav-tiktok:hover { color:var(--gold); }
 
   /* HERO */
-  .hero { text-align: center; padding: 7rem 2rem 5rem; max-width: 820px; margin: 0 auto; }
-  .hero-eyebrow { font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dorado); margin-bottom: 2rem; }
-  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 300; line-height: 1.1; margin-bottom: 1.8rem; }
-  h1 em { font-style: italic; color: var(--dorado); }
-  .hero-sub { font-size: 0.88rem; color: var(--gris); max-width: 560px; margin: 0 auto 1.5rem; line-height: 2; }
-  .hero-aclaracion { font-size: 0.72rem; color: var(--gris-claro); max-width: 460px; margin: 0 auto 3.5rem; line-height: 1.9; }
+  .hero {
+    min-height:100vh; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center; padding:140px 40px 80px;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(ellipse 60% 50% at 50% 40%, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero-tag { font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); margin-bottom:26px; opacity:0; animation:fadeUp 0.7s 0.1s forwards; }
+  .hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(3rem,7vw,6.5rem); font-weight:300; line-height:1.06; max-width:820px; opacity:0; animation:fadeUp 0.7s 0.25s forwards; }
+  .hero h1 em { font-style:italic; color:var(--gold); }
+  .hero-sub { margin-top:24px; font-size:1.05rem; color:var(--muted); max-width:520px; line-height:1.75; opacity:0; animation:fadeUp 0.7s 0.4s forwards; }
+  .hero-cta { margin-top:44px; opacity:0; animation:fadeUp 0.7s 0.55s forwards; }
+  .btn-primary { font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--black); background:var(--gold); padding:17px 40px; display:inline-block; transition:background 0.2s, transform 0.2s; }
+  .btn-primary:hover { background:var(--gold-light); transform:translateY(-1px); }
+  .hero-note { margin-top:18px; font-size:0.78rem; color:var(--muted); opacity:0; animation:fadeUp 0.7s 0.65s forwards; }
 
-  /* BTN PRINCIPAL */
-  .btn-hero { display: inline-block; background: var(--dorado); color: var(--negro); font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; padding: 1.3rem 3.5rem; text-decoration: none; transition: all 0.3s; }
-  .btn-hero:hover { background: var(--dorado-claro); transform: translateY(-2px); }
-  .hero-nota { font-size: 0.65rem; color: var(--gris-claro); margin-top: 1rem; letter-spacing: 0.08em; }
-  .hero-nota span { color: var(--dorado); }
+  /* QUOTE */
+  .quote-band { border-top:1px solid var(--gold-border); border-bottom:1px solid var(--gold-border); padding:48px 60px; text-align:center; }
+  .quote-band blockquote { font-family:'Cormorant Garamond',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:300; font-style:italic; max-width:720px; margin:0 auto; line-height:1.5; }
+  .quote-band blockquote strong { font-style:normal; font-weight:500; color:var(--gold); }
 
-  /* FRASE */
-  .frase-bloque { border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; padding: 5rem 2rem; text-align: center; background: var(--negro2); }
-  .frase { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 3.5vw, 2.4rem); font-weight: 300; font-style: italic; color: var(--blanco); max-width: 720px; margin: 0 auto; line-height: 1.6; }
-  .frase strong { color: var(--dorado); font-style: normal; font-weight: 400; }
+  /* SECTIONS */
+  .section { max-width:1160px; margin:0 auto; padding:90px 60px; }
+  .section-label { font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+  .section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3rem); font-weight:300; line-height:1.15; margin-bottom:50px; }
+  .section-title em { font-style:italic; color:var(--gold); }
 
-  /* SOBRE KARIN */
-  .karin-wrap { max-width: 900px; margin: 0 auto; padding: 7rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
-  .karin-texto-bloque {}
-  .karin-eyebrow { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dorado); margin-bottom: 1.5rem; }
-  .karin-nombre-grande { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; }
-  .karin-nombre-grande em { color: var(--dorado); font-style: italic; }
-  .karin-bio { font-size: 0.83rem; color: var(--gris); line-height: 2; margin-bottom: 1.2rem; }
-  .karin-firma { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--dorado); font-style: italic; margin-top: 1.5rem; }
-  .karin-visual { display: flex; flex-direction: column; gap: 1.5px; background: #1a1a1a; }
-  .karin-stat { background: var(--negro); padding: 2rem; }
-  .karin-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--dorado); line-height: 1; }
-  .karin-stat-label { font-size: 0.68rem; color: var(--gris); letter-spacing: 0.1em; margin-top: 0.3rem; }
-  .karin-stat-desc { font-size: 0.75rem; color: var(--gris-claro); margin-top: 0.5rem; line-height: 1.6; }
+  /* BIO */
+  .bio-grid { display:flex; flex-direction:column; align-items:center; text-align:center; max-width:760px; margin:0 auto; }
+  .bio-text p { font-size:0.97rem; color:var(--muted); line-height:1.85; margin-bottom:20px; }
+  .stats-row { display:flex; gap:60px; margin-top:40px; flex-wrap:wrap; justify-content:center; padding-top:36px; border-top:1px solid var(--gold-border); width:100%; }
+  .stat { }
+  .stat-num { font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:300; color:var(--gold); line-height:1; }
+  .stat-label { font-size:0.78rem; color:var(--muted); margin-top:4px; }
 
-  /* CÓMO FUNCIONA */
-  .como-bg { background: var(--negro2); }
-  .como-inner { max-width: 900px; margin: 0 auto; padding: 7rem 2rem; }
-  .sec-titulo { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300; margin-bottom: 3rem; text-align: center; }
-  .sec-titulo em { color: var(--dorado); font-style: italic; }
-  .pasos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5px; background: #1a1a1a; }
-  .paso-card { background: var(--negro2); padding: 2.5rem 2rem; }
-  .paso-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: var(--dorado-oscuro); opacity: 0.3; line-height: 1; margin-bottom: 1rem; }
-  .paso-titulo { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dorado); margin-bottom: 0.8rem; }
-  .paso-desc { font-size: 0.8rem; color: var(--gris); line-height: 1.8; }
-  .paso-destacado { background: var(--dorado-tenue); border: 1px solid var(--dorado-oscuro); }
+  /* STEPS */
+  .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1px; background:var(--gold-border); border:1px solid var(--gold-border); }
+  .step { background:var(--deep); padding:40px 30px; transition:background 0.3s; }
+  .step:hover { background:var(--card); }
+  .step-num { font-family:'Cormorant Garamond',serif; font-size:2.8rem; font-weight:300; color:var(--gold-border); line-height:1; margin-bottom:18px; }
+  .step h3 { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:500; margin-bottom:10px; }
+  .step p { font-size:0.87rem; color:var(--muted); line-height:1.7; }
 
-  /* PARA QUIÉN */
-  .para-quien-inner { max-width: 880px; margin: 0 auto; padding: 7rem 2rem; }
-  .perfiles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5px; background: #1a1a1a; border: 1px solid #1a1a1a; margin-top: 3rem; }
-  .perfil-card { background: var(--negro); padding: 2.5rem 2rem; transition: background 0.3s; }
-  .perfil-card:hover { background: var(--negro3); }
-  .perfil-tag { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dorado); margin-bottom: 1rem; }
-  .perfil-titulo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: var(--blanco); margin-bottom: 0.8rem; }
-  .perfil-desc { font-size: 0.78rem; color: var(--gris); line-height: 1.8; }
+  /* PERFILES */
+  .perfiles { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .perfil-card { background:var(--card); border:1px solid var(--gold-border); padding:36px 28px; transition:border-color 0.3s, transform 0.3s; }
+  .perfil-card:hover { border-color:var(--gold); transform:translateY(-3px); }
+  .perfil-num { font-family:'Barlow Condensed',sans-serif; font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+  .perfil-card h3 { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:500; margin-bottom:10px; }
+  .perfil-card p { font-size:0.87rem; color:var(--muted); line-height:1.65; }
+  .perfil-link { display:inline-block; margin-top:18px; font-family:'Barlow Condensed',sans-serif; font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); }
 
-  /* TESTIMONIO GRANDE */
-  .testimonio-grande-bg { background: var(--negro2); border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; }
-  .testimonio-grande-inner { max-width: 750px; margin: 0 auto; padding: 7rem 2rem; text-align: center; }
-  .test-grande-texto { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 3vw, 2rem); font-weight: 300; font-style: italic; color: var(--blanco); line-height: 1.7; margin-bottom: 2rem; }
-  .test-grande-nombre { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dorado); }
-  .test-grande-servicio { font-size: 0.62rem; color: var(--gris); margin-top: 0.3rem; }
+  /* TESTIMONIO DESTACADO */
+  .testimonial-hero { background:var(--card); border:1px solid var(--gold-border); padding:50px 60px; margin:0 0 24px; }
+  .testimonial-hero blockquote { font-family:'Cormorant Garamond',serif; font-size:clamp(1.2rem,2.5vw,1.7rem); font-weight:300; font-style:italic; line-height:1.5; margin-bottom:20px; color:var(--white); }
+  .testimonial-hero cite { font-size:0.85rem; color:var(--muted); font-style:normal; }
+  .testimonial-hero cite strong { color:var(--white); font-weight:400; }
 
   /* TESTIMONIOS GRID */
-  .testimonios-inner { max-width: 920px; margin: 0 auto; padding: 6rem 2rem; }
-  .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: #1a1a1a; }
-  .test-item { background: var(--negro); padding: 2rem; }
-  .test-estrellas { color: var(--dorado); font-size: 0.55rem; letter-spacing: 0.2em; margin-bottom: 1rem; }
-  .test-texto { font-size: 0.82rem; color: var(--gris); font-style: italic; line-height: 1.9; margin-bottom: 1.5rem; }
-  .test-nombre { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blanco); }
-  .test-servicio { font-size: 0.62rem; color: var(--dorado-oscuro); margin-top: 0.2rem; }
+  .testimonios-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .testimonio { background:var(--card); border:1px solid var(--gold-border); padding:28px 24px; }
+  .stars { color:var(--gold); font-size:0.8rem; margin-bottom:14px; }
+  .testimonio blockquote { font-size:0.88rem; color:var(--muted); line-height:1.7; font-style:italic; margin-bottom:16px; }
+  .testimonio cite { font-size:0.78rem; color:var(--muted); font-style:normal; display:block; }
+  .testimonio cite strong { color:var(--white); font-weight:400; display:block; margin-bottom:2px; }
 
   /* CTA FINAL */
-  .cta-final { text-align: center; padding: 8rem 2rem; background: var(--negro); }
-  .cta-titulo { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; }
-  .cta-titulo em { color: var(--dorado); font-style: italic; }
-  .cta-sub { font-size: 0.85rem; color: var(--gris); max-width: 520px; margin: 0 auto 3rem; line-height: 2; }
-  .cta-gratis-badge { display: inline-block; font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--dorado); border: 1px solid var(--dorado-oscuro); padding: 0.4rem 1.2rem; margin-bottom: 2rem; }
-  .btn-cta-grande { display: inline-block; background: var(--dorado); color: var(--negro); font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; padding: 1.4rem 4rem; text-decoration: none; transition: all 0.3s; }
-  .btn-cta-grande:hover { background: var(--dorado-claro); transform: translateY(-2px); }
-  .cta-nota { font-size: 0.65rem; color: var(--gris-claro); margin-top: 1.2rem; line-height: 1.8; max-width: 420px; margin-left: auto; margin-right: auto; }
-  .cta-nota span { color: var(--dorado); }
-  .cta-email { display: block; font-size: 0.7rem; color: var(--gris-claro); text-decoration: none; margin-top: 2rem; }
-  .cta-email:hover { color: var(--dorado); }
+  .cta-final { background:var(--deep); border:1px solid var(--gold-border); padding:70px 60px; text-align:center; }
+  .cta-final h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3.2rem); font-weight:300; margin-bottom:16px; }
+  .cta-final h2 em { font-style:italic; color:var(--gold); }
+  .cta-final p { color:var(--muted); max-width:520px; margin:0 auto 36px; line-height:1.75; }
 
-  .divisor { height: 1px; background: linear-gradient(to right, transparent, #222, transparent); }
-  footer { text-align: center; padding: 2rem; font-size: 0.62rem; color: #333; letter-spacing: 0.1em; border-top: 1px solid #111; }
+  /* FOOTER */
+  footer { border-top:1px solid var(--gold-border); padding:36px 60px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+  .footer-logo { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--gold); font-weight:500; }
+  .footer-copy { font-size:0.78rem; color:var(--muted); }
+  .footer-email { font-size:0.78rem; color:var(--gold); }
 
-  @media (max-width: 720px) {
-    header { padding: 1.2rem 1.5rem; }
-    .karin-wrap { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem; }
-    .karin-visual { order: -1; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+
+  @media(max-width:900px){
+    nav{padding:16px 24px;}
+    .hero{padding:120px 24px 60px;}
+    .quote-band{padding:36px 24px;}
+    .section{padding:60px 24px;}
+    .bio-grid{grid-template-columns:1fr;gap:36px;}
+    .bio-img{aspect-ratio:1/1;max-width:200px;}
+    .perfiles{grid-template-columns:1fr;}
+    .testimonios-grid{grid-template-columns:1fr;}
+    .testimonial-hero{padding:36px 24px;}
+    .cta-final{padding:50px 24px;}
+    footer{padding:28px 24px;}
   }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">OptimizaTuCV.IA</div>
-  <span class="header-social">@karinsandovalg.oficial</span>
-</header>
+<nav>
+  <span class="nav-logo">OptimizaTuCV.IA</span>
+  <a href="https://www.tiktok.com/@karinsandovalg.oficial" target="_blank" class="nav-tiktok">@karinsandovalg.oficial</a>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow">Karin Sandoval · OptimizaTuCV.IA</div>
-  <h1>Tu CV debería<br>estar <em>abriendo puertas.</em><br>¿Lo está haciendo?</h1>
+  <p class="hero-tag">Karin Sandoval · OptimizaTuCV.IA</p>
+  <h1>Tu CV debería estar <em>abriendo puertas.</em><br>¿Lo está haciendo?</h1>
   <p class="hero-sub">Si estás enviando postulaciones sin recibir respuesta, el problema casi nunca eres tú. Es cómo tu CV te está presentando al mundo.</p>
-  <p class="hero-aclaracion">Envíame tu CV y te digo exactamente qué está fallando y cómo mejorarlo. Sin costo, sin compromiso.</p>
-  <a href="https://tally.so/r/rjd8Rv" class="btn-hero">Quiero mi revisión gratuita</a>
-  <div class="hero-nota">Completamente gratis · Respuesta <span>personalizada</span> · Sin spam</div>
+  <div class="hero-cta">
+    <a href="https://tally.so/r/rjd8Rv" class="btn-primary" target="_blank">Quiero mi revisión gratuita</a>
+  </div>
+  <p class="hero-note">Completamente gratis · Respuesta personalizada · Sin spam</p>
 </section>
 
-<div class="frase-bloque">
-  <p class="frase">"Un buen CV no es solo un archivo.<br>Es tu <strong>carta de entrada al trabajo que mereces.</strong>"</p>
+<!-- QUOTE -->
+<div class="quote-band">
+  <blockquote>"Un buen CV no es solo un archivo. Es tu <strong>carta de entrada al trabajo que mereces.</strong>"</blockquote>
 </div>
 
-<!-- SOBRE KARIN -->
-<section>
-  <div class="karin-wrap">
-    <div class="karin-texto-bloque">
-      <div class="karin-eyebrow">Quién soy</div>
-      <h2 class="karin-nombre-grande">Hola, soy<br><em>Karin Sandoval</em></h2>
-      <p class="karin-bio">Pasé 7 meses enviando postulaciones sin recibir una sola llamada. Me preguntaba si el problema era yo. Hasta que me hice una pregunta que lo cambió todo: ¿y si el problema no soy yo, sino mi CV?</p>
-      <p class="karin-bio">Descubrí cómo funcionan los sistemas ATS, los filtros automáticos que las empresas usan para decidir si tu CV siquiera llega a manos humanas. Rehíce mi CV desde cero. En una semana tenía varias entrevistas.</p>
-      <p class="karin-bio">Hoy ayudo a profesionales en distintas etapas de su carrera — desde quienes buscan su primer empleo hasta ejecutivos que quieren acceder a empresas de primer nivel — a transformar su CV en una herramienta que realmente funciona.</p>
-      <div class="karin-firma">Karin Sandoval</div>
-    </div>
-    <div class="karin-visual">
-      <div class="karin-stat">
-        <div class="karin-stat-num">+100</div>
-        <div class="karin-stat-label">Clientes ayudados</div>
-        <div class="karin-stat-desc">Profesionales de distintas áreas e industrias que transformaron su búsqueda laboral.</div>
-      </div>
-      <div class="karin-stat">
-        <div class="karin-stat-num">7 meses</div>
-        <div class="karin-stat-label">A 1 semana</div>
-        <div class="karin-stat-desc">De esperar sin respuestas a tener varias entrevistas. Ese fue mi propio resultado.</div>
-      </div>
-      <div class="karin-stat">
-        <div class="karin-stat-num">100%</div>
-        <div class="karin-stat-label">ATS Compatible</div>
-        <div class="karin-stat-desc">Todos los CVs entregados están optimizados para pasar los filtros automáticos.</div>
+<!-- BIO -->
+<div class="section" style="text-align:center;">
+  <p class="section-label">Quién soy</p>
+  <div class="bio-grid">
+    <div class="bio-text">
+      <h2 class="section-title">Hola, soy <em>Karin Sandoval</em></h2>
+      <p>Pasé 7 meses enviando postulaciones sin recibir una sola llamada. Me preguntaba si el problema era yo. Hasta que me hice una pregunta que lo cambió todo: ¿y si el problema no soy yo, sino mi CV?</p>
+      <p>Descubrí cómo funcionan los sistemas ATS, los filtros automáticos que las empresas usan para decidir si tu CV siquiera llega a manos humanas. Rehíce mi CV desde cero. En una semana tenía varias entrevistas.</p>
+      <p>Hoy ayudo a profesionales en distintas etapas de su carrera — desde quienes buscan su primer empleo hasta ejecutivos que quieren acceder a empresas de primer nivel — a transformar su CV en una herramienta que realmente funciona.</p>
+      <div class="stats-row">
+        <div class="stat"><div class="stat-num">+1.000</div><div class="stat-label">Clientes ayudados</div></div>
+        <div class="stat"><div class="stat-num">7 meses</div><div class="stat-label">A 1 semana</div></div>
+        <div class="stat"><div class="stat-num">100%</div><div class="stat-label">ATS Compatible</div></div>
       </div>
     </div>
   </div>
-</section>
-
-<div class="divisor"></div>
+</div>
 
 <!-- CÓMO FUNCIONA -->
-<section class="como-bg">
-  <div class="como-inner">
-    <div class="linea"></div>
-    <h2 class="sec-titulo">Cómo <em>funciona</em></h2>
-    <div class="pasos-grid">
-      <div class="paso-card paso-destacado">
-        <div class="paso-num">01</div>
-        <div class="paso-titulo">Revisión gratuita</div>
-        <div class="paso-desc">Llenas el formulario y me envías tu CV. Analizo tu perfil y te doy un diagnóstico personalizado de lo que está funcionando y lo que está frenando tus oportunidades.</div>
-      </div>
-      <div class="paso-card">
-        <div class="paso-num">02</div>
-        <div class="paso-titulo">Diagnóstico por email</div>
-        <div class="paso-desc">Recibes un análisis detallado con puntos fuertes, áreas de mejora y recomendaciones concretas adaptadas a tu perfil y al cargo al que postulas.</div>
-      </div>
-      <div class="paso-card">
-        <div class="paso-num">03</div>
-        <div class="paso-titulo">Servicio personalizado</div>
-        <div class="paso-desc">Si decides avanzar, te recomiendo el servicio exacto para tu situación. Trabajo con profesionales en todas las etapas: primer CV, cambio de rubro, ascenso o cargos ejecutivos.</div>
-      </div>
-      <div class="paso-card">
-        <div class="paso-num">04</div>
-        <div class="paso-titulo">Resultados reales</div>
-        <div class="paso-desc">Entrega en 5 días hábiles, revisión gratuita incluida, y garantía de resultados. Mi objetivo es que consigas entrevistas, no solo un CV bonito.</div>
-      </div>
+<div class="section" style="padding-top:0;">
+  <p class="section-label">El proceso</p>
+  <h2 class="section-title">Cómo <em>funciona</em></h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><h3>Revisión gratuita</h3><p>Llenas el formulario y me envías tu CV. Analizo tu perfil y te doy un diagnóstico personalizado de lo que está funcionando y lo que está frenando tus oportunidades.</p></div>
+    <div class="step"><div class="step-num">02</div><h3>Diagnóstico por email</h3><p>Recibes un análisis detallado con puntos fuertes, áreas de mejora y recomendaciones concretas adaptadas a tu perfil y al cargo al que postulas.</p></div>
+    <div class="step"><div class="step-num">03</div><h3>Servicio personalizado</h3><p>Si decides avanzar, te recomiendo el servicio exacto para tu situación. Trabajo con profesionales en todas las etapas: primer CV, cambio de rubro, ascenso o cargos ejecutivos.</p></div>
+    <div class="step"><div class="step-num">04</div><h3>Resultados reales</h3><p>Entrega en 5 días hábiles, revisión gratuita incluida, y garantía de resultados. Mi objetivo es que consigas entrevistas, no solo un CV bonito.</p></div>
+  </div>
+</div>
+
+<!-- PERFILES -->
+<div class="section" style="padding-top:0;">
+  <p class="section-label">Para quién es</p>
+  <h2 class="section-title">Trabajo con personas en <em>todas las etapas</em></h2>
+  <div class="perfiles">
+    <div class="perfil-card">
+      <p class="perfil-num">Perfil 01</p>
+      <h3>Sin experiencia formal</h3>
+      <p>Recién egresados, personas que vuelven al mercado o que cambian de área. Tu historia tiene valor — aprendamos a contarla bien.</p>
+      <a href="sin-experiencia.html" class="perfil-link">Ver servicios →</a>
+    </div>
+    <div class="perfil-card">
+      <p class="perfil-num">Perfil 02</p>
+      <h3>Profesionales en desarrollo</h3>
+      <p>Entre 2 y 10 años de experiencia. Tienes trayectoria, pero tu CV no la está mostrando de la forma que abre puertas.</p>
+      <a href="profesionales.html" class="perfil-link">Ver servicios →</a>
+    </div>
+    <div class="perfil-card">
+      <p class="perfil-num">Perfil 03</p>
+      <h3>Ejecutivos y líderes</h3>
+      <p>Directivos, gerentes y jefaturas que necesitan un CV a la altura de su trayectoria para acceder a las mejores oportunidades.</p>
+      <a href="ejecutivos.html" class="perfil-link">Ver servicios →</a>
     </div>
   </div>
-</section>
-
-<div class="divisor"></div>
-
-<!-- PARA QUIÉN -->
-<section>
-  <div class="para-quien-inner">
-    <div class="linea"></div>
-    <h2 class="sec-titulo">Trabajo con personas<br>en <em>todas las etapas</em></h2>
-    <div class="perfiles-grid">
-      <div class="perfil-card">
-        <div class="perfil-tag">Perfil 01</div>
-        <div class="perfil-titulo">Sin experiencia formal</div>
-        <div class="perfil-desc">Recién egresados, personas que vuelven al mercado o que cambian de área. Tu historia tiene valor — aprendamos a contarla bien.</div>
-      </div>
-      <div class="perfil-card">
-        <div class="perfil-tag">Perfil 02</div>
-        <div class="perfil-titulo">Profesionales en desarrollo</div>
-        <div class="perfil-desc">Entre 2 y 10 años de experiencia. Tienes trayectoria, pero tu CV no la está mostrando de la forma que abre puertas.</div>
-      </div>
-      <div class="perfil-card">
-        <div class="perfil-tag">Perfil 03</div>
-        <div class="perfil-titulo">Ejecutivos y líderes</div>
-        <div class="perfil-desc">Directivos, gerentes y jefaturas que necesitan un CV a la altura de su trayectoria para acceder a las mejores oportunidades.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divisor"></div>
-
-<!-- TESTIMONIO GRANDE -->
-<section class="testimonio-grande-bg">
-  <div class="testimonio-grande-inner">
-    <div class="linea"></div>
-    <p class="test-grande-texto">"Llevaba 7 meses sin ninguna entrevista. Contacté a Karin para optimizar mi CV. Hoy tengo varias entrevistas y ya tengo 2 ofertas laborales con carta de oferta."</p>
-    <div class="test-grande-nombre">Gonzalo Flores</div>
-    <div class="test-grande-servicio">Optimización completa de CV</div>
-  </div>
-</section>
+</div>
 
 <!-- TESTIMONIOS -->
-<section>
-  <div class="testimonios-inner">
-    <div class="linea"></div>
-    <h2 class="sec-titulo">Lo que dicen <em>quienes confiaron</em></h2>
-    <div class="test-grid">
-      <div class="test-item">
-        <div class="test-estrellas">★ ★ ★ ★ ★</div>
-        <p class="test-texto">"A los 2 días de aplicar los cambios, me llamaron. Con el CV antiguo estuve un año y medio sin que me llamara nadie."</p>
-        <div class="test-nombre">Robert Fuentes</div><div class="test-servicio">Diagnóstico + Redacción</div>
-      </div>
-      <div class="test-item">
-        <div class="test-estrellas">★ ★ ★ ★ ★</div>
-        <p class="test-texto">"En menos de un mes tenía tres ofertas de trabajo. Tuve que decidir entre ellas. En cada entrevista me felicitaban por el CV."</p>
-        <div class="test-nombre">Cliente anónimo</div><div class="test-servicio">Optimización completa</div>
-      </div>
-      <div class="test-item">
-        <div class="test-estrellas">★ ★ ★ ★ ★</div>
-        <p class="test-texto">"Desde que llegó el CV optimizado, aprox 3 días lo envié y hoy ya tengo una entrevista."</p>
-        <div class="test-nombre">Priscilla</div><div class="test-servicio">Optimización de CV</div>
-      </div>
-      <div class="test-item">
-        <div class="test-estrellas">★ ★ ★ ★ ★</div>
-        <p class="test-texto">"Tu impulso me permitió quedar en el puesto que buscaba, con buen sueldo y beneficios."</p>
-        <div class="test-nombre">Andrés Barckhahn</div><div class="test-servicio">Optimización ejecutiva</div>
-      </div>
-      <div class="test-item">
-        <div class="test-estrellas">★ ★ ★ ★ ★</div>
-        <p class="test-texto">"Realicé las modificaciones y me contactaron en 3 días. Realizas un hermoso trabajo de ayuda."</p>
-        <div class="test-nombre">Leonardo Pérez</div><div class="test-servicio">Diagnóstico profesional</div>
-      </div>
-      <div class="test-item">
-        <div class="test-estrellas">★ ★ ★ ★ ★</div>
-        <p class="test-texto">"Después de que arreglaste mi CV, a la semana me llamaron y comencé a trabajar en noviembre."</p>
-        <div class="test-nombre">Aracelly Petermann</div><div class="test-servicio">Servicio profesional</div>
-      </div>
-    </div>
+<div class="section" style="padding-top:0;">
+  <p class="section-label">Resultados reales</p>
+  <h2 class="section-title">Lo que dicen <em>quienes confiaron</em></h2>
+  <div class="testimonial-hero">
+    <blockquote>"Llevaba 7 meses sin ninguna entrevista. Contacté a Karin para optimizar mi CV. Hoy tengo varias entrevistas y ya tengo 2 ofertas laborales con carta de oferta."</blockquote>
+    <cite><strong>Gonzalo Flores</strong> — Optimización completa de CV</cite>
   </div>
-</section>
-
-<div class="divisor"></div>
+  <div class="testimonios-grid">
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"A los 2 días de aplicar los cambios, me llamaron. Con el CV antiguo estuve un año y medio sin que me llamara nadie."</blockquote><cite><strong>Robert Fuentes</strong>Diagnóstico + Redacción</cite></div>
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"En menos de un mes tenía tres ofertas de trabajo. Tuve que decidir entre ellas. En cada entrevista me felicitaban por el CV."</blockquote><cite><strong>Cliente anónimo</strong>Optimización completa</cite></div>
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"Desde que llegó el CV optimizado, aprox 3 días lo envié y hoy ya tengo una entrevista."</blockquote><cite><strong>Priscilla</strong>Optimización de CV</cite></div>
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"Tu impulso me permitió quedar en el puesto que buscaba, con buen sueldo y beneficios."</blockquote><cite><strong>Andrés Barckhahn</strong>Optimización ejecutiva</cite></div>
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"Realicé las modificaciones y me contactaron en 3 días. Realizas un hermoso trabajo de ayuda."</blockquote><cite><strong>Leonardo Pérez</strong>Diagnóstico profesional</cite></div>
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"Después de que arreglaste mi CV, a la semana me llamaron y comencé a trabajar en noviembre."</blockquote><cite><strong>Aracelly Petermann</strong>Servicio profesional</cite></div>
+  </div>
+</div>
 
 <!-- CTA FINAL -->
-<section class="cta-final">
-  <div class="cta-gratis-badge">Completamente gratuito</div>
-  <h2 class="cta-titulo">¿Tu CV está<br>trabajando <em>por ti?</em></h2>
-  <p class="cta-sub">Descúbrelo ahora. Envíame tu CV y en menos de 48 horas tienes un diagnóstico personalizado de lo que está frenando tus oportunidades — sin costo y sin compromiso.</p>
-  <a href="https://tally.so/r/rjd8Rv" class="btn-cta-grande">Solicitar revisión gratuita</a>
-  <div class="cta-nota">Completamente gratis · Diagnóstico <span>personalizado</span> · Entregado por email · Sin spam ni llamadas</div>
-  <a href="mailto:optimizatucv.ia@gmail.com" class="cta-email">¿Tienes preguntas? → optimizatucv.ia@gmail.com</a>
-</section>
+<div style="max-width:1160px; margin:0 auto; padding:0 60px 90px;">
+  <div class="cta-final">
+    <h2>¿Tu CV está trabajando <em>por ti?</em></h2>
+    <p>Descúbrelo ahora. Envíame tu CV y en menos de 48 horas tienes un diagnóstico personalizado de lo que está frenando tus oportunidades — sin costo y sin compromiso.</p>
+    <a href="https://tally.so/r/rjd8Rv" class="btn-primary" target="_blank">Solicitar revisión gratuita</a>
+    <p style="margin-top:16px; font-size:0.78rem; color:var(--muted);">Completamente gratis · Diagnóstico personalizado · Entregado por email · Sin spam ni llamadas</p>
+  </div>
+</div>
 
-<footer>© 2025 OptimizaTuCV.IA · Karin Sandoval · @karinsandovalg.oficial · optimizatucv.ia@gmail.com</footer>
+<footer>
+  <div class="footer-logo">OptimizaTuCV.IA</div>
+  <div class="footer-copy">© 2025 OptimizaTuCV.IA · Karin Sandoval · <a href="https://www.tiktok.com/@karinsandovalg.oficial" target="_blank" style="color:var(--gold)">@karinsandovalg.oficial</a></div>
+  <a href="mailto:optimizatucv.ia@gmail.com" class="footer-email">optimizatucv.ia@gmail.com</a>
+</footer>
 
 </body>
 </html>
