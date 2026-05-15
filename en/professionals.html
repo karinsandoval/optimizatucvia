@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional CV Optimisation – OptimizaTuCV.IA</title>
+<meta name="description" content="2–10 years of experience and your CV isn't reflecting your value? AI-powered optimisation from €130.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--black:#0a0a0a;--deep:#111111;--card:#161616;--gold:#c9a84c;--gold-light:#e2c06e;--gold-border:rgba(201,168,76,0.28);--gold-dim:rgba(201,168,76,0.08);--white:#f5f0e8;--muted:rgba(245,240,232,0.52);}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden;line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 60px;background:rgba(10,10,10,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--gold-border);}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:var(--gold);letter-spacing:0.04em;}
+  .nav-email{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;}
+  .nav-email:hover{color:var(--gold);}
+  .hero-band{background:var(--deep);border-bottom:1px solid var(--gold-border);padding:130px 60px 70px;}
+  .hero-inner{max-width:1160px;margin:0 auto;text-align:center;}
+  .hero-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;opacity:0;animation:fadeUp 0.7s 0.1s forwards;}
+  .hero-band h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;line-height:1.06;max-width:780px;margin:0 auto;opacity:0;animation:fadeUp 0.7s 0.25s forwards;}
+  .hero-band h1 em{font-style:italic;color:var(--gold);}
+  .hero-sub{margin-top:22px;font-size:1rem;color:var(--muted);max-width:560px;line-height:1.8;opacity:0;animation:fadeUp 0.7s 0.4s forwards;margin-left:auto;margin-right:auto;}
+  .quote-band{border-top:1px solid var(--gold-border);border-bottom:1px solid var(--gold-border);padding:44px 60px;text-align:center;}
+  .quote-band blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:300;font-style:italic;max-width:680px;margin:0 auto;line-height:1.5;}
+  .quote-band blockquote strong{font-style:normal;font-weight:500;color:var(--gold);}
+  .section{max-width:1160px;margin:0 auto;padding:80px 60px;}
+  .section-label{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;margin-bottom:48px;}
+  .section-title em{font-style:italic;color:var(--gold);}
+  .situaciones{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .situacion-card{background:var(--card);border:1px solid var(--gold-border);padding:30px 26px;}
+  .situ-num{font-family:'Barlow Condensed',sans-serif;font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+  .situacion-card h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;margin-bottom:8px;}
+  .situacion-card p{font-size:0.87rem;color:var(--muted);line-height:1.65;}
+  .planes-intro{font-size:0.95rem;color:var(--muted);line-height:1.7;margin-bottom:36px;font-style:italic;border-left:2px solid var(--gold);padding-left:16px;}
+  .planes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .plan-card{background:var(--card);border:1px solid var(--gold-border);padding:36px 28px;position:relative;transition:border-color 0.3s,transform 0.3s;display:flex;flex-direction:column;}
+  .plan-card:hover{border-color:var(--gold);transform:translateY(-3px);}
+  .plan-card.featured{border-color:var(--gold);}
+  .plan-card.featured::before{content:'⭐ Most recommended';position:absolute;top:-13px;left:24px;font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:var(--black);padding:4px 14px;font-weight:600;}
+  .plan-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .plan-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:6px;}
+  .plan-price{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:600;color:var(--gold);line-height:1;margin-bottom:4px;}
+  .plan-price span{font-size:0.85rem;font-weight:400;color:var(--muted);}
+  .plan-tachado{font-size:0.82rem;color:var(--muted);margin-bottom:18px;}
+  .plan-tachado s{color:rgba(245,240,232,0.35);}
+  .plan-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin:16px 0 28px;flex:1;}
+  .plan-features li{display:flex;gap:10px;align-items:flex-start;font-size:0.86rem;color:var(--muted);line-height:1.5;}
+  .plan-features li::before{content:'✦';color:var(--gold);font-size:0.55rem;flex-shrink:0;margin-top:4px;}
+  .plan-cta{display:block;text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;padding:14px 20px;transition:all 0.2s;margin-top:auto;}
+  .plan-cta.gold{background:var(--gold);color:var(--black);}
+  .plan-cta.gold:hover{background:var(--gold-light);}
+  .plan-cta.outline{border:1px solid var(--gold-border);color:var(--gold);}
+  .plan-cta.outline:hover{border-color:var(--gold);}
+  .plan-why{font-size:0.8rem;color:var(--muted);font-style:italic;text-align:center;margin-top:16px;line-height:1.5;}
+  .linkedin-block{background:var(--deep);border:1px solid var(--gold-border);padding:50px;position:relative;overflow:hidden;}
+  .linkedin-block::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 70%);pointer-events:none;}
+  .linkedin-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .linkedin-block h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:14px;line-height:1.25;}
+  .linkedin-block h3 em{font-style:italic;color:var(--gold);}
+  .linkedin-block p{font-size:0.92rem;color:var(--muted);line-height:1.75;max-width:640px;margin-bottom:12px;}
+  .linkedin-features{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+  .lf-chip{font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--gold-border);color:var(--gold);padding:6px 14px;}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gold-border);border:1px solid var(--gold-border);}
+  .step{background:var(--deep);padding:36px 26px;transition:background 0.3s;}
+  .step:hover{background:var(--card);}
+  .step-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--gold-border);line-height:1;margin-bottom:16px;}
+  .step h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;margin-bottom:8px;}
+  .step p{font-size:0.85rem;color:var(--muted);line-height:1.65;}
+  .para-ti{display:flex;flex-direction:column;gap:12px;}
+  .para-ti-item{display:flex;gap:14px;align-items:flex-start;}
+  .para-ti-item::before{content:'—';color:var(--gold);flex-shrink:0;margin-top:2px;}
+  .para-ti-item p{font-size:0.92rem;color:var(--muted);line-height:1.65;}
+  .garantia{background:var(--card);border:1px solid var(--gold-border);padding:36px;margin-top:24px;}
+  .garantia-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+  .garantia h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;margin-bottom:10px;}
+  .garantia p{font-size:0.87rem;color:var(--muted);line-height:1.7;}
+  .bio-box{display:flex;gap:36px;align-items:flex-start;}
+  .bio-avatar{width:60px;height:60px;border-radius:50%;background:var(--card);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .bio-avatar span{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--gold);font-weight:300;}
+  .bio-content p{font-size:0.9rem;color:var(--muted);line-height:1.75;margin-bottom:12px;}
+  .bio-content blockquote{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--white);line-height:1.6;border-left:2px solid var(--gold);padding-left:16px;margin-top:16px;}
+  .stats-row{display:flex;gap:36px;flex-wrap:wrap;margin-top:28px;}
+  .stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--gold);line-height:1;}
+  .stat-label{font-size:0.75rem;color:var(--muted);margin-top:2px;}
+  .testimonios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .testimonio{background:var(--card);border:1px solid var(--gold-border);padding:26px 22px;}
+  .stars{color:var(--gold);font-size:0.78rem;margin-bottom:12px;}
+  .testimonio blockquote{font-size:0.87rem;color:var(--muted);line-height:1.7;font-style:italic;margin-bottom:14px;}
+  .testimonio cite{font-size:0.75rem;color:var(--muted);font-style:normal;display:block;}
+  .testimonio cite strong{color:var(--white);font-weight:400;display:block;margin-bottom:2px;}
+  .cta-final{background:var(--deep);border:1px solid var(--gold-border);padding:60px;text-align:center;}
+  .cta-final h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;margin-bottom:14px;}
+  .cta-final h2 em{font-style:italic;color:var(--gold);}
+  .cta-final p{color:var(--muted);max-width:480px;margin:0 auto 32px;line-height:1.75;font-size:0.95rem;}
+  .btn-primary{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:16px 38px;display:inline-block;transition:background 0.2s,transform 0.2s;}
+  .btn-primary:hover{background:var(--gold-light);transform:translateY(-1px);}
+  footer{border-top:1px solid var(--gold-border);padding:36px 60px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold);font-weight:500;}
+  .footer-copy{font-size:0.78rem;color:var(--muted);}
+  .footer-email{font-size:0.78rem;color:var(--gold);}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  @media(max-width:900px){nav{padding:16px 24px;}.hero-band{padding:110px 24px 50px;}.quote-band{padding:32px 24px;}.section{padding:60px 24px;}.situaciones{grid-template-columns:1fr;}.planes-grid{grid-template-columns:1fr;}.steps{grid-template-columns:1fr;}.testimonios-grid{grid-template-columns:1fr;}.cta-final{padding:44px 24px;}footer{padding:28px 24px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">OptimizaTuCV<span style="color:var(--muted)">.IA</span></a>
+  <a href="mailto:optimizatucv.ia@gmail.com" class="nav-email">Any questions? Write to me</a>
+</nav>
+
+<div class="hero-band">
+  <div class="hero-inner">
+    <p class="hero-tag">Professionals · 2–10 years of experience</p>
+    <h1>Your experience is valuable.<br>Let's learn to <em>prove it.</em></h1>
+    <p class="hero-sub">You have between 2 and 10 years of track record and feel your CV doesn't reflect what you can truly contribute. It's time to change that.</p>
+  </div>
+</div>
+
+<div class="quote-band">
+  <blockquote>"The problem isn't your experience. It's that your CV <strong>isn't telling it the way it deserves.</strong>"</blockquote>
+</div>
+
+<div class="section">
+  <p class="section-label">Does this sound familiar?</p>
+  <h2 class="section-title">Sound <em>familiar?</em></h2>
+  <div class="situaciones">
+    <div class="situacion-card"><p class="situ-num">Situation 01</p><h3>You apply and hear nothing</h3><p>You send dozens of applications and silence is the only response. Your CV isn't passing automated filters or capturing recruiters' attention.</p></div>
+    <div class="situacion-card"><p class="situ-num">Situation 02</p><h3>You want to change industry</h3><p>Your experience is valuable but in another sector. You don't know how to adapt your profile to apply somewhere different without looking like you're starting from scratch.</p></div>
+    <div class="situacion-card"><p class="situ-num">Situation 03</p><h3>You want to move up</h3><p>You want to step into management or higher-responsibility roles, but your CV still describes you as an executor, not a leader.</p></div>
+    <div class="situacion-card"><p class="situ-num">Situation 04</p><h3>Your CV is outdated</h3><p>You've had the same document for years and know it doesn't reflect who you are today. ATS systems can't even read it correctly.</p></div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0;">
+  <p class="section-label">Choose your plan</p>
+  <h2 class="section-title">The plan <em>you need</em></h2>
+  <p class="planes-intro">I always recommend having 2 versions of your CV — so you can apply to different roles or industries without improvising. And if you add LinkedIn, you complete the picture.</p>
+  <div class="planes-grid">
+    <div class="plan-card">
+      <p class="plan-tag">Basic</p>
+      <p class="plan-name">CV Professional</p>
+      <p class="plan-price">$149 <span>USD · one-time</span></p>
+      <ul class="plan-features">
+        <li>1 AI-optimised CV, focused on your real achievements and experience</li>
+        <li>1 personalised cover letter for your target role</li>
+        <li>ATS keyword integration for your specific industry</li>
+        <li>Achievement-driven writing with measurable impact</li>
+        <li>Clean, scannable, 100% ATS-friendly format</li>
+        <li>1 free revision round included</li>
+        <li>Delivery within 5 business days</li>
+      </ul>
+      <a href="https://www.paypal.com/ncp/payment/QD2VA24S9LJZS" class="plan-cta outline" target="_blank">Get CV Professional</a>
+    </div>
+    <div class="plan-card">
+      <p class="plan-tag">Advanced</p>
+      <p class="plan-name">CV Professional+</p>
+      <p class="plan-price">$199 <span>USD · one-time</span></p>
+      <ul class="plan-features">
+        <li>2 AI-optimised CVs adapted to different roles or industries</li>
+        <li>2 personalised cover letters, one for each focus</li>
+        <li>Deep analysis of your career to maximise relevance</li>
+        <li>Specific keywords for each industry or role type</li>
+        <li>Differentiated strategy — each version speaks to that recruiter</li>
+        <li>100% ATS-friendly format on both documents</li>
+        <li>1 free revision round included · 5 business days</li>
+      </ul>
+      <a href="https://www.paypal.com/ncp/payment/UYYNHTHEVJCKJ" class="plan-cta outline" target="_blank">Get CV Professional+</a>
+    </div>
+    <div class="plan-card featured">
+      <p class="plan-tag">Premium</p>
+      <p class="plan-name">CV + LinkedIn</p>
+      <p class="plan-price">$299 <span>USD · one-time</span></p>
+      <p class="plan-tachado">If purchased separately: <s>$349</s></p>
+      <ul class="plan-features">
+        <li>2 AI-optimised CVs adapted to different roles or industries</li>
+        <li>2 personalised cover letters, one for each focus</li>
+        <li>Full LinkedIn profile optimisation</li>
+        <li>High-impact professional headline and summary</li>
+        <li>Keywords so recruiters find you on LinkedIn</li>
+        <li>Differentiated strategy for each CV version</li>
+        <li>1 free revision round included · 5 business days</li>
+      </ul>
+      <a href="https://www.paypal.com/ncp/payment/EAJR2Y6UVHC5U" class="plan-cta gold" target="_blank">Get Complete Pack</a>
+    </div>
+  </div>
+  <p class="plan-why">Why 2 versions? Applying with one CV to everything limits your opportunities. With 2, you maximise every chance.</p>
+</div>
+
+<div class="section" style="padding-top:0;">
+  <div class="linkedin-block">
+    <p class="linkedin-tag">LinkedIn · Your profile works while you're not searching</p>
+    <h3>With experience, LinkedIn becomes your<br><em>passive opportunity channel.</em></h3>
+    <p>From 2–3 years of track record, recruiters start looking for you — not the other way around. But they can only find you if your profile is optimised with the right keywords, a headline that communicates your value, and a narrative that complements your CV.</p>
+    <p>A well-built profile attracts opportunities that never arrived through direct applications: headhunters, companies searching for specific profiles, and contacts who can open doors before a job is publicly posted.</p>
+    <div class="linkedin-features">
+      <div class="lf-chip">Visibility to recruiters</div>
+      <div class="lf-chip">High-impact headline</div>
+      <div class="lf-chip">Sector keywords</div>
+      <div class="lf-chip">Narrative that complements CV</div>
+      <div class="lf-chip">Profile that attracts opportunities</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0;">
+  <p class="section-label">The process</p>
+  <h2 class="section-title">How it <em>works</em></h2>
+  <div class="steps" style="grid-template-columns:repeat(4,1fr);">
+    <div class="step"><div class="step-num">01</div><h3>Choose your plan</h3><p>Select the service that best fits and complete the payment.</p></div>
+    <div class="step"><div class="step-num">02</div><h3>Questionnaire</h3><p>Fill in a form with your professional background, achievements and career goals.</p></div>
+    <div class="step"><div class="step-num">03</div><h3>Optimisation</h3><p>I work on your CV for 5 business days with strategic review focused on results.</p></div>
+    <div class="step"><div class="step-num">04</div><h3>Delivery & adjustments</h3><p>You receive your CV with one free revision round until it's exactly right.</p></div>
+  </div>
+  <div class="garantia">
+    <p class="garantia-tag">Results guarantee</p>
+    <h3>2-month guarantee</h3>
+    <p>If after two months of receiving your optimised CV you haven't been called for interviews, you can request a free revision. My goal is for your CV to work, not just look good.</p>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0;">
+  <div class="bio-box">
+    <div class="bio-avatar"><span>K</span></div>
+    <div class="bio-content">
+      <p style="font-size:0.8rem;color:var(--gold);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:8px;">Karin Sandoval · AI CV Optimisation Specialist</p>
+      <p>I know exactly what it feels like to send applications into the void. I lived it. And when I discovered that the problem wasn't my experience but how I was presenting it, everything changed. Today I apply that same method — with artificial intelligence — to help professionals like you get the interviews they deserve.</p>
+      <blockquote>"Every CV I deliver, I work on as if it were for a friend — because I know there's a story, an urgency, and a genuine desire to move forward."</blockquote>
+      <div class="stats-row">
+        <div><div class="stat-num">+1,000</div><div class="stat-label">Clients</div></div>
+        <div><div class="stat-num">5</div><div class="stat-label">Business days</div></div>
+        <div><div class="stat-num">100%</div><div class="stat-label">ATS friendly</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0;">
+  <p class="section-label">Real results</p>
+  <h2 class="section-title">What people who <em>trusted the process</em> say</h2>
+  <div class="testimonios-grid">
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"I made the changes and two days later a company called me. With my old CV, I went a year and a half without a single call."</blockquote><cite><strong>Robert Fuentes</strong>Diagnosis + Rewrite</cite></div>
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"After sending the updated CV, my husband entered 4 selection processes and finally landed a job — and the best one in his field."</blockquote><cite><strong>Noemí Rojas</strong>Full optimisation</cite></div>
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"With this improvement I was able to apply and land a job. My CV let me move through the stages more easily and show the employer exactly who I am professionally."</blockquote><cite><strong>Jose Tomás</strong>CV Optimisation</cite></div>
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"I was selected for the role I was looking for, with a great salary and benefits, starting that very Monday."</blockquote><cite><strong>Andrés Barckhahn</strong>Full optimisation</cite></div>
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"After optimising my CV I finally started getting calls. I've had two interviews, and through LinkedIn two internal recruiters contacted me directly."</blockquote><cite><strong>Javi</strong>CV + LinkedIn</cite></div>
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"The change is very noticeable — the level of detail and care in every section. I found a job without any delay."</blockquote><cite><strong>Héctor Patricio Godoy</strong>CV Optimisation</cite></div>
+  </div>
+</div>
+
+<div style="max-width:1160px;margin:0 auto;padding:0 60px 80px;">
+  <div class="cta-final">
+    <h2>Your next interview starts with a <em>CV that works.</em></h2>
+    <p>Stop applying into the void. Your experience deserves to be communicated properly.</p>
+    <a href="https://www.paypal.com/ncp/payment/EAJR2Y6UVHC5U" class="btn-primary" target="_blank">Get CV + LinkedIn — $299</a>
+    <p style="margin-top:14px;font-size:0.78rem;color:var(--muted);">Delivery in 5 business days · Revision included · 2-month guarantee</p>
+    <p style="margin-top:8px;font-size:0.78rem;color:var(--muted);">Payment via PayPal · Secure checkout · <a href="mailto:optimizatucv.ia@gmail.com" style="color:var(--gold)">optimizatucv.ia@gmail.com</a></p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">OptimizaTuCV.IA</div>
+  <div class="footer-copy">© 2025 OptimizaTuCV.IA · Karin Sandoval</div>
+  <a href="mailto:optimizatucv.ia@gmail.com" class="footer-email">optimizatucv.ia@gmail.com</a>
+</footer>
+</body>
+</html>

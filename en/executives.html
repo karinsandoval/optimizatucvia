@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive CV Optimisation – OptimizaTuCV.IA</title>
+<meta name="description" content="For directors and executives: a CV that reflects the true weight of your career. From €240.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--black:#0a0a0a;--deep:#111111;--card:#161616;--gold:#c9a84c;--gold-light:#e2c06e;--gold-border:rgba(201,168,76,0.28);--gold-dim:rgba(201,168,76,0.08);--white:#f5f0e8;--muted:rgba(245,240,232,0.52);}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden;line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 60px;background:rgba(10,10,10,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--gold-border);}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:var(--gold);letter-spacing:0.04em;}
+  .nav-email{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;}
+  .nav-email:hover{color:var(--gold);}
+  .hero-band{min-height:70vh;display:flex;flex-direction:column;justify-content:center;background:var(--deep);border-bottom:1px solid var(--gold-border);padding:130px 60px 70px;position:relative;overflow:hidden;}
+  .hero-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 50% 50%,rgba(201,168,76,0.05) 0%,transparent 65%);pointer-events:none;}
+  .hero-inner{max-width:1160px;margin:0 auto;width:100%;text-align:center;}
+  .hero-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;opacity:0;animation:fadeUp 0.7s 0.1s forwards;}
+  .hero-band h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;line-height:1.06;max-width:780px;margin:0 auto;opacity:0;animation:fadeUp 0.7s 0.25s forwards;}
+  .hero-band h1 em{font-style:italic;color:var(--gold);}
+  .hero-sub{margin-top:22px;font-size:1rem;color:var(--muted);max-width:600px;line-height:1.8;opacity:0;animation:fadeUp 0.7s 0.4s forwards;margin-left:auto;margin-right:auto;}
+  .quote-band{border-top:1px solid var(--gold-border);border-bottom:1px solid var(--gold-border);padding:44px 60px;text-align:center;}
+  .quote-band blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:300;font-style:italic;max-width:680px;margin:0 auto;line-height:1.5;}
+  .quote-band blockquote strong{font-style:normal;font-weight:500;color:var(--gold);}
+  .section{max-width:1160px;margin:0 auto;padding:80px 60px;}
+  .section-label{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;margin-bottom:48px;}
+  .section-title em{font-style:italic;color:var(--gold);}
+  .planes-intro{font-size:0.95rem;color:var(--muted);line-height:1.7;margin-bottom:36px;font-style:italic;border-left:2px solid var(--gold);padding-left:16px;}
+  .planes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .plan-card{background:var(--card);border:1px solid var(--gold-border);padding:36px 28px;position:relative;transition:border-color 0.3s,transform 0.3s;display:flex;flex-direction:column;}
+  .plan-card:hover{border-color:var(--gold);transform:translateY(-3px);}
+  .plan-card.featured{border-color:var(--gold);}
+  .plan-card.featured::before{content:'⭐ Most recommended';position:absolute;top:-13px;left:24px;font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:var(--black);padding:4px 14px;font-weight:600;}
+  .plan-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .plan-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;margin-bottom:6px;}
+  .plan-price{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:600;color:var(--gold);line-height:1;margin-bottom:4px;}
+  .plan-price span{font-size:0.85rem;font-weight:400;color:var(--muted);}
+  .plan-tachado{font-size:0.82rem;color:var(--muted);margin-bottom:18px;}
+  .plan-tachado s{color:rgba(245,240,232,0.35);}
+  .plan-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin:16px 0 28px;flex:1;}
+  .plan-features li{display:flex;gap:10px;align-items:flex-start;font-size:0.86rem;color:var(--muted);line-height:1.5;}
+  .plan-features li::before{content:'✦';color:var(--gold);font-size:0.55rem;flex-shrink:0;margin-top:4px;}
+  .plan-cta{display:block;text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;padding:14px 20px;transition:all 0.2s;margin-top:auto;}
+  .plan-cta.gold{background:var(--gold);color:var(--black);}
+  .plan-cta.gold:hover{background:var(--gold-light);}
+  .plan-cta.outline{border:1px solid var(--gold-border);color:var(--gold);}
+  .plan-cta.outline:hover{border-color:var(--gold);}
+  .plan-why{font-size:0.8rem;color:var(--muted);font-style:italic;text-align:center;margin-top:16px;line-height:1.5;}
+  .linkedin-block{background:var(--deep);border:1px solid var(--gold-border);padding:50px;position:relative;overflow:hidden;}
+  .linkedin-block::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 70%);pointer-events:none;}
+  .linkedin-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .linkedin-block h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:14px;line-height:1.25;}
+  .linkedin-block h3 em{font-style:italic;color:var(--gold);}
+  .linkedin-block p{font-size:0.92rem;color:var(--muted);line-height:1.75;max-width:640px;margin-bottom:12px;}
+  .linkedin-features{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+  .lf-chip{font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--gold-border);color:var(--gold);padding:6px 14px;}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--gold-border);border:1px solid var(--gold-border);}
+  .step{background:var(--deep);padding:32px 24px;transition:background 0.3s;}
+  .step:hover{background:var(--card);}
+  .step-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--gold-border);line-height:1;margin-bottom:14px;}
+  .step h3{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:500;margin-bottom:8px;}
+  .step p{font-size:0.84rem;color:var(--muted);line-height:1.65;}
+  .para-ti{display:flex;flex-direction:column;gap:12px;}
+  .para-ti-item{display:flex;gap:14px;align-items:flex-start;}
+  .para-ti-item::before{content:'—';color:var(--gold);flex-shrink:0;margin-top:2px;}
+  .para-ti-item p{font-size:0.92rem;color:var(--muted);line-height:1.65;}
+  .sectores{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;}
+  .sector-chip{font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--gold-border);color:var(--gold);padding:7px 16px;}
+  .garantia{background:var(--card);border:1px solid var(--gold-border);padding:36px;margin-top:24px;}
+  .garantia-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+  .garantia h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;margin-bottom:10px;}
+  .garantia p{font-size:0.87rem;color:var(--muted);line-height:1.7;}
+  .bio-box{display:flex;gap:36px;align-items:flex-start;}
+  .bio-avatar{width:60px;height:60px;border-radius:50%;background:var(--card);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .bio-avatar span{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--gold);font-weight:300;}
+  .bio-content p{font-size:0.9rem;color:var(--muted);line-height:1.75;margin-bottom:12px;}
+  .bio-content blockquote{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--white);line-height:1.6;border-left:2px solid var(--gold);padding-left:16px;margin-top:16px;}
+  .stats-row{display:flex;gap:36px;flex-wrap:wrap;margin-top:28px;}
+  .stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--gold);line-height:1;}
+  .stat-label{font-size:0.75rem;color:var(--muted);margin-top:2px;}
+  .testimonios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .testimonio{background:var(--card);border:1px solid var(--gold-border);padding:26px 22px;}
+  .stars{color:var(--gold);font-size:0.78rem;margin-bottom:12px;}
+  .testimonio blockquote{font-size:0.87rem;color:var(--muted);line-height:1.7;font-style:italic;margin-bottom:14px;}
+  .testimonio cite{font-size:0.75rem;color:var(--muted);font-style:normal;display:block;}
+  .testimonio cite strong{color:var(--white);font-weight:400;display:block;margin-bottom:2px;}
+  .cta-final{background:var(--deep);border:1px solid var(--gold-border);padding:60px;text-align:center;}
+  .cta-final h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;margin-bottom:14px;}
+  .cta-final h2 em{font-style:italic;color:var(--gold);}
+  .cta-final p{color:var(--muted);max-width:480px;margin:0 auto 32px;line-height:1.75;font-size:0.95rem;}
+  .btn-primary{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:16px 38px;display:inline-block;transition:background 0.2s,transform 0.2s;}
+  .btn-primary:hover{background:var(--gold-light);transform:translateY(-1px);}
+  footer{border-top:1px solid var(--gold-border);padding:36px 60px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold);font-weight:500;}
+  .footer-copy{font-size:0.78rem;color:var(--muted);}
+  .footer-email{font-size:0.78rem;color:var(--gold);}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  @media(max-width:900px){nav{padding:16px 24px;}.hero-band{padding:110px 24px 50px;}.quote-band{padding:32px 24px;}.section{padding:60px 24px;}.planes-grid{grid-template-columns:1fr;}.steps{grid-template-columns:1fr 1fr;}.testimonios-grid{grid-template-columns:1fr;}.cta-final{padding:44px 24px;}footer{padding:28px 24px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">OptimizaTuCV<span style="color:var(--muted)">.IA</span></a>
+  <a href="mailto:optimizatucv.ia@gmail.com" class="nav-email">Any questions? Write to me</a>
+</nav>
+
+<div class="hero-band">
+  <div class="hero-inner">
+    <p class="hero-tag">Executive Level · Directors & Senior Leaders</p>
+    <h1>Your career deserves a CV<br><em>that matches it.</em></h1>
+    <p class="hero-sub">For directors, managers and senior professionals who know their experience is worth far more than their CV currently communicates.</p>
+  </div>
+</div>
+
+<div class="quote-band">
+  <blockquote>"It's not about what you did. It's about <strong>how you communicate it to the world.</strong>"</blockquote>
+</div>
+
+<div class="section">
+  <p class="section-label">Choose your plan</p>
+  <h2 class="section-title">The plan <em>you need</em></h2>
+  <p class="planes-intro">For executive profiles, I always recommend having 2 versions — one for your current sector and one for new markets or industries. And at this level, LinkedIn is no longer optional: headhunters look there first.</p>
+  <div class="planes-grid">
+    <div class="plan-card">
+      <p class="plan-tag">Basic</p>
+      <p class="plan-name">CV Executive</p>
+      <p class="plan-price">$269 <span>USD · one-time</span></p>
+      <ul class="plan-features">
+        <li>1 strategic CV with executive focus and C-Level language</li>
+        <li>1 high-impact cover letter</li>
+        <li>Quantifiable achievements and leadership at the centre</li>
+        <li>Keywords for management, director and headhunter searches</li>
+        <li>100% ATS-friendly format</li>
+        <li>1 free revision round included</li>
+        <li>Delivery within 5 business days</li>
+      </ul>
+      <a href="https://www.paypal.com/ncp/payment/XQGNFEEDMVJQY" class="plan-cta outline" target="_blank">Get CV Executive</a>
+    </div>
+    <div class="plan-card">
+      <p class="plan-tag">Advanced</p>
+      <p class="plan-name">CV Executive Premium</p>
+      <p class="plan-price">$369 <span>USD · one-time</span></p>
+      <ul class="plan-features">
+        <li>2 executive CVs adapted to different roles or industries</li>
+        <li>2 high-impact cover letters for different strategic focuses</li>
+        <li>Deep analysis with differentiated executive narrative for each document</li>
+        <li>Results with KPIs, cross-functional leadership, strategic vision</li>
+        <li>Adaptation to different environments — current sector, new markets or countries</li>
+        <li>Sophisticated 100% ATS-friendly format</li>
+        <li>1 free revision round included · 5 business days</li>
+      </ul>
+      <a href="https://www.paypal.com/ncp/payment/9B46MJWEDG54N" class="plan-cta outline" target="_blank">Get CV Executive Premium</a>
+    </div>
+    <div class="plan-card featured">
+      <p class="plan-tag">Premium</p>
+      <p class="plan-name">CV + LinkedIn Executive</p>
+      <p class="plan-price">$499 <span>USD · one-time</span></p>
+      <p class="plan-tachado">If purchased separately: <s>$619</s></p>
+      <ul class="plan-features">
+        <li>2 executive CVs adapted to different roles or industries</li>
+        <li>2 high-impact cover letters for different focuses</li>
+        <li>Full LinkedIn optimisation with executive positioning</li>
+        <li>Full profile audit + headhunter visibility diagnosis</li>
+        <li>12 strategic publications programmed for your LinkedIn</li>
+        <li>Target segment and service positioning identification</li>
+        <li>Reach and professional positioning strategy</li>
+        <li>1 free revision round included · 5 business days</li>
+      </ul>
+      <a href="https://www.paypal.com/ncp/payment/MXHLGSS2BSGJ6" class="plan-cta gold" target="_blank">Get Complete Executive Pack</a>
+    </div>
+  </div>
+  <p class="plan-why">Why 2 versions? Different roles require different approaches. Don't improvise — arrive prepared for every process.</p>
+</div>
+
+<div class="section" style="padding-top:0;">
+  <div class="linkedin-block">
+    <p class="linkedin-tag">LinkedIn · Where headhunters search first</p>
+    <h3>At executive level, your LinkedIn is your<br><em>first impression with those who decide.</em></h3>
+    <p>Headhunters and senior hiring managers don't wait for you to apply — they search. And the first filter is your LinkedIn profile. If it doesn't communicate authority, scale of trajectory and strategic vision within seconds, you simply become invisible compared to peers with equal or lesser experience but better positioning.</p>
+    <p>An optimised executive profile goes far beyond the CV: it projects leadership, builds authority in your sector, and positions your name as a reference — translating into opportunities that arrive without you having to seek them.</p>
+    <div class="linkedin-features">
+      <div class="lf-chip">C-Level positioning</div>
+      <div class="lf-chip">Visibility to headhunters</div>
+      <div class="lf-chip">Profile audit</div>
+      <div class="lf-chip">Leadership narrative</div>
+      <div class="lf-chip">12 strategic publications</div>
+      <div class="lf-chip">Sector authority</div>
+      <div class="lf-chip">National & international reach</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0;">
+  <p class="section-label">Is it for you?</p>
+  <h2 class="section-title">This service is <em>for you</em></h2>
+  <div class="para-ti">
+    <div class="para-ti-item"><p>You've held high-responsibility positions, but your CV doesn't clearly reflect the magnitude of your trajectory or the impact of your decisions.</p></div>
+    <div class="para-ti-item"><p>You're applying for management, director or C-Level positions and need to project authority, strategic vision and broad management capability.</p></div>
+    <div class="para-ti-item"><p>You feel recruiters or headhunters don't value your profile because your CV doesn't convey the real weight of your executive experience.</p></div>
+    <div class="para-ti-item"><p>You want to move to another country, apply to a larger company, or change industry without losing the executive weight of your profile.</p></div>
+    <div class="para-ti-item"><p>Your experience is extensive, but you struggle to decide what to show and how to adapt it for each type of opportunity.</p></div>
+  </div>
+  <div style="margin-top:36px;">
+    <p class="section-label">Sectors of greatest impact</p>
+    <div class="sectores">
+      <div class="sector-chip">Mining</div>
+      <div class="sector-chip">Banking & Finance</div>
+      <div class="sector-chip">Healthcare</div>
+      <div class="sector-chip">Technology</div>
+      <div class="sector-chip">Retail</div>
+      <div class="sector-chip">Industry</div>
+      <div class="sector-chip">Corporate Services</div>
+      <div class="sector-chip">Executive Consulting</div>
+      <div class="sector-chip">Multinationals</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0;">
+  <p class="section-label">The process</p>
+  <h2 class="section-title">How it <em>works</em></h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><h3>Choose your plan</h3><p>Select the service and complete the payment to begin.</p></div>
+    <div class="step"><div class="step-num">02</div><h3>Questionnaire</h3><p>Fill in a detailed form with achievements, impact indicators and objectives.</p></div>
+    <div class="step"><div class="step-num">03</div><h3>Optimisation</h3><p>I work on your CV for 5 business days with executive strategic review.</p></div>
+    <div class="step"><div class="step-num">04</div><h3>Delivery & adjustments</h3><p>You receive your CV with one free revision round included.</p></div>
+  </div>
+  <div class="garantia">
+    <p class="garantia-tag">Results guarantee</p>
+    <h3>2-month guarantee</h3>
+    <p>If after two months of receiving your optimised CV you haven't been called for interviews, you can request a free revision at no additional cost.</p>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0;">
+  <div class="bio-box">
+    <div class="bio-avatar"><span>K</span></div>
+    <div class="bio-content">
+      <p style="font-size:0.8rem;color:var(--gold);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:8px;">Karin Sandoval · AI CV Optimisation Specialist</p>
+      <p>I work on every CV as if it were my own. Because I know what it means to miss an opportunity because of a document that doesn't represent you. With over 1,000 clients helped and proven results, I understand exactly what headhunters look for and how to position your profile to get you where you deserve.</p>
+      <blockquote>"Every CV I deliver, I work on as if it were for a friend — because I know there's a story, an urgency, and a genuine desire to move forward."</blockquote>
+      <div class="stats-row">
+        <div><div class="stat-num">+1,000</div><div class="stat-label">Clients</div></div>
+        <div><div class="stat-num">5</div><div class="stat-label">Business days</div></div>
+        <div><div class="stat-num">100%</div><div class="stat-label">ATS friendly</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0;">
+  <p class="section-label">Real results</p>
+  <h2 class="section-title">Real <em>results</em></h2>
+  <div class="testimonios-grid">
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"18 years at Sodimac up to Manager level. I had a terrible 4-page CV. After optimisation, 3 companies contacted me and I was hired as Branch Manager at Multicentro."</blockquote><cite><strong>Guido Ilich Méndez</strong>Executive optimisation</cite></div>
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"I had been without a single interview for 7 months. Today I have several and already have 2 job offers with formal offer letters."</blockquote><cite><strong>Gonzalo Flores</strong>Full optimisation</cite></div>
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"Within 1 week two companies in the Forestry sector contacted me — I was offered both and had to choose the best proposal. I had spent 3 months with my own CV without a single call."</blockquote><cite><strong>Felipe</strong>Forestry Engineer</cite></div>
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"I'm more than grateful and extremely pleased with both the CV and cover letter. You can feel the love, dedication and effort you put into every piece of work."</blockquote><cite><strong>Moira Pavez</strong>Full optimisation</cite></div>
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"This week I'm closing a new professional challenge in the mining sector. 100% recommend."</blockquote><cite><strong>Cris</strong>Occupational Psychologist · Mining</cite></div>
+    <div class="testimonio"><div class="stars">★ ★ ★ ★ ★</div><blockquote>"Very satisfied with both types of CV and cover letters. You highlighted what I was unable to express in my CV myself."</blockquote><cite><strong>Nazareth Vidal</strong>Executive optimisation</cite></div>
+  </div>
+</div>
+
+<div style="max-width:1160px;margin:0 auto;padding:0 60px 80px;">
+  <div class="cta-final">
+    <h2>Ready to access the best <em>executive opportunities?</em></h2>
+    <p>Your executive career deserves a CV and LinkedIn profile that represent you at the level you've earned.</p>
+    <a href="https://www.paypal.com/ncp/payment/MXHLGSS2BSGJ6" class="btn-primary" target="_blank">Get Complete Executive Pack — $499</a>
+    <p style="margin-top:14px;font-size:0.78rem;color:var(--muted);">Delivery in 5 business days · Revision included · 2-month guarantee</p>
+    <p style="margin-top:8px;font-size:0.78rem;color:var(--muted);">Payment via PayPal · Secure checkout · <a href="mailto:optimizatucv.ia@gmail.com" style="color:var(--gold)">optimizatucv.ia@gmail.com</a></p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">OptimizaTuCV.IA</div>
+  <div class="footer-copy">© 2025 OptimizaTuCV.IA · Karin Sandoval</div>
+  <a href="mailto:optimizatucv.ia@gmail.com" class="footer-email">optimizatucv.ia@gmail.com</a>
+</footer>
+</body>
+</html>
