@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Pago exitoso! — CV Express IA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --nav:  #060E1C;
+      --mid:  #0B1C32;
+      --card: #0F2440;
+      --teal: #00DEB8;
+      --gold: #FFD166;
+      --white:#FFFFFF;
+      --gray: #7A90A8;
+      --lgray:#A8BFD4;
+    }
+
+    html, body {
+      min-height: 100vh;
+      background: var(--nav);
+      font-family: 'Inter', sans-serif;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+    }
+
+    /* top teal line */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--teal);
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 520px;
+      text-align: center;
+    }
+
+    /* brand */
+    .brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    /* check animation */
+    .check-wrap {
+      position: relative;
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 32px;
+    }
+
+    .check-circle {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
+
+    @keyframes pop {
+      0%   { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .check-circle svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--nav);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      animation: draw 0.4s 0.4s ease both;
+      stroke-dasharray: 60;
+      stroke-dashoffset: 60;
+    }
+
+    @keyframes draw {
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* headline */
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(26px, 5vw, 34px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .sub {
+      font-size: 16px;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 36px;
+      line-height: 1.5;
+    }
+
+    /* info card */
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(0, 222, 184, 0.15);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 18px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: var(--nav);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .step-text {
+      font-size: 14px;
+      color: var(--lgray);
+      line-height: 1.55;
+    }
+
+    .step-text strong {
+      color: var(--white);
+      display: block;
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+
+    /* spam notice */
+    .notice {
+      background: rgba(255, 209, 102, 0.08);
+      border: 1px solid rgba(255, 209, 102, 0.25);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 13px;
+      color: var(--gold);
+      margin-bottom: 32px;
+      line-height: 1.55;
+      text-align: left;
+    }
+
+    .notice span {
+      font-weight: 600;
+    }
+
+    /* timer */
+    .timer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .timer-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .timer-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    .timer-text strong {
+      color: var(--teal);
+    }
+
+    /* back link */
+    .back {
+      font-size: 13px;
+      color: var(--gray);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .back:hover {
+      color: var(--lgray);
+      border-color: var(--lgray);
+    }
+
+    /* footer */
+    footer {
+      margin-top: 48px;
+      font-size: 12px;
+      color: var(--gray);
+    }
+    footer a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    /* bottom teal line */
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--teal);
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 22px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <p class="brand">OptimizaTuCV.IA</p>
+
+  <div class="check-wrap">
+    <div class="check-circle">
+      <svg viewBox="0 0 52 52">
+        <polyline points="14,26 22,34 38,18"/>
+      </svg>
+    </div>
+  </div>
+
+  <h1>¡Tu pago fue exitoso!</h1>
+  <p class="sub">Tu CV está siendo generado en este momento.<br>Lo recibirás directamente en tu correo.</p>
+
+  <div class="card">
+    <p class="card-title">¿Qué pasa ahora?</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Revisa tu correo</strong>
+          En menos de 60 minutos recibirás 3 archivos: CV ATS-optimizado, carta de presentación y reporte de keywords.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Verifica tus datos</strong>
+          Abre los documentos y confirma que toda tu información esté correcta.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Personaliza la carta</strong>
+          Reemplaza <code style="color:var(--teal); font-size:12px;">[CARGO]</code> y <code style="color:var(--teal); font-size:12px;">[EMPRESA]</code> en la carta antes de enviarla.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>¡Postula!</strong>
+          Usa las keywords del reporte para optimizar también tu perfil de LinkedIn.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice">
+    <span>⚠ ¿No ves el correo?</span> Revisa tu carpeta de <strong>spam o correo no deseado</strong>. Si después de 60 minutos no llega, escríbenos a <strong>optimizatucv.ia@gmail.com</strong>
+  </div>
+
+  <div class="timer">
+    <div class="timer-dot"></div>
+    <p class="timer-text">Generando tus documentos · Tiempo estimado: <strong>menos de 60 min</strong></p>
+  </div>
+
+  <a href="https://optimizatucvia.com" class="back">← Volver a OptimizaTuCV.IA</a>
+
+  <footer>
+    <p>© 2026 OptimizaTuCV.IA · <a href="https://optimizatucvia.com">optimizatucvia.com</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>
