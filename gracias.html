@@ -1,334 +1,208 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>¡Pago exitoso! — CV Express IA</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --nav:  #060E1C;
-      --mid:  #0B1C32;
-      --card: #0F2440;
-      --teal: #00DEB8;
-      --gold: #FFD166;
-      --white:#FFFFFF;
-      --gray: #7A90A8;
-      --lgray:#A8BFD4;
-    }
-
-    html, body {
-      min-height: 100vh;
-      background: var(--nav);
-      font-family: 'Inter', sans-serif;
-      color: var(--white);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 32px 20px;
-    }
-
-    /* top teal line */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: var(--teal);
-    }
-
-    .wrap {
-      width: 100%;
-      max-width: 520px;
-      text-align: center;
-    }
-
-    /* brand */
-    .brand {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      color: var(--teal);
-      text-transform: uppercase;
-      margin-bottom: 40px;
-    }
-
-    /* check animation */
-    .check-wrap {
-      position: relative;
-      width: 96px;
-      height: 96px;
-      margin: 0 auto 32px;
-    }
-
-    .check-circle {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      background: var(--teal);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
-    }
-
-    @keyframes pop {
-      0%   { transform: scale(0); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    .check-circle svg {
-      width: 48px;
-      height: 48px;
-      stroke: var(--nav);
-      stroke-width: 3;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      fill: none;
-      animation: draw 0.4s 0.4s ease both;
-      stroke-dasharray: 60;
-      stroke-dashoffset: 60;
-    }
-
-    @keyframes draw {
-      to { stroke-dashoffset: 0; }
-    }
-
-    /* headline */
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(26px, 5vw, 34px);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 12px;
-    }
-
-    .sub {
-      font-size: 16px;
-      color: var(--gold);
-      font-weight: 500;
-      margin-bottom: 36px;
-      line-height: 1.5;
-    }
-
-    /* info card */
-    .card {
-      background: var(--card);
-      border: 1px solid rgba(0, 222, 184, 0.15);
-      border-radius: 16px;
-      padding: 28px 32px;
-      margin-bottom: 20px;
-      text-align: left;
-    }
-
-    .card-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 18px;
-    }
-
-    .steps {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .step {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-
-    .step-num {
-      flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--teal);
-      color: var(--nav);
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1px;
-    }
-
-    .step-text {
-      font-size: 14px;
-      color: var(--lgray);
-      line-height: 1.55;
-    }
-
-    .step-text strong {
-      color: var(--white);
-      display: block;
-      font-size: 15px;
-      margin-bottom: 2px;
-    }
-
-    /* spam notice */
-    .notice {
-      background: rgba(255, 209, 102, 0.08);
-      border: 1px solid rgba(255, 209, 102, 0.25);
-      border-radius: 10px;
-      padding: 14px 18px;
-      font-size: 13px;
-      color: var(--gold);
-      margin-bottom: 32px;
-      line-height: 1.55;
-      text-align: left;
-    }
-
-    .notice span {
-      font-weight: 600;
-    }
-
-    /* timer */
-    .timer {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 36px;
-    }
-
-    .timer-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--teal);
-      animation: pulse 1.5s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.4; transform: scale(0.7); }
-    }
-
-    .timer-text {
-      font-size: 13px;
-      color: var(--gray);
-    }
-
-    .timer-text strong {
-      color: var(--teal);
-    }
-
-    /* back link */
-    .back {
-      font-size: 13px;
-      color: var(--gray);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .back:hover {
-      color: var(--lgray);
-      border-color: var(--lgray);
-    }
-
-    /* footer */
-    footer {
-      margin-top: 48px;
-      font-size: 12px;
-      color: var(--gray);
-    }
-    footer a {
-      color: var(--teal);
-      text-decoration: none;
-    }
-
-    /* bottom teal line */
-    body::after {
-      content: '';
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--teal);
-    }
-
-    @media (max-width: 480px) {
-      .card { padding: 22px 20px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Gracias! Tu CV viene en camino — OptimizaTuCV.IA</title>
+<meta name="description" content="Tu pago fue procesado y tu CV, carta de presentación y reporte de keywords llegarán a tu correo en pocos minutos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-900:#060e1c;
+    --navy-700:#0d1b32;
+    --navy-600:#132640;
+    --navy-500:#1f3864;
+    --teal:#00deb8;
+    --gold:#ffd166;
+    --ink-soft:#6b90b8;
+    --paper:#eef4ff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:radial-gradient(1200px 600px at 50% -10%, var(--navy-500) 0%, var(--navy-700) 45%, var(--navy-900) 100%);
+    color:var(--paper);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    overflow-x:hidden;
+  }
+  .card{
+    width:100%;
+    max-width:560px;
+    background:linear-gradient(180deg, rgba(19,38,64,.85), rgba(13,27,50,.92));
+    border:1px solid rgba(0,222,184,.18);
+    border-radius:22px;
+    padding:44px 38px 38px;
+    box-shadow:0 30px 80px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";
+    position:absolute;inset:0;
+    background:radial-gradient(400px 200px at 50% 0%, rgba(0,222,184,.10), transparent 70%);
+    pointer-events:none;
+  }
+  .check{
+    width:76px;height:76px;
+    margin:0 auto 22px;
+    border-radius:50%;
+    background:radial-gradient(circle at 50% 40%, rgba(0,222,184,.25), rgba(0,222,184,.05));
+    border:2px solid var(--teal);
+    display:flex;align-items:center;justify-content:center;
+    animation:pop .6s cubic-bezier(.2,.8,.2,1.2) both;
+  }
+  .check svg{width:38px;height:38px;}
+  .check svg path{
+    stroke:var(--teal);stroke-width:3.5;fill:none;
+    stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:40;stroke-dashoffset:40;
+    animation:draw .5s .35s ease forwards;
+  }
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:1.9rem;
+    line-height:1.2;
+    letter-spacing:-.01em;
+    margin-bottom:12px;
+  }
+  h1 .accent{color:var(--teal);}
+  .lead{
+    font-size:1.02rem;
+    color:#cdd9ec;
+    line-height:1.6;
+    margin-bottom:8px;
+  }
+  .lead strong{color:var(--paper);font-weight:600;}
+  .minutes{
+    display:inline-block;
+    margin:18px 0 6px;
+    padding:6px 16px;
+    background:rgba(255,209,102,.12);
+    border:1px solid rgba(255,209,102,.35);
+    color:var(--gold);
+    border-radius:999px;
+    font-weight:600;
+    font-size:.92rem;
+    letter-spacing:.01em;
+  }
+  .divider{
+    height:1px;
+    background:linear-gradient(90deg,transparent,rgba(107,144,184,.35),transparent);
+    margin:26px 0;
+  }
+  .funfact{
+    background:rgba(6,14,28,.5);
+    border:1px solid rgba(107,144,184,.22);
+    border-radius:16px;
+    padding:20px 20px 18px;
+    text-align:left;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+  }
+  .funfact .icon{
+    font-size:1.6rem;
+    line-height:1;
+    flex-shrink:0;
+    margin-top:2px;
+  }
+  .funfact .label{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:500;
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    color:var(--teal);
+    margin-bottom:6px;
+  }
+  .funfact p{
+    font-size:.94rem;
+    color:#c3d1e6;
+    line-height:1.55;
+  }
+  .spam-note{
+    margin-top:22px;
+    font-size:.86rem;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
+  .spam-note strong{color:#a9c0dd;}
+  .footer{
+    margin-top:28px;
+    font-size:.82rem;
+    color:var(--ink-soft);
+  }
+  .footer a{
+    color:var(--teal);
+    text-decoration:none;
+    border-bottom:1px solid rgba(0,222,184,.3);
+    padding-bottom:1px;
+  }
+  .footer a:hover{opacity:.85;}
+  .brand{
+    margin-top:6px;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:500;
+    font-size:.8rem;
+    color:#7d97b8;
+    letter-spacing:.02em;
+  }
+  @keyframes pop{0%{transform:scale(.4);opacity:0;}100%{transform:scale(1);opacity:1;}}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  @media (max-width:520px){
+    .card{padding:36px 24px 30px;border-radius:18px;}
+    h1{font-size:1.6rem;}
+    .funfact{flex-direction:column;gap:8px;}
+  }
+</style>
 </head>
 <body>
-
-<div class="wrap">
-
-  <p class="brand">OptimizaTuCV.IA</p>
-
-  <div class="check-wrap">
-    <div class="check-circle">
-      <svg viewBox="0 0 52 52">
-        <polyline points="14,26 22,34 38,18"/>
-      </svg>
+  <main class="card" role="main">
+    <div class="check" aria-hidden="true">
+      <svg viewBox="0 0 40 40"><path d="M9 21 L17 29 L32 12"/></svg>
     </div>
-  </div>
 
-  <h1>¡Tu pago fue exitoso!</h1>
-  <p class="sub">Tu CV está siendo generado en este momento.<br>Lo recibirás directamente en tu correo.</p>
+    <h1>¡Pago recibido! <br>Tu CV viene <span class="accent">en camino</span></h1>
 
-  <div class="card">
-    <p class="card-title">¿Qué pasa ahora?</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-text">
-          <strong>Revisa tu correo</strong>
-          En menos de 60 minutos recibirás 3 archivos: CV ATS-optimizado, carta de presentación y reporte de keywords.
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-text">
-          <strong>Verifica tus datos</strong>
-          Abre los documentos y confirma que toda tu información esté correcta.
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-text">
-          <strong>Personaliza la carta</strong>
-          Reemplaza <code style="color:var(--teal); font-size:12px;">[CARGO]</code> y <code style="color:var(--teal); font-size:12px;">[EMPRESA]</code> en la carta antes de enviarla.
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-text">
-          <strong>¡Postula!</strong>
-          Usa las keywords del reporte para optimizar también tu perfil de LinkedIn.
-        </div>
+    <p class="lead">
+      Gracias por confiar en OptimizaTuCV.IA. Ya estamos preparando tu
+      <strong>CV, carta de presentación y reporte de keywords</strong>.
+    </p>
+
+    <span class="minutes">⏱️ Llegan a tu correo en pocos minutos</span>
+
+    <div class="divider"></div>
+
+    <div class="funfact">
+      <div class="icon">🧠</div>
+      <div>
+        <div class="label">Dato inútil pero real</div>
+        <p>
+          El primer currículum de la historia lo escribió Leonardo da Vinci hace más de 500 años:
+          una carta a mano para pedir trabajo con el Duque de Milán. El tuyo llega en 5 minutos,
+          sin tinta y optimizado para robots que ni existían. Vamos progresando como especie. ✨
+        </p>
       </div>
     </div>
-  </div>
 
-  <div class="notice">
-    <span>⚠ ¿No ves el correo?</span> Revisa tu carpeta de <strong>spam o correo no deseado</strong>. Si después de 60 minutos no llega, escríbenos a <strong>optimizatucv.ia@gmail.com</strong>
-  </div>
+    <p class="spam-note">
+      Mientras esperas: échale un ojo a tu carpeta de <strong>spam o promociones</strong>.
+      A veces los correos buenos se esconden ahí como si les diera vergüenza.
+    </p>
 
-  <div class="timer">
-    <div class="timer-dot"></div>
-    <p class="timer-text">Generando tus documentos · Tiempo estimado: <strong>menos de 60 min</strong></p>
-  </div>
-
-  <a href="https://optimizatucvia.com" class="back">← Volver a OptimizaTuCV.IA</a>
-
-  <footer>
-    <p>© 2026 OptimizaTuCV.IA · <a href="https://optimizatucvia.com">optimizatucvia.com</a></p>
-  </footer>
-
-</div>
-
+    <div class="footer">
+      ¿Alguna duda? Escríbeme a <a href="mailto:optimizatucv.ia@gmail.com">optimizatucv.ia@gmail.com</a>
+      <div class="brand">OptimizaTuCV.IA · optimizatucvia.com</div>
+    </div>
+  </main>
 </body>
 </html>
