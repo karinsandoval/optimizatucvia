@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optimización Profesional — OptimizaTuCV.IA</title>
+<meta name="description" content="2 a 10 años de experiencia y tu CV no te representa. CV profesional optimizado con IA, versión avanzada y pack con LinkedIn. Desde $65.000 CLP.">
+<link rel="canonical" href="https://optimizatucvia.com/profesionales/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Optimización Profesional — OptimizaTuCV.IA">
+<meta property="og:description" content="Tu experiencia vale. Aprendamos a demostrarla. CV optimizado con IA desde $65.000.">
+<meta property="og:url" content="https://optimizatucvia.com/profesionales/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b1220; --bg-2:#0f1830; --panel:#141f38; --panel-2:#18274a; --line:rgba(90,140,220,.16);
+    --teal:#2dd4bf; --teal-bright:#5eead4; --blue:#3b82f6; --blue-bright:#60a5fa; --coral:#fb7185; --coral-bright:#fda4af;
+    --paper:#eaf1fb; --muted:#8ea3c4; --muted-2:#5f739a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--paper);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  h1,h2,h3,.display{font-family:'Sora',sans-serif;font-weight:700;letter-spacing:-.02em;}
+  em{font-style:normal;background:linear-gradient(120deg,var(--teal-bright),var(--blue-bright));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  a{color:inherit;text-decoration:none;}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:15px 24px;max-width:1080px;margin:0 auto;}
+  .logo{font-family:'Sora',sans-serif;font-size:1.1rem;font-weight:700;color:var(--paper);}
+  .logo b{color:var(--teal);}
+  .nav-cta{font-size:.82rem;color:var(--muted);border:1px solid var(--line);padding:8px 15px;border-radius:99px;transition:.25s;}
+  .nav-cta:hover{color:var(--teal-bright);border-color:var(--teal);}
+
+  .hero{position:relative;padding:104px 0 84px;overflow:hidden;}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;background:
+    radial-gradient(620px 400px at 80% 6%, rgba(45,212,191,.15), transparent 60%),
+    radial-gradient(560px 420px at 12% 88%, rgba(59,130,246,.13), transparent 60%),
+    radial-gradient(400px 300px at 55% 50%, rgba(251,113,133,.06), transparent 62%);
+    animation:heroGlow 11s ease-in-out infinite alternate;}
+  @keyframes heroGlow{from{opacity:.75;transform:translateY(-8px);}to{opacity:1;transform:translateY(8px);}}
+  .hero-in{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 24px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-bright);border:1px solid var(--line);padding:7px 15px;border-radius:99px;margin-bottom:26px;background:rgba(45,212,191,.05);}
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal);}
+  .hero h1{font-size:clamp(2.4rem,5.6vw,4rem);line-height:1.06;max-width:15ch;margin-bottom:24px;}
+  .hero p.lead{font-size:1.12rem;color:var(--muted);max-width:52ch;margin-bottom:14px;}
+  blockquote.hero-q{font-family:'Sora',sans-serif;font-size:1.15rem;font-weight:600;color:var(--paper);border-left:3px solid var(--teal);padding-left:18px;max-width:46ch;margin:30px 0 38px;line-height:1.4;}
+  blockquote.hero-q b{color:var(--teal-bright);}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:1rem;padding:16px 30px;border-radius:14px;transition:.28s cubic-bezier(.2,.7,.3,1);cursor:pointer;}
+  .btn-main{background:linear-gradient(120deg,var(--teal),var(--blue));color:#04121f;box-shadow:0 12px 34px rgba(45,212,191,.26);}
+  .btn-main:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(59,130,246,.4);}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1);}
+  .reveal.in{opacity:1;transform:none;}
+  .hero .eyebrow,.hero h1,.hero .lead,.hero-q,.hero .btn{opacity:0;transform:translateY(20px);animation:up .8s cubic-bezier(.2,.7,.3,1) forwards;}
+  .hero h1{animation-delay:.12s;}.hero .lead{animation-delay:.24s;}.hero-q{animation-delay:.36s;}.hero .btn{animation-delay:.46s;}
+  @keyframes up{to{opacity:1;transform:none;}}
+
+  section{padding:80px 0;position:relative;}
+  .s-eye{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-bright);margin-bottom:14px;}
+  .s-title{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.14;margin-bottom:16px;max-width:22ch;}
+  .s-sub{color:var(--muted);max-width:58ch;font-size:1.02rem;}
+
+  /* SITUACIONES */
+  .sit{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:44px;}
+  .sit-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;transition:.3s;position:relative;overflow:hidden;}
+  .sit-card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--teal),var(--blue));transform:scaleY(0);transform-origin:top;transition:transform .4s;}
+  .sit-card:hover{transform:translateY(-4px);border-color:rgba(45,212,191,.35);}
+  .sit-card:hover::after{transform:scaleY(1);}
+  .sit-card .st{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-bright);margin-bottom:10px;}
+  .sit-card h3{font-size:1.18rem;margin-bottom:8px;}
+  .sit-card p{font-size:.94rem;color:var(--muted);line-height:1.5;}
+
+  /* PRICING */
+  .pricing{background:linear-gradient(180deg,var(--bg),var(--bg-2));border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;}
+  .plan{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:30px 26px;display:flex;flex-direction:column;transition:.35s cubic-bezier(.2,.7,.3,1);}
+  .plan:hover{transform:translateY(-6px);border-color:rgba(45,212,191,.4);box-shadow:0 24px 60px rgba(0,0,0,.45);}
+  .plan.featured{border-color:var(--teal);background:linear-gradient(180deg,rgba(45,212,191,.08),var(--panel) 60%);}
+  .plan.featured::before{content:"Más elegido";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(120deg,var(--teal),var(--blue));color:#04121f;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:99px;white-space:nowrap;}
+  .plan .tier{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-bright);margin-bottom:8px;}
+  .plan .pname{font-family:'Sora',sans-serif;font-weight:600;font-size:1.35rem;margin-bottom:16px;line-height:1.15;}
+  .price-row{display:flex;align-items:baseline;gap:8px;}
+  .price{font-family:'Sora',sans-serif;font-weight:700;font-size:2.4rem;color:var(--paper);line-height:1;}
+  .price-cur{font-size:.9rem;color:var(--muted);}
+  .price-strike{font-size:.88rem;color:var(--muted-2);text-decoration:line-through;margin-left:6px;}
+  .price-note{font-size:.8rem;color:var(--muted);margin:4px 0;}
+  .cuotas{font-size:.78rem;color:var(--teal);margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--line);}
+  .feats{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:26px;flex:1;}
+  .feats li{position:relative;padding-left:26px;font-size:.9rem;color:#cdd8ec;line-height:1.45;}
+  .feats li::before{content:"✓";position:absolute;left:0;top:0;color:var(--teal);font-weight:700;}
+  .feats li b{color:var(--teal-bright);font-weight:600;}
+  .plan .btn{width:100%;justify-content:center;font-size:.94rem;padding:14px;}
+  .plan:not(.featured) .btn{background:transparent;border:1px solid var(--teal);color:var(--teal-bright);}
+  .plan:not(.featured) .btn:hover{background:rgba(45,212,191,.1);}
+  .cuotas-note{text-align:center;margin-top:26px;font-size:.88rem;color:var(--muted);}
+  .cuotas-note b{color:var(--teal-bright);}
+
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px 24px;transition:.3s;}
+  .card:hover{transform:translateY(-4px);border-color:rgba(59,130,246,.35);}
+  .card .num{font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;color:var(--blue-bright);margin-bottom:12px;}
+  .card h3{font-size:1.12rem;margin-bottom:9px;}
+  .card p{font-size:.92rem;color:var(--muted);line-height:1.5;}
+
+  .li-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;}
+  .li-tags span{font-size:.84rem;color:var(--teal-bright);border:1px solid var(--line);padding:8px 16px;border-radius:99px;background:rgba(45,212,191,.05);}
+
+  .fit{display:flex;flex-direction:column;gap:2px;margin-top:38px;}
+  .fit-item{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+  .fit-item .fdot{flex-shrink:0;width:32px;height:32px;border-radius:9px;border:1px solid var(--blue);display:flex;align-items:center;justify-content:center;color:var(--teal-bright);font-family:'Sora',sans-serif;font-weight:700;font-size:.9rem;margin-top:2px;}
+  .fit-item p{color:#cdd8ec;font-size:1rem;}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px;counter-reset:step;}
+  .step{position:relative;padding-top:20px;}
+  .step::before{counter-increment:step;content:"0" counter(step);font-family:'Sora',sans-serif;font-weight:700;font-size:2rem;background:linear-gradient(120deg,var(--teal),var(--blue));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:10px;}
+  .step h3{font-size:1.02rem;margin-bottom:7px;}
+  .step p{font-size:.88rem;color:var(--muted);}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px;}
+  .guarantee{background:linear-gradient(135deg,rgba(45,212,191,.1),var(--panel));border:1px solid var(--teal);border-radius:18px;padding:36px 32px;display:flex;flex-direction:column;justify-content:center;}
+  .guarantee .g-badge{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-bright);margin-bottom:12px;}
+  .guarantee h3{font-size:1.6rem;margin-bottom:12px;}
+  .guarantee p{color:var(--muted);font-size:.96rem;}
+  .author{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:36px 32px;}
+  .author-top{display:flex;align-items:center;gap:16px;margin-bottom:18px;}
+  .author-av{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--teal),var(--blue));display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:1.5rem;color:#04121f;}
+  .author-top .an{font-family:'Sora',sans-serif;font-weight:600;font-size:1.12rem;}
+  .author-top .ar{font-size:.82rem;color:var(--teal);}
+  .author p{color:var(--muted);font-size:.94rem;margin-bottom:16px;}
+  .author blockquote{font-family:'Sora',sans-serif;font-style:italic;color:#cdd8ec;font-size:1rem;border-left:3px solid var(--blue);padding-left:16px;}
+  .stats{display:flex;gap:36px;margin-top:30px;flex-wrap:wrap;}
+  .stat .sn{font-family:'Sora',sans-serif;font-weight:700;font-size:2.2rem;background:linear-gradient(120deg,var(--teal-bright),var(--blue-bright));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+  .stat .sl{font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:6px;}
+
+  .tst{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;}
+  .tcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px 24px;transition:.3s;}
+  .tcard:hover{transform:translateY(-4px);border-color:rgba(45,212,191,.3);}
+  .stars{color:var(--teal);font-size:.9rem;letter-spacing:2px;margin-bottom:14px;}
+  .tcard q{display:block;font-size:1rem;color:#dbe5f4;line-height:1.5;margin-bottom:16px;}
+  .tcard .who{font-weight:600;font-size:.92rem;}
+  .tcard .role{font-size:.82rem;color:var(--blue-bright);}
+
+  .final{text-align:center;background:linear-gradient(180deg,var(--bg-2),var(--bg));border-top:1px solid var(--line);}
+  .final h2{font-size:clamp(2rem,5vw,3rem);max-width:20ch;margin:0 auto 20px;}
+  .final p{color:var(--muted);max-width:46ch;margin:0 auto 34px;font-size:1.05rem;}
+  .final .fine{margin-top:20px;font-size:.84rem;color:var(--muted-2);}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;color:var(--muted-2);font-size:.85rem;}
+  footer .logo{font-size:1rem;margin-bottom:10px;display:inline-block;}
+  footer a{color:var(--teal);}
+
+  @media(max-width:860px){.sit,.plans,.grid3,.tst{grid-template-columns:1fr;}.steps{grid-template-columns:1fr 1fr;}.split{grid-template-columns:1fr;}.plan.featured{order:-1;}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}.reveal{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="https://optimizatucvia.com/inicio.html" class="logo">OptimizaTuCV<b>.IA</b></a>
+    <a href="#planes" class="nav-cta">Ver planes</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-in">
+    <span class="eyebrow">Profesionales en desarrollo</span>
+    <h1>Tu experiencia vale. Aprendamos a <em>demostrarla.</em></h1>
+    <p class="lead">Tienes entre 2 y 10 años de trayectoria y sientes que tu CV no refleja lo que realmente puedes aportar. Es hora de cambiar eso.</p>
+    <blockquote class="hero-q">"El problema no es tu experiencia. Es que tu CV no está <b>contándola como merece.</b>"</blockquote>
+    <a href="#planes" class="btn btn-main">Ver planes y precios →</a>
+  </div>
+</header>
+
+<!-- SITUACIONES -->
+<section>
+  <div class="wrap reveal">
+    <div class="s-eye">¿Te suena familiar?</div>
+    <h2 class="s-title">¿Te suena <em>familiar?</em></h2>
+  </div>
+  <div class="wrap">
+    <div class="sit">
+      <div class="sit-card reveal"><div class="st">Situación 01</div><h3>Postulas y no llaman</h3><p>Envías decenas de postulaciones y el silencio es la única respuesta. Tu CV no pasa los filtros automáticos ni capta la atención de los reclutadores.</p></div>
+      <div class="sit-card reveal"><div class="st">Situación 02</div><h3>Quieres cambiar de rubro</h3><p>Tu experiencia es valiosa pero en otro sector. No sabes cómo adaptar tu perfil para postular a algo distinto sin partir de cero.</p></div>
+      <div class="sit-card reveal"><div class="st">Situación 03</div><h3>Buscas ascender</h3><p>Quieres dar el salto a jefaturas o cargos de mayor responsabilidad, pero tu CV sigue hablando de ti como ejecutor, no como líder.</p></div>
+      <div class="sit-card reveal"><div class="st">Situación 04</div><h3>Tu CV está desactualizado</h3><p>Llevas años con el mismo documento y sabes que no refleja quién eres hoy. Los sistemas ATS ni siquiera lo leen bien.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="planes">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="s-eye">Elige tu plan</div>
+      <h2 class="s-title">El plan que <em>necesitas</em></h2>
+      <p class="s-sub">Recomiendo siempre dos versiones de tu CV — así postulas a distintos cargos o industrias sin improvisar ni partir de cero cada vez. Y si sumas LinkedIn, cierras el círculo completo.</p>
+    </div>
+    <div class="plans">
+      <div class="plan reveal">
+        <div class="tier">Básico</div>
+        <div class="pname">CV Profesional</div>
+        <div class="price-row"><span class="price">$65.000</span><span class="price-cur">CLP</span></div>
+        <div class="price-note">Pago único</div>
+        <div class="cuotas">Hasta 12 cuotas con Mercado Pago</div>
+        <ul class="feats">
+          <li>1 CV optimizado con IA, enfocado en tus logros reales</li>
+          <li>1 carta de presentación personalizada</li>
+          <li>Palabras clave ATS para tu industria específica</li>
+          <li>Logros con impacto medible y lenguaje profesional</li>
+          <li>Formato limpio, escaneable y 100% ATS-friendly</li>
+          <li>1 ronda de revisión gratuita · Entrega en 5 días hábiles</li>
+        </ul>
+        <a href="https://mpago.la/1NowG8c" class="btn">Contratar CV Profesional</a>
+      </div>
+      <div class="plan featured reveal">
+        <div class="tier">Avanzado</div>
+        <div class="pname">CV Profesional Avanzado</div>
+        <div class="price-row"><span class="price">$90.000</span><span class="price-cur">CLP</span></div>
+        <div class="price-note">Pago único</div>
+        <div class="cuotas">Hasta 12 cuotas con Mercado Pago</div>
+        <ul class="feats">
+          <li><b>2 CVs optimizados</b> adaptados a distintos cargos o rubros</li>
+          <li>2 cartas de presentación, una para cada enfoque</li>
+          <li>Análisis profundo de tu trayectoria para maximizar relevancia</li>
+          <li>Palabras clave específicas para cada industria o cargo</li>
+          <li>Cada versión comunica lo que ese reclutador busca</li>
+          <li>1 ronda de revisión gratuita · Entrega en 5 días hábiles</li>
+        </ul>
+        <a href="https://mpago.la/1ojZxLj" class="btn btn-main">Contratar Avanzado</a>
+      </div>
+      <div class="plan reveal">
+        <div class="tier">Premium</div>
+        <div class="pname">CV + LinkedIn</div>
+        <div class="price-row"><span class="price">$129.000</span><span class="price-cur">CLP</span><span class="price-strike">$155.000</span></div>
+        <div class="price-note">Pago único · ahorras $26.000</div>
+        <div class="cuotas">Hasta 12 cuotas con Mercado Pago</div>
+        <ul class="feats">
+          <li>2 CVs optimizados + 2 cartas personalizadas</li>
+          <li><b>Optimización completa de tu perfil LinkedIn</b></li>
+          <li>Headline y resumen profesional de alto impacto</li>
+          <li>Palabras clave para que los reclutadores te encuentren</li>
+          <li>Estrategia diferenciada para cada versión de CV</li>
+          <li>1 ronda de revisión gratuita · Entrega en 5 días hábiles</li>
+        </ul>
+        <a href="https://mpago.la/2b7Fvqg" class="btn">Contratar Pack Completo</a>
+      </div>
+    </div>
+    <p class="cuotas-note">💳 Todos los planes en hasta <b>12 cuotas</b> con Mercado Pago, pagando con tu tarjeta de crédito.</p>
+  </div>
+</section>
+
+<!-- LINKEDIN -->
+<section>
+  <div class="wrap reveal">
+    <div class="s-eye">LinkedIn · Tu perfil trabaja mientras tú no buscas</div>
+    <h2 class="s-title">Con experiencia, LinkedIn se convierte en tu <em>canal de oportunidades pasivo.</em></h2>
+    <p class="s-sub">A partir de los 2-3 años de trayectoria, los reclutadores empiezan a buscarte a ti — no al revés. Pero solo te encuentran si tu perfil está optimizado con las palabras clave correctas, un headline que comunica tu valor y una narrativa que complementa tu CV.</p>
+    <div class="li-tags">
+      <span>Visibilidad ante reclutadores</span><span>Headline de alto impacto</span><span>Palabras clave de tu sector</span><span>Narrativa que complementa tu CV</span><span>Perfil que atrae oportunidades</span>
+    </div>
+  </div>
+</section>
+
+<!-- LO QUE INCLUYE -->
+<section style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap reveal"><div class="s-eye">Lo que incluye</div><h2 class="s-title">Lo que hay detrás de <em>cada documento</em></h2></div>
+  <div class="wrap">
+    <div class="grid3">
+      <div class="card reveal"><div class="num">01</div><h3>Análisis de tu trayectoria</h3><p>Revisión completa de tu historial para identificar los logros, habilidades y resultados que realmente te diferencian.</p></div>
+      <div class="card reveal"><div class="num">02</div><h3>Logros con números</h3><p>Transformamos "responsable de X" en "lideré X logrando Y resultado". Los reclutadores contratan por resultados.</p></div>
+      <div class="card reveal"><div class="num">03</div><h3>Palabras clave ATS</h3><p>Integración estratégica de términos que los sistemas de selección buscan en tu sector específico.</p></div>
+      <div class="card reveal"><div class="num">04</div><h3>Resumen ejecutivo</h3><p>Un párrafo inicial poderoso que conecta tu experiencia directamente con lo que el reclutador busca.</p></div>
+      <div class="card reveal"><div class="num">05</div><h3>Carta de presentación</h3><p>Un documento que te presenta como persona, no solo como candidato. Fundamental para diferenciarte.</p></div>
+      <div class="card reveal"><div class="num">06</div><h3>Revisión incluida</h3><p>Una ronda completa de ajustes sin costo. El resultado tiene que representarte al 100%.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FIT -->
+<section>
+  <div class="wrap reveal">
+    <div class="s-eye">¿Es para ti?</div>
+    <h2 class="s-title">Este servicio es <em>para ti</em></h2>
+    <div class="fit">
+      <div class="fit-item"><span class="fdot">1</span><p>Tienes entre 2 y 10 años de experiencia y sientes que tus postulaciones no generan los resultados que deberían.</p></div>
+      <div class="fit-item"><span class="fdot">2</span><p>Has intentado mejorar tu CV varias veces sin lograr transmitir tu verdadero potencial ni tus logros reales.</p></div>
+      <div class="fit-item"><span class="fdot">3</span><p>Buscas reinventarte, cambiar de rubro o avanzar hacia cargos de mayor responsabilidad.</p></div>
+      <div class="fit-item"><span class="fdot">4</span><p>Tu CV está redactado en términos de responsabilidades, no de resultados — y sabes que eso te cuesta llamadas.</p></div>
+      <div class="fit-item"><span class="fdot">5</span><p>Deseas que tu perfil se vea ordenado, profesional y competitivo frente a candidatos con igual o mayor experiencia.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap reveal"><div class="s-eye">El proceso</div><h2 class="s-title">Cómo <em>funciona</em></h2>
+    <div class="steps">
+      <div class="step"><h3>Elige tu plan</h3><p>Selecciona el servicio que necesitas y realiza el pago.</p></div>
+      <div class="step"><h3>Cuestionario</h3><p>Completas un formulario con tu información, logros y objetivos.</p></div>
+      <div class="step"><h3>Optimización</h3><p>Trabajo tu CV durante 5 días hábiles con enfoque en resultados.</p></div>
+      <div class="step"><h3>Entrega y ajustes</h3><p>Recibes tu CV con derecho a una ronda de revisiones gratuitas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA + AUTHOR -->
+<section>
+  <div class="wrap">
+    <div class="split">
+      <div class="guarantee reveal">
+        <div class="g-badge">Garantía de resultados</div>
+        <h3>2 meses de respaldo</h3>
+        <p>Si después de dos meses de recibir tu CV optimizado no has sido llamado a entrevistas, puedes solicitar una readecuación gratuita. Mi objetivo es que tu CV funcione, no solo que se vea bien.</p>
+      </div>
+      <div class="author reveal">
+        <div class="author-top"><div class="author-av">K</div><div><div class="an">Karin Sandoval</div><div class="ar">Especialista en optimización de CV con IA</div></div></div>
+        <p>Entiendo cómo se siente enviar postulaciones al vacío. Lo viví. Cuando descubrí que el problema no era mi experiencia sino cómo la presentaba, todo cambió. Hoy aplico ese mismo método — con IA — para ayudar a profesionales como tú.</p>
+        <blockquote>"Cada CV que entrego lo hago como si fuera para una amiga, porque sé que detrás hay una historia, una urgencia y un deseo real de avanzar."</blockquote>
+      </div>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><div class="sn" data-count="1000" data-suffix="+">0</div><div class="sl">Clientes</div></div>
+      <div class="stat"><div class="sn">5</div><div class="sl">Días hábiles</div></div>
+      <div class="stat"><div class="sn">100%</div><div class="sl">ATS friendly</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap reveal"><div class="s-eye">Resultados reales</div><h2 class="s-title">Lo que dicen <em>quienes confiaron</em></h2></div>
+  <div class="wrap">
+    <div class="tst">
+      <div class="tcard reveal"><div class="stars">★★★★★</div><q>"Realicé los cambios según tu sugerencia y a los dos días ya me había llamado una empresa. Con el CV antiguo estuve un año y medio sin que me llamara nadie."</q><div class="who">Robert Fuentes</div><div class="role">Diagnóstico + Redacción</div></div>
+      <div class="tcard reveal"><div class="stars">★★★★★</div><q>"Luego de enviar el currículum actualizado, entró en 4 procesos de postulación y finalmente quedó en un trabajo, lo mejor de su profesión."</q><div class="who">Noemí Rojas</div><div class="role">Optimización completa</div></div>
+      <div class="tcard reveal"><div class="stars">★★★★★</div><q>"Con esta mejora pude postular y quedar en un empleo. Mi CV me permitió pasar las etapas con mayor facilidad y dar una visión clara al empleador."</q><div class="who">Jose Tomás</div><div class="role">Optimización de CV</div></div>
+      <div class="tcard reveal"><div class="stars">★★★★★</div><q>"Participé en un proceso en una gran empresa y me confirmaron que era el elegido para el puesto, con buen sueldo y muchos beneficios."</q><div class="who">Andrés Barckhahn</div><div class="role">Optimización completa</div></div>
+      <div class="tcard reveal"><div class="stars">★★★★★</div><q>"Con la optimización al fin me empezaron a llamar. Tuve dos entrevistas y también me sirvió para LinkedIn, donde me contactaron reclutadores."</q><div class="who">Javi</div><div class="role">CV + LinkedIn</div></div>
+      <div class="tcard reveal"><div class="stars">★★★★★</div><q>"Se nota mucho el cambio, el nivel y la preocupación en cada detalle. Ya encontré trabajo y no me demoré nada."</q><div class="who">Héctor Patricio Godoy</div><div class="role">Optimización de CV</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="wrap reveal">
+    <h2>Tu próxima entrevista empieza con un <em>CV que funciona.</em></h2>
+    <p>Deja de postular al vacío. Tu experiencia merece ser bien comunicada.</p>
+    <a href="https://mpago.la/2b7Fvqg" class="btn btn-main">Contratar CV + LinkedIn — $129.000 →</a>
+    <div class="fine">Entrega en 5 días hábiles · Revisión incluida · Garantía 2 meses</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">OptimizaTuCV<b style="color:var(--teal);">.IA</b></div>
+    <div>© 2025 OptimizaTuCV.IA · Karin Sandoval · <a href="mailto:optimizatucv.ia@gmail.com">optimizatucv.ia@gmail.com</a></div>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  function animate(el){const t=+el.dataset.count,suf=el.dataset.suffix||'';const red=matchMedia('(prefers-reduced-motion: reduce)').matches;if(red){el.textContent=t.toLocaleString('es-CL')+suf;return;}const t0=performance.now();(function tick(n){const p=Math.min((n-t0)/1300,1);const e=1-Math.pow(1-p,3);el.textContent=Math.round(t*e).toLocaleString('es-CL')+suf;if(p<1)requestAnimationFrame(tick);})(t0);}
+  const co=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){animate(e.target);co.unobserve(e.target);}});},{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
+</script>
+</body>
+</html>
