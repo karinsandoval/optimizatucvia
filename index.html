@@ -1,10 +1,435 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta http-equiv="refresh" content="0; url=/inicio.html">
-<meta name="robots" content="noindex">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OptimizaTuCV.IA — Karin Sandoval | Optimización de CV con IA</title>
+<meta name="description" content="Revisión gratuita de tu CV y hoja de vida. Optimización con inteligencia artificial, formato ATS y resultados reales. Más de 1.000 profesionales en Latam y España.">
+<link rel="canonical" href="https://optimizatucvia.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OptimizaTuCV.IA — Karin Sandoval">
+<meta property="og:description" content="Tu CV debería estar abriendo puertas. Revisión gratuita y personalizada, sin costo ni compromiso.">
+<meta property="og:url" content="https://optimizatucvia.com/">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "OptimizaTuCV.IA",
+  "url": "https://optimizatucvia.com/",
+  "email": "contacto@optimizatucvia.com",
+  "description": "Optimización de CV y perfiles de LinkedIn con inteligencia artificial para profesionales de habla hispana.",
+  "founder": { "@type": "Person", "name": "Karin Sandoval" },
+  "areaServed": "Latinoamérica y España",
+  "availableLanguage": ["es", "en"]
+}
+</script>
+<style>
+  :root{
+    --ink:#0a0a0a; --ink-2:#141310; --panel:#1a1712; --line:rgba(212,175,110,.16);
+    --gold:#d4af6e; --gold-bright:#f0d69a; --gold-deep:#a8852f;
+    --paper:#f4efe6; --muted:#9a9384; --muted-2:#6f6a5e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',system-ui,sans-serif;background:var(--ink);color:var(--paper);
+    line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  h1,h2,h3,.display{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-.01em;}
+  em{font-style:italic;color:var(--gold-bright);}
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:rgba(212,175,110,.3);}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;}
+
+  /* ---------- NAV ---------- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:15px 24px;max-width:1080px;margin:0 auto;}
+  .logo{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;color:var(--paper);}
+  .logo b{color:var(--gold);}
+  .nav-right{display:flex;align-items:center;gap:16px;}
+  .nav-tt{font-size:.78rem;color:var(--muted-2);transition:.25s;}
+  .nav-tt:hover{color:var(--gold);}
+  .nav-cta{font-size:.82rem;color:var(--muted);border:1px solid var(--line);padding:8px 15px;border-radius:99px;transition:.25s;white-space:nowrap;}
+  .nav-cta:hover{color:var(--gold-bright);border-color:var(--gold);}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:104px 0 84px;overflow:hidden;}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(680px 420px at 78% 8%, rgba(212,175,110,.13), transparent 62%),
+      radial-gradient(520px 400px at 10% 90%, rgba(168,133,47,.08), transparent 60%);
+    animation:heroGlow 12s ease-in-out infinite alternate;
+  }
+  @keyframes heroGlow{from{opacity:.7;transform:translateX(-10px);}to{opacity:1;transform:translateX(10px);}}
+  .hero-in{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold);border:1px solid var(--line);padding:7px 15px;border-radius:99px;margin-bottom:28px;
+  }
+  .eyebrow::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.3rem);line-height:1.04;font-weight:400;max-width:15ch;margin-bottom:24px;}
+  .hero p.lead{font-size:1.13rem;color:var(--muted);max-width:54ch;margin-bottom:34px;}
+  .hero-btns{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  .hero-note{margin-top:20px;font-size:.85rem;color:var(--muted-2);}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:1rem;
+    padding:16px 30px;border-radius:99px;transition:.28s cubic-bezier(.2,.7,.3,1);cursor:pointer;
+  }
+  .btn-gold{background:linear-gradient(135deg,var(--gold-bright),var(--gold) 55%,var(--gold-deep));color:#1a1305;box-shadow:0 12px 34px rgba(212,175,110,.28);}
+  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(212,175,110,.4);}
+  .btn-ghost{border:1px solid var(--gold);color:var(--gold-bright);}
+  .btn-ghost:hover{background:rgba(212,175,110,.08);}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1);}
+  .reveal.in{opacity:1;transform:none;}
+  .hero .eyebrow,.hero h1,.hero .lead,.hero-btns,.hero-note{opacity:0;transform:translateY(20px);animation:up .8s cubic-bezier(.2,.7,.3,1) forwards;}
+  .hero h1{animation-delay:.12s;} .hero .lead{animation-delay:.24s;} .hero-btns{animation-delay:.36s;} .hero-note{animation-delay:.46s;}
+  @keyframes up{to{opacity:1;transform:none;}}
+
+  /* ---------- STATS ---------- */
+  .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--ink),var(--ink-2));}
+  .stats-in{display:grid;grid-template-columns:repeat(3,1fr);max-width:1080px;margin:0 auto;}
+  .stat{padding:38px 24px;text-align:center;border-right:1px solid var(--line);}
+  .stat:last-child{border-right:none;}
+  .stat .n{font-family:'Fraunces',serif;font-size:clamp(1.9rem,4vw,2.7rem);font-weight:600;color:var(--gold);line-height:1;}
+  .stat .l{font-size:.82rem;color:var(--muted);margin-top:9px;letter-spacing:.02em;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:84px 0;position:relative;}
+  .s-eye{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .s-title{font-size:clamp(1.8rem,4vw,2.7rem);font-weight:400;line-height:1.12;margin-bottom:16px;max-width:20ch;}
+  .s-sub{color:var(--muted);max-width:58ch;font-size:1.02rem;}
+
+  /* ---------- QUOTE BAND ---------- */
+  .qband{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:58px 24px;text-align:center;background:var(--ink-2);}
+  .qband blockquote{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.25rem,2.6vw,1.75rem);font-weight:400;max-width:36ch;margin:0 auto;line-height:1.45;}
+  .qband blockquote b{color:var(--gold-bright);font-style:normal;font-weight:500;}
+
+  /* ---------- BIO ---------- */
+  .bio p{color:#d8d2c4;font-size:1.02rem;margin-bottom:18px;max-width:62ch;}
+  .bio p:last-child{margin-bottom:0;}
+
+  /* ---------- PROCESO ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px;}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px 22px;transition:.3s cubic-bezier(.2,.7,.3,1);}
+  .step:hover{transform:translateY(-5px);border-color:rgba(212,175,110,.35);}
+  .step .sn{font-family:'Fraunces',serif;font-size:.86rem;color:var(--gold-deep);letter-spacing:.14em;margin-bottom:14px;}
+  .step h3{font-size:1.1rem;font-weight:600;margin-bottom:9px;}
+  .step p{font-size:.9rem;color:var(--muted);line-height:1.55;}
+
+  /* ---------- PERFILES ---------- */
+  .perfiles{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;}
+  .perfil{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px 26px;transition:.3s cubic-bezier(.2,.7,.3,1);}
+  .perfil:hover{transform:translateY(-4px);border-color:rgba(212,175,110,.35);}
+  .perfil h3{font-size:1.2rem;font-weight:600;margin-bottom:10px;}
+  .perfil p{font-size:.92rem;color:var(--muted);line-height:1.55;}
+  .perfil-tag{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+  .perfil-note{margin-top:34px;text-align:center;color:var(--muted);font-size:.98rem;max-width:56ch;margin-left:auto;margin-right:auto;}
+  .perfil-note b{color:var(--gold-bright);font-weight:500;}
+
+  /* ---------- EXPRESS ---------- */
+  .express{background:linear-gradient(180deg,var(--ink-2),var(--ink));border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .ex-card{
+    background:var(--panel);border:1px solid rgba(212,175,110,.3);border-radius:20px;
+    padding:44px 40px;display:grid;grid-template-columns:1.3fr .85fr;gap:40px;align-items:center;margin-top:38px;
+  }
+  .ex-card h3{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:500;margin-bottom:14px;line-height:1.2;}
+  .ex-card p{color:var(--muted);font-size:.98rem;margin-bottom:20px;max-width:50ch;}
+  .ex-list{list-style:none;display:flex;flex-direction:column;gap:9px;}
+  .ex-list li{position:relative;padding-left:24px;font-size:.92rem;color:#d8d2c4;}
+  .ex-list li::before{content:"";position:absolute;left:0;top:7px;width:13px;height:13px;border-radius:50%;
+    background:radial-gradient(circle,var(--gold) 40%,transparent 42%);border:1px solid var(--gold-deep);}
+  .ex-side{text-align:center;border-left:1px solid var(--line);padding-left:36px;}
+  .ex-price{font-family:'Fraunces',serif;font-size:3.2rem;font-weight:600;color:var(--gold);line-height:1;}
+  .ex-cur{font-size:.9rem;color:var(--muted);display:block;margin-top:6px;margin-bottom:22px;}
+  .ex-side .btn{width:100%;justify-content:center;}
+
+  /* ---------- TESTIMONIOS ---------- */
+  .t-hero{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:40px 38px;margin-top:40px;}
+  .t-hero blockquote{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.15rem,2.4vw,1.55rem);line-height:1.45;margin-bottom:18px;}
+  .t-hero cite{font-style:normal;font-size:.88rem;color:var(--muted);}
+  .t-hero cite b{color:var(--gold-bright);font-weight:500;}
+  .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;}
+  .t{background:var(--ink-2);border:1px solid var(--line);border-radius:14px;padding:24px 22px;transition:.3s;}
+  .t:hover{border-color:rgba(212,175,110,.32);transform:translateY(-3px);}
+  .t .stars{color:var(--gold);font-size:.78rem;letter-spacing:.14em;margin-bottom:12px;}
+  .t blockquote{font-size:.9rem;color:var(--muted);font-style:italic;line-height:1.6;margin-bottom:14px;}
+  .t cite{font-style:normal;font-size:.8rem;color:var(--muted-2);display:block;}
+  .t cite b{display:block;color:var(--paper);font-weight:500;margin-bottom:2px;font-size:.86rem;}
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{text-align:center;background:linear-gradient(180deg,var(--ink),var(--ink-2));border-top:1px solid var(--line);}
+  .cta-final h2{font-size:clamp(1.9rem,4.5vw,3rem);font-weight:400;margin-bottom:18px;}
+  .cta-final p{color:var(--muted);max-width:56ch;margin:0 auto 32px;font-size:1.02rem;}
+  .cta-note{margin-top:20px;font-size:.85rem;color:var(--muted-2);}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:34px 24px;}
+  .f-in{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  .f-logo{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;}
+  .f-logo b{color:var(--gold);}
+  .f-copy{font-size:.8rem;color:var(--muted-2);}
+  .f-copy a{color:var(--gold-deep);}
+  .f-copy a:hover{color:var(--gold-bright);}
+  .f-mail{font-size:.84rem;color:var(--gold);}
+  .f-mail:hover{color:var(--gold-bright);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    .steps{grid-template-columns:repeat(2,1fr);}
+    .perfiles{grid-template-columns:1fr;}
+    .t-grid{grid-template-columns:1fr;}
+    .ex-card{grid-template-columns:1fr;padding:34px 26px;gap:28px;}
+    .ex-side{border-left:none;border-top:1px solid var(--line);padding-left:0;padding-top:28px;}
+    section{padding:64px 0;}
+  }
+  @media(max-width:560px){
+    .steps{grid-template-columns:1fr;}
+    .stats-in{grid-template-columns:1fr;}
+    .stat{border-right:none;border-bottom:1px solid var(--line);padding:28px 24px;}
+    .stat:last-child{border-bottom:none;}
+    .hero{padding:72px 0 60px;}
+    .nav-tt{display:none;}
+    .btn{width:100%;justify-content:center;}
+    .t-hero{padding:30px 24px;}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
+    .reveal{opacity:1;transform:none;}
+  }
+</style>
 </head>
 <body>
-<p>Redirigiendo a <a href="/inicio.html">OptimizaTuCV.IA</a>...</p>
+
+<nav>
+  <div class="nav-in">
+    <a href="/" class="logo">Optimiza<b>TuCV.IA</b></a>
+    <div class="nav-right">
+      <a href="https://www.tiktok.com/@karinsandovalg.oficial" target="_blank" rel="noopener" class="nav-tt">@karinsandovalg.oficial</a>
+      <a href="https://tally.so/r/rjd8Rv" target="_blank" rel="noopener" class="nav-cta">Revisión gratuita</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-in">
+    <span class="eyebrow">Karin Sandoval · OptimizaTuCV.IA</span>
+    <h1>Tu CV debería estar <em>abriendo puertas.</em> ¿Lo está haciendo?</h1>
+    <p class="lead">Si envías postulaciones y no recibes respuesta, el problema casi nunca eres tú. Es cómo tu CV te está presentando al mundo — y eso se puede arreglar.</p>
+    <div class="hero-btns">
+      <a href="https://tally.so/r/rjd8Rv" target="_blank" rel="noopener" class="btn btn-gold">Pedir mi revisión gratuita</a>
+      <a href="#express" class="btn btn-ghost">Necesito mi CV hoy</a>
+    </div>
+    <p class="hero-note">Sin costo · Diagnóstico personalizado · Respuesta por email · Sin llamadas ni spam</p>
+  </div>
+</header>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-in">
+    <div class="stat"><div class="n" data-count="1000" data-prefix="+">+0</div><div class="l">Profesionales acompañados</div></div>
+    <div class="stat"><div class="n">7 meses → 1 semana</div><div class="l">Mi propio antes y después</div></div>
+    <div class="stat"><div class="n" data-count="100" data-suffix="%">0%</div><div class="l">Compatible con filtros ATS</div></div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="qband">
+  <blockquote>Un buen CV no es solo un archivo. Es tu <b>carta de entrada al trabajo que mereces.</b></blockquote>
+</div>
+
+<!-- BIO -->
+<section class="bio">
+  <div class="wrap reveal">
+    <p class="s-eye">Quién está detrás</p>
+    <h2 class="s-title">Hola, soy <em>Karin Sandoval</em></h2>
+    <p>Pasé siete meses enviando postulaciones sin recibir una sola llamada. Me preguntaba si el problema era yo. Hasta que me hice una pregunta que lo cambió todo: ¿y si el problema no soy yo, sino mi CV?</p>
+    <p>Descubrí cómo funcionan los sistemas ATS, los filtros automáticos que deciden si tu CV siquiera llega a manos humanas. Rehíce el mío desde cero. En una semana tenía varias entrevistas.</p>
+    <p>Hoy acompaño a profesionales en distintas etapas de su carrera — desde quienes buscan su primer empleo hasta gerencias que apuntan a empresas de primer nivel — a convertir su CV en una herramienta que de verdad funciona.</p>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section style="padding-top:0;">
+  <div class="wrap reveal">
+    <p class="s-eye">El proceso</p>
+    <h2 class="s-title">Cómo <em>funciona</em></h2>
+    <p class="s-sub">Cuatro pasos, en este orden. Empieza siempre por la revisión gratuita.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="sn">PASO 01</div>
+        <h3>Revisión gratuita</h3>
+        <p>Llenas el formulario y me envías tu CV. Analizo tu perfil y detecto qué está funcionando y qué está frenando tus oportunidades.</p>
+      </div>
+      <div class="step">
+        <div class="sn">PASO 02</div>
+        <h3>Diagnóstico por email</h3>
+        <p>Recibes un análisis detallado con puntos fuertes, áreas de mejora y recomendaciones concretas para tu perfil y el cargo que buscas.</p>
+      </div>
+      <div class="step">
+        <div class="sn">PASO 03</div>
+        <h3>La ruta que te sirve</h3>
+        <p>Si decides avanzar, te recomiendo el servicio exacto para tu situación. No hay paquete único: cada trayectoria necesita algo distinto.</p>
+      </div>
+      <div class="step">
+        <div class="sn">PASO 04</div>
+        <h3>Resultados reales</h3>
+        <p>Entrega en 5 días hábiles, revisión incluida y garantía. El objetivo es que consigas entrevistas, no solo un CV bonito.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERFILES -->
+<section style="padding-top:0;">
+  <div class="wrap reveal">
+    <p class="s-eye">Para quién es</p>
+    <h2 class="s-title">Trabajo con personas en <em>todas las etapas</em></h2>
+    <p class="s-sub">Reconocerte acá ayuda, pero no hace falta que elijas nada. Eso lo definimos juntas después del diagnóstico.</p>
+    <div class="perfiles">
+      <div class="perfil">
+        <p class="perfil-tag">Primeros pasos</p>
+        <h3>Sin experiencia formal</h3>
+        <p>Recién egresados, personas que vuelven al mercado o que cambian de rubro. Tu historia tiene valor — el trabajo es aprender a contarla bien.</p>
+      </div>
+      <div class="perfil">
+        <p class="perfil-tag">En desarrollo</p>
+        <h3>Profesionales con trayectoria</h3>
+        <p>Entre 2 y 10 años de experiencia. Tienes recorrido, pero tu CV no lo está mostrando de la forma que abre puertas.</p>
+      </div>
+      <div class="perfil">
+        <p class="perfil-tag">Alta dirección</p>
+        <h3>Ejecutivos y líderes</h3>
+        <p>Gerencias, direcciones y jefaturas que necesitan un CV a la altura de su trayectoria para acceder a las mejores oportunidades.</p>
+      </div>
+    </div>
+    <p class="perfil-note">Cada perfil tiene un servicio distinto, con alcance y precio distintos. <b>Después de la revisión gratuita te recomiendo el que corresponde a tu caso</b> — así no pagas por lo que no necesitas.</p>
+  </div>
+</section>
+
+<!-- CV EXPRESS -->
+<section class="express" id="express">
+  <div class="wrap reveal">
+    <p class="s-eye">¿Tienes apuro?</p>
+    <h2 class="s-title">CV Express IA</h2>
+    <p class="s-sub">La postulación cierra mañana y no alcanzas a esperar un diagnóstico. Para eso existe esta versión automatizada: llenas un formulario y recibes tus documentos en minutos.</p>
+    <div class="ex-card">
+      <div>
+        <h3>Tu CV optimizado, <em>hoy mismo</em></h3>
+        <p>Mismo formato ATS y misma metodología del servicio personalizado, pero generado automáticamente y entregado a tu correo.</p>
+        <ul class="ex-list">
+          <li>CV profesional optimizado para filtros ATS</li>
+          <li>Carta de presentación lista para adaptar</li>
+          <li>Reporte de palabras clave de tu sector</li>
+          <li>Entrega en minutos, disponible en español e inglés</li>
+        </ul>
+      </div>
+      <div class="ex-side">
+        <div class="ex-price">$27</div>
+        <span class="ex-cur">USD · pago único</span>
+        <a href="/cv-express-ia/" class="btn btn-gold">Ver CV Express IA</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section>
+  <div class="wrap reveal">
+    <p class="s-eye">Resultados reales</p>
+    <h2 class="s-title">Lo que dicen <em>quienes confiaron</em></h2>
+    <div class="t-hero">
+      <blockquote>"Llevaba 7 meses sin ninguna entrevista. Contacté a Karin para optimizar mi CV. Hoy tengo varias entrevistas y ya tengo 2 ofertas laborales con carta de oferta."</blockquote>
+      <cite><b>Gonzalo Flores</b> — Optimización completa de CV</cite>
+    </div>
+    <div class="t-grid">
+      <div class="t"><div class="stars">★★★★★</div><blockquote>"A los 2 días de aplicar los cambios, me llamaron. Con el CV antiguo estuve un año y medio sin que me llamara nadie."</blockquote><cite><b>Robert Fuentes</b>Diagnóstico + Redacción</cite></div>
+      <div class="t"><div class="stars">★★★★★</div><blockquote>"En menos de un mes tenía tres ofertas de trabajo. Tuve que decidir entre ellas. En cada entrevista me felicitaban por el CV."</blockquote><cite><b>Cliente anónimo</b>Optimización completa</cite></div>
+      <div class="t"><div class="stars">★★★★★</div><blockquote>"Desde que llegó el CV optimizado, aprox 3 días lo envié y hoy ya tengo una entrevista."</blockquote><cite><b>Priscilla</b>Optimización de CV</cite></div>
+      <div class="t"><div class="stars">★★★★★</div><blockquote>"Tu impulso me permitió quedar en el puesto que buscaba, con buen sueldo y beneficios."</blockquote><cite><b>Andrés Barckhahn</b>Optimización ejecutiva</cite></div>
+      <div class="t"><div class="stars">★★★★★</div><blockquote>"Realicé las modificaciones y me contactaron en 3 días. Realizas un hermoso trabajo de ayuda."</blockquote><cite><b>Leonardo Pérez</b>Diagnóstico profesional</cite></div>
+      <div class="t"><div class="stars">★★★★★</div><blockquote>"Después de que arreglaste mi CV, a la semana me llamaron y comencé a trabajar en noviembre."</blockquote><cite><b>Aracelly Petermann</b>Servicio profesional</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="wrap reveal">
+    <h2>¿Tu CV está trabajando <em>por ti?</em></h2>
+    <p>Envíame tu CV y en menos de 48 horas tienes un diagnóstico personalizado de lo que está frenando tus oportunidades. Sin costo y sin compromiso.</p>
+    <a href="https://tally.so/r/rjd8Rv" target="_blank" rel="noopener" class="btn btn-gold">Pedir mi revisión gratuita</a>
+    <p class="cta-note">Gratis · Diagnóstico personalizado · Entregado por email · Sin spam ni llamadas</p>
+  </div>
+</section>
+
+<footer>
+  <div class="f-in">
+    <div class="f-logo">Optimiza<b>TuCV.IA</b></div>
+    <div class="f-copy">© 2026 OptimizaTuCV.IA · Karin Sandoval · <a href="https://www.tiktok.com/@karinsandovalg.oficial" target="_blank" rel="noopener">@karinsandovalg.oficial</a></div>
+    <a href="mailto:contacto@optimizatucvia.com" class="f-mail">contacto@optimizatucvia.com</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* reveal on scroll */
+  var els = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -60px 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  }
+
+  /* animated counters */
+  var nums = document.querySelectorAll('[data-count]');
+  function fmt(n){ return n.toLocaleString('es-CL'); }
+  function run(el){
+    var target = parseInt(el.dataset.count, 10);
+    var prefix = el.dataset.prefix || '';
+    var suffix = el.dataset.suffix || '';
+    if (reduce) { el.textContent = prefix + fmt(target) + suffix; return; }
+    var start = null, dur = 1500;
+    function tick(ts){
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + fmt(Math.floor(eased * target)) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = prefix + fmt(target) + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+  if (!('IntersectionObserver' in window)) {
+    nums.forEach(run);
+  } else {
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { run(e.target); io2.unobserve(e.target); }
+      });
+    }, { threshold: .5 });
+    nums.forEach(function(el){ io2.observe(el); });
+  }
+})();
+</script>
+
 </body>
 </html>
