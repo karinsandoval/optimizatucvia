@@ -60,12 +60,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 1.5rem;displa
 .hero-sub{font-size:1rem;color:var(--muted);margin-bottom:1.9rem;max-width:470px;line-height:1.7}
 
 .price-row{display:flex;align-items:baseline;gap:.6rem;margin-bottom:1.6rem}
-.price-big{font-family:'Space Grotesk',sans-serif;font-size:3.4rem;font-weight:800;color:var(--gold);line-height:1}
+.price-big{font-family:'Space Grotesk',sans-serif;font-size:4.6rem;font-weight:800;color:var(--gold);line-height:1;text-shadow:0 0 34px rgba(255,209,102,.30)}
 .price-info{font-size:.8rem;color:var(--muted);line-height:1.5}
 
 .cta-stack{display:flex;flex-direction:column;gap:.6rem;align-items:flex-start}
-.btn-main{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;background:var(--accent);color:#060E1C;font-weight:700;font-size:1rem;padding:.95rem 2rem;border-radius:8px;text-decoration:none;transition:transform .18s,box-shadow .18s}
-.btn-main:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(0,222,184,.28)}
+.btn-main{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;background:var(--accent);color:#060E1C;font-weight:700;font-size:1rem;padding:.95rem 2rem;border-radius:8px;text-decoration:none;transition:transform .18s,box-shadow .18s,background .22s,color .22s}
+.btn-main:hover{background:linear-gradient(135deg,#FFD166,#FF9F43);color:#2A1A00;transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,159,67,.42)}
 .cta-sub{font-size:.76rem;color:var(--accent)}
 .cta-exec{font-size:.76rem;color:var(--muted);border-top:1px solid var(--border);padding-top:.6rem;margin-top:.2rem;width:100%}
 .cta-exec a{color:var(--accent);text-decoration:none;font-weight:500}
@@ -141,16 +141,31 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 1.5rem;displa
 .pricing-outer{display:flex;justify-content:center}
 .pricing-box{width:100%;max-width:500px;background:var(--surf);border:1.5px solid var(--accent);border-radius:16px;padding:2.6rem;text-align:center;box-shadow:0 0 80px rgba(0,222,184,.07)}
 .p-label{font-size:.7rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.2em;margin-bottom:1rem}
-.p-price{font-family:'Space Grotesk',sans-serif;font-size:4.8rem;font-weight:800;color:var(--gold);line-height:1;margin-bottom:.25rem}
-.p-price sup{font-size:1.75rem;vertical-align:super}
+.p-price{font-family:'Space Grotesk',sans-serif;font-size:6.4rem;font-weight:800;color:var(--gold);line-height:1;margin-bottom:.25rem;text-shadow:0 0 44px rgba(255,209,102,.32)}
+.p-price sup{font-size:2.2rem;vertical-align:super}
 .p-note{color:var(--muted);font-size:.82rem;margin-bottom:1.75rem}
 .p-items{text-align:left;display:flex;flex-direction:column;gap:.7rem;margin-bottom:2.25rem}
 .p-item{display:flex;align-items:center;gap:.75rem;font-size:.88rem}
 .p-item::before{content:'\2713';color:var(--accent);font-weight:700;flex-shrink:0}
 .btn-main-lg{display:block;background:var(--accent);color:#060E1C;font-weight:700;font-size:1.05rem;padding:1.05rem 2rem;border-radius:8px;text-decoration:none;transition:transform .18s,box-shadow .18s;text-align:center}
-.btn-main-lg:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(0,222,184,.3)}
+.btn-main-lg:hover{background:linear-gradient(135deg,#FFD166,#FF9F43);color:#2A1A00;transform:translateY(-2px);box-shadow:0 12px 44px rgba(255,159,67,.45)}
 .p-guarantee{margin-top:1rem;font-size:.74rem;color:var(--muted)}
 
+.mid-cta{position:relative;max-width:840px;margin:0 auto;background:linear-gradient(150deg,#16283f 0%,#0F1F35 60%,#131d2e 100%);border:1px solid rgba(255,209,102,.55);border-radius:18px;padding:2.6rem 2.6rem 2.3rem;display:flex;align-items:center;gap:2.6rem;flex-wrap:wrap;box-shadow:0 0 0 1px rgba(255,209,102,.08),0 24px 60px -20px rgba(255,209,102,.28),0 8px 30px rgba(0,0,0,.45)}
+.mid-cta::before{content:"";position:absolute;inset:-1px;border-radius:18px;background:linear-gradient(135deg,rgba(255,209,102,.16),transparent 45%,rgba(0,222,184,.10));pointer-events:none}
+.mid-cta-tag{position:absolute;top:-.72rem;left:2.6rem;background:linear-gradient(135deg,#FFD166,#FF9F43);color:#2A1A00;font-family:'Space Grotesk',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.32rem .9rem;border-radius:99px;z-index:2}
+.mid-cta-txt{flex:1;min-width:250px;position:relative;z-index:1}
+.mid-cta-txt h3{font-family:'Space Grotesk',sans-serif;font-size:1.45rem;line-height:1.22;margin-bottom:.5rem}
+.mid-cta-txt p{font-size:.92rem;color:var(--muted);line-height:1.6}
+.mid-cta-act{position:relative;z-index:1;display:flex;flex-direction:column;align-items:stretch;gap:.75rem;min-width:215px;padding-left:2.6rem;border-left:1px solid rgba(255,209,102,.22)}
+.mid-cta-price{font-family:'Space Grotesk',sans-serif;font-size:2.7rem;font-weight:800;color:var(--gold);line-height:1;text-align:center;text-shadow:0 0 26px rgba(255,209,102,.35)}
+.mid-cta-price span{font-size:.8rem;color:var(--muted);font-weight:500;letter-spacing:.1em}
+.mid-cta-act .btn-main{width:100%}
+.mid-cta-note{font-size:.73rem;color:var(--muted);text-align:center}
+@media(max-width:760px){.mid-cta{flex-direction:column;text-align:center;padding:2.4rem 1.5rem 2rem;gap:1.5rem}
+.mid-cta-tag{left:50%;transform:translateX(-50%)}
+.mid-cta-txt{min-width:0}
+.mid-cta-act{padding-left:0;border-left:none;border-top:1px solid rgba(255,209,102,.22);padding-top:1.5rem;width:100%;min-width:0}}
 .faq-list{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:.9rem}
 .faq-item{background:var(--surf);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer}
 .faq-q{padding:1.15rem 1.4rem;font-weight:600;font-size:.9rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;user-select:none;transition:color .2s}
@@ -207,7 +222,7 @@ footer a{color:var(--accent);text-decoration:none}
 .step:hover{transform:translateX(5px)}
 .step-num{transition:transform .25s ease,box-shadow .25s ease}
 .step:hover .step-num{transform:scale(1.1);box-shadow:0 0 0 6px rgba(0,222,184,.10)}
-.btn-main:hover,.btn-main-lg:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,222,184,.28)}
+.btn-main:hover,.btn-main-lg:hover{background:linear-gradient(135deg,#FFD166,#FF9F43);color:#2A1A00;transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,159,67,.42)}
 .section.fade.in .inc-card,.section.fade.in .step,.section.fade.in .fw-card{animation:cardIn .55s cubic-bezier(.2,.7,.3,1) backwards}
 .section.fade.in .inc-card:nth-child(2),.section.fade.in .step:nth-child(2),.section.fade.in .fw-card:nth-child(2){animation-delay:.11s}
 .section.fade.in .inc-card:nth-child(3),.section.fade.in .step:nth-child(3){animation-delay:.22s}
@@ -417,6 +432,23 @@ footer a{color:var(--accent);text-decoration:none}
   </div>
 </div>
 
+
+<!-- CTA INTERMEDIO -->
+<section class="section fade" style="padding-top:4rem;padding-bottom:4rem">
+  <div class="mid-cta">
+    <div class="mid-cta-tag" data-i18n="midcta_tag">Empieza ahora</div>
+    <div class="mid-cta-txt">
+      <h3 data-i18n="midcta_t">Tu CV, listo en menos de 1 hora</h3>
+      <p data-i18n="midcta_p">CV optimizado para ATS, carta de presentación y reporte de keywords de tu sector.</p>
+    </div>
+    <div class="mid-cta-act">
+      <div class="mid-cta-price">$27 <span>USD</span></div>
+      <a href="https://pay.hotmart.com/I106807687K" class="btn-main" data-i18n="midcta_btn">Quiero el mío →</a>
+      <div class="mid-cta-note" data-i18n="midcta_note">Pago único · Entrega en 1 hora</div>
+    </div>
+  </div>
+</section>
+
 <section class="section fade">
   <div class="s-label" data-i18n="fw_label">¿Es para mí?</div>
   <h2 class="s-title" data-i18n="fw_title">Para quien lo necesita ahora.</h2>
@@ -578,6 +610,7 @@ es:{
  fw_exec:"¿Eres ejecutivo? <a href='mailto:contacto@optimizatucvia.com'>Escríbeme directamente aquí</a> y coordinamos el servicio que corresponde a tu perfil.",
  founder_label:"Detrás del servicio",founder_t:"Hola, soy Karin.",
  founder_p:"Llevo 3 años optimizando currículums para profesionales en toda Latinoamérica y España. Comparto todo lo que aprendí sobre cómo destacar en procesos de selección con una comunidad de más de 50.000 personas. CV Express IA es la forma de llevar ese mismo estándar a quien necesita resultados rápidos y a buen precio.",
+ midcta_t:"Tu CV, listo en menos de 1 hora",midcta_p:"CV optimizado para ATS, carta de presentación y reporte de keywords de tu sector.",midcta_btn:"Quiero el mío →",midcta_note:"Pago único · Entrega en 1 hora",midcta_tag:"Empieza ahora",
  price_label:"Precio único",price_title:"Sin sorpresas. Sin suscripción.",
  cmp_label:"Comparación honesta",cmp_title:"Pagas una vez. No todos los meses.",
  cmp_sub:"Las plataformas de CV con IA funcionan por suscripción mensual. Esto es lo que gastarías en una búsqueda laboral típica de tres meses.",
@@ -627,6 +660,7 @@ en:{
  fw_exec:"Are you an executive? <a href='mailto:contacto@optimizatucvia.com'>Write to me directly here</a> and we'll arrange the right service for your profile.",
  founder_label:"Behind the service",founder_t:"Hi, I'm Karin.",
  founder_p:"I've spent 3 years optimizing resumes for professionals across Latin America and Spain. I share everything I've learned about standing out in hiring processes with a community of over 50,000 people. CV Express IA brings that same standard to anyone who needs fast results at a good price.",
+ midcta_t:"Your CV, ready in under 1 hour",midcta_p:"ATS-optimized CV, cover letter and keyword report for your industry.",midcta_btn:"I want mine →",midcta_note:"One-time payment · Delivered in 1 hour",midcta_tag:"Start now",
  price_label:"One price",price_title:"No surprises. No subscription.",
  cmp_label:"An honest comparison",cmp_title:"Pay once. Not every month.",
  cmp_sub:"AI resume platforms run on monthly subscriptions. Here's what you'd spend over a typical three-month job search.",
