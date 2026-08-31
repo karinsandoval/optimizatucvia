@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revisión gratis de CV | OptimizaTuCV.IA</title>
+<meta name="description" content="Sube tu CV y recibe un análisis escrito de tu caso: qué está frenando tus postulaciones y qué cambiar primero. Sin costo, llega a tu correo en minutos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..900,0..100,0..1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#05121F; --ink:#F7F1E3; --muted:#A79madeF; --muted:#AB9E86;
+  --brand-dot:#E8C77F; --focus:#2DE2C5; --under-hi:#E8C77F;
+  --h1-a:#F7F1E3; --h1-b:#E8C77F; --h2-accent:#E8C77F;
+  --btn-bg:linear-gradient(180deg,#F9E3B0 0%,#D9AE5C 52%,#C0913C 100%);
+  --btn-ink:#2A1B04; --btn-border:#FFEFC9;
+  --btn-shine:rgba(255,255,255,.62);
+  --btn-glow:0 0 44px -6px rgba(232,199,127,.55),0 18px 46px -18px rgba(0,0,0,.85);
+  --btn-bg-h:#0A1D2E; --btn-ink-h:#F9E3B0; --btn-border-h:#E8C77F;
+  --btn-glow-h:0 0 0 5px rgba(232,199,127,.20),0 0 60px -4px rgba(232,199,127,.55);
+  --hero-glow:radial-gradient(closest-side,rgba(232,199,127,.30),rgba(212,175,110,.10) 50%,transparent 76%);
+  --cierre-glow:radial-gradient(closest-side,rgba(232,199,127,.24),transparent 74%);
+  --band-bg:linear-gradient(180deg,#14293D,#0A1B2B);
+  --band-line:rgba(232,199,127,.38); --band-ink:#D8CDB6; --fuente:#7E7461;
+  --num-1:#E8C77F; --num-2:#F9E3B0; --num-3:#C0913C;
+  --panel:linear-gradient(160deg,#0F2033,#071523); --panel-line:rgba(232,199,127,.26);
+  --panel-shadow:0 26px 62px -30px rgba(0,0,0,.95);
+  --bar:#26364A; --bar-lit:#6E5C36;
+  --sweep:#FFEFC9; --sweep-glow:rgba(232,199,127,.50);
+  --flag-bg:#E8C77F; --flag-ink:#2A1B04;
+
+  --rule-1:#E8C77F; --rule-2:#C0913C; --rule-3:#8C6C28;
+  --voces-bg:#0A1B2B; --voces-ink:#E4DCC9; --cite:#E8C77F; --mark:rgba(232,199,127,.55);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+
+h1,h2,h3,.num,.brand,.mark{
+  font-family:'Fraunces',Georgia,serif;
+  font-variation-settings:'SOFT' 20,'WONK' 1;
+  letter-spacing:-.022em;line-height:1.05;
+}
+
+/* ---------- boton ---------- */
+.cta{
+  position:relative;overflow:hidden;
+  display:inline-block;
+  background:var(--btn-bg);
+  color:var(--btn-ink);
+  border:2px solid var(--btn-border);
+  border-radius:8px;
+  font-family:'Inter',sans-serif;
+  font-weight:800;font-size:1.36rem;
+  letter-spacing:-.015em;
+  padding:28px 66px;
+  text-decoration:none;
+  box-shadow:var(--btn-glow);
+  transition:background .22s ease,color .22s ease,box-shadow .22s ease,transform .2s ease,border-color .22s ease;
+}
+.cta::after{
+  content:"";position:absolute;top:0;left:-60%;width:38%;height:100%;
+  background:linear-gradient(100deg,transparent,var(--btn-shine),transparent);
+  animation:shine 4.5s ease-in-out infinite;
+}
+@keyframes shine{0%,72%{left:-60%}88%,100%{left:132%}}
+.cta:hover,.cta:focus-visible{
+  background:var(--btn-bg-h);
+  color:var(--btn-ink-h);
+  border-color:var(--btn-border-h);
+  transform:translateY(-3px);
+  box-shadow:var(--btn-glow-h);
+}
+.cta:focus-visible{outline:3px solid var(--focus);outline-offset:5px}
+.under{margin-top:20px;font-size:.96rem;color:var(--muted)}
+.under b{color:var(--under-hi);font-weight:700}
+
+/* ---------- encabezado ---------- */
+.top{padding:28px 0 0}
+.brand{font-weight:700;font-size:21px;color:var(--ink);text-decoration:none}
+.brand em{font-style:normal;color:var(--brand-dot)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;text-align:center;padding:82px 0 74px}
+.hero::before{
+  content:"";position:absolute;z-index:-1;
+  top:-200px;left:50%;transform:translateX(-50%);
+  width:1040px;height:760px;
+  background:var(--hero-glow);
+  pointer-events:none;
+}
+h1{font-weight:800;font-size:clamp(2.25rem,5.4vw,4rem);margin:0 auto 28px}
+.t1,.t2{display:block}
+.t1{color:var(--h1-a)}
+.t2{color:var(--h1-b);max-width:22ch;margin:.12em auto 0;text-wrap:balance}
+@media (min-width:720px){.t1{white-space:nowrap}}
+.lede{
+  font-size:clamp(1.06rem,1.7vw,1.22rem);
+  color:var(--muted);max-width:56ch;margin:0 auto 46px;
+}
+
+/* ---------- cifras ---------- */
+.stats{
+  background:var(--band-bg);
+  border-top:1px solid var(--band-line);
+  border-bottom:1px solid var(--band-line);
+  padding:58px 0 44px;
+}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:46px}
+.stat{text-align:center}
+.num{font-weight:900;font-size:clamp(3.1rem,7vw,5rem);display:block;line-height:1;color:var(--num-1)}
+.stat:nth-child(2) .num{color:var(--num-2)}
+.stat:nth-child(3) .num{color:var(--num-3)}
+.stat p{font-size:1rem;color:var(--band-ink);margin:15px auto 0;max-width:30ch}
+.fuente{text-align:center;font-size:.79rem;color:var(--fuente);margin-top:38px;line-height:1.6}
+
+/* ---------- escaneo + entregables ---------- */
+.como{
+  display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);
+  gap:66px;align-items:center;padding:90px 0;
+}
+h2{font-weight:800;font-size:clamp(1.85rem,3.5vw,2.6rem)}
+.h2a,.h2b{display:block}
+.h2b{color:var(--h2-accent)}
+.como h2{margin-bottom:16px}
+.como-lede{color:var(--muted);font-size:1.03rem;max-width:50ch;margin-bottom:34px}
+
+.scan{
+  position:relative;background:var(--panel);
+  border:1px solid var(--panel-line);
+  border-radius:10px;padding:34px 30px;overflow:hidden;
+  box-shadow:var(--panel-shadow);
+}
+.line{height:9px;border-radius:3px;background:var(--bar);margin-bottom:15px;animation:lit 5s linear infinite}
+.line:last-of-type{margin-bottom:0}
+.line.head{height:14px;background:var(--bar-lit);width:56%;margin-bottom:26px}
+.sweep{
+  position:absolute;left:0;right:0;height:2px;top:0;
+  background:linear-gradient(90deg,transparent,var(--sweep),transparent);
+  box-shadow:0 0 24px 5px var(--sweep-glow);
+  animation:sweep 5s cubic-bezier(.5,0,.5,1) infinite;
+}
+.flag{
+  position:absolute;right:20px;
+  font-size:10px;font-weight:800;letter-spacing:.01em;
+  color:var(--flag-ink);background:var(--flag-bg);
+  padding:3px 9px;border-radius:20px;
+  opacity:0;animation:flag 5s linear infinite;
+}
+@keyframes sweep{0%{top:5%;opacity:0}8%{opacity:1}86%{opacity:1}96%,100%{top:95%;opacity:0}}
+@keyframes lit{0%,100%{background:var(--bar)}50%{background:var(--bar-lit)}}
+@keyframes flag{0%,100%{opacity:0;transform:translateX(10px)}55%,90%{opacity:1;transform:none}}
+
+.items{display:grid;gap:26px}
+.item{border-left:3px solid var(--rule-1);padding:2px 0 2px 20px}
+.item:nth-child(2){border-left-color:var(--rule-2)}
+.item:nth-child(3){border-left-color:var(--rule-3)}
+.item h3{font-weight:700;font-size:1.22rem;margin-bottom:7px}
+.item p{font-size:1rem;color:var(--muted)}
+
+/* ---------- testimonios ---------- */
+.voces{background:var(--voces-bg);border-top:1px solid var(--panel-line);padding:72px 0}
+.voces-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.voz p{font-size:1.02rem;line-height:1.62;margin-bottom:14px;color:var(--voces-ink)}
+.voz cite{font-style:normal;font-size:.89rem;color:var(--cite);font-weight:700}
+.mark{font-weight:900;font-size:2.5rem;color:var(--mark);display:block;line-height:.7;margin-bottom:10px}
+
+/* ---------- cierre ---------- */
+.cierre{position:relative;text-align:center;padding:98px 0 106px}
+.cierre::before{
+  content:"";position:absolute;z-index:-1;top:0;left:50%;transform:translateX(-50%);
+  width:900px;height:540px;background:var(--cierre-glow);
+}
+.cierre h2{margin:0 auto 20px;max-width:20ch;font-size:clamp(2.2rem,4.9vw,3.5rem);color:var(--h2-accent)}
+.cierre-lede{color:var(--muted);font-size:1.09rem;max-width:46ch;margin:0 auto 40px}
+footer{border-top:1px solid var(--panel-line);padding:26px 0 44px;font-size:.9rem;color:var(--muted)}
+footer a{color:var(--muted)}
+
+/* ---------- entrada ---------- */
+.rise{opacity:0;transform:translateY(18px);animation:rise .75s cubic-bezier(.2,.75,.3,1) forwards}
+.d1{animation-delay:.06s}.d2{animation-delay:.2s}.d3{animation-delay:.34s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+@media (max-width:900px){
+  .stats-grid{grid-template-columns:1fr;gap:38px}
+  .como{grid-template-columns:1fr;gap:44px;padding:66px 0}
+  .scan{order:2;max-width:420px}
+  .voces-grid{grid-template-columns:1fr;gap:30px}
+  .cta{display:block;padding:24px 18px;font-size:1.18rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rise{opacity:1;transform:none}
+  .sweep{display:none}.flag{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="https://optimizatucvia.com">OptimizaTuCV<em>.IA</em></a>
+  </header>
+
+  <section class="hero">
+    <h1 class="rise d1">
+      <span class="t1">Tu CV no está mal escrito</span>
+      <span class="t2">Está contando lo que no importa</span>
+    </h1>
+    <p class="lede rise d2">La mayoría describe funciones cuando debería mostrar resultados. Te muestro exactamente dónde pasa eso en el tuyo, citando tus propias frases.</p>
+    <div class="rise d3">
+      <a class="cta" href="https://tally.so/r/rjd8Rv">Revisar mi CV gratis</a>
+      <p class="under">Sin costo y sin registro · <b>Llega a tu correo en minutos</b></p>
+    </div>
+  </section>
+</div>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat">
+        <span class="num" data-to="88" data-suffix="%">0%</span>
+        <p>de las empresas reconoce que su sistema descarta candidatos calificados por no coincidir con los términos exactos del aviso.</p>
+      </div>
+      <div class="stat">
+        <span class="num" data-to="90" data-prefix="+" data-suffix="%">0%</span>
+        <p>de los empleadores usa un sistema automático para filtrar o rankear las postulaciones antes de que alguien las lea.</p>
+      </div>
+      <div class="stat">
+        <span class="num" data-to="7.4" data-dec="1" data-suffix="s">0s</span>
+        <p>dura en promedio la primera revisión humana de un CV, medida con seguimiento ocular.</p>
+      </div>
+    </div>
+    <p class="fuente">Fuentes: <em>Hidden Workers: Untapped Talent</em>, Harvard Business School y Accenture, 2021 (2.275 ejecutivos encuestados en EE.&nbsp;UU., Reino Unido y Alemania). Tiempo de revisión: estudio de seguimiento ocular de Ladders, 2018.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="como">
+    <div class="scan" aria-hidden="true">
+      <div class="sweep"></div>
+      <div class="line head" style="animation-delay:.15s"></div>
+      <div class="line" style="width:100%;animation-delay:.6s"></div>
+      <div class="line" style="width:88%;animation-delay:.95s"></div>
+      <div class="flag" style="top:37%;animation-delay:1.1s">sin cifras</div>
+      <div class="line" style="width:94%;animation-delay:1.3s"></div>
+      <div class="line" style="width:62%;animation-delay:1.65s"></div>
+      <div class="line" style="width:97%;animation-delay:2s"></div>
+      <div class="flag" style="top:70%;animation-delay:2.2s">falta palabra clave</div>
+      <div class="line" style="width:71%;animation-delay:2.35s"></div>
+      <div class="line" style="width:85%;animation-delay:2.7s"></div>
+    </div>
+
+    <div>
+      <h2>
+        <span class="h2a">El error que más te cuesta</span>
+        <span class="h2b">no se ve a simple vista</span>
+      </h2>
+      <p class="como-lede">No es el formato ni la ortografía. Es que tu CV enumera responsabilidades donde debería probar resultados. Esto es lo que reviso:</p>
+      <div class="items">
+        <div class="item">
+          <h3>Cómo te lee un sistema</h3>
+          <p>Qué partes de tu CV no está capturando el filtro automático, y qué términos de tu cargo faltan.</p>
+        </div>
+        <div class="item">
+          <h3>Funciones o resultados</h3>
+          <p>Dónde estás contando lo que hacías en vez de lo que lograste. Es el error más caro y el más común.</p>
+        </div>
+        <div class="item">
+          <h3>Ejemplos de tu propio CV</h3>
+          <p>Cito frases textuales de tu documento y te muestro cómo se leerían reescritas. Nada genérico.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="voces">
+  <div class="wrap voces-grid">
+    <div class="voz">
+      <span class="mark">&ldquo;</span>
+      <p>Realicé los cambios según tu sugerencia y a los dos días ya me había llamado una empresa. Con el CV antiguo estuve un año y medio sin que me llamara nadie.</p>
+      <cite>Robert F.</cite>
+    </div>
+    <div class="voz">
+      <span class="mark">&ldquo;</span>
+      <p>Después de arreglarlo, a la semana me llamaron de una empresa y empiezo a trabajar en noviembre.</p>
+      <cite>Aracelly P.</cite>
+    </div>
+    <div class="voz">
+      <span class="mark">&ldquo;</span>
+      <p>Con esta mejora pude postular y quedar en un empleo. Mi CV quedó de tal forma que me permitió pasar las etapas con mayor facilidad.</p>
+      <cite>José Tomás</cite>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="cierre">
+    <h2>¿Por qué no te llaman?</h2>
+    <p class="cierre-lede">Rara vez es falta de experiencia. Averígualo en dos minutos y recibe el análisis hoy mismo.</p>
+    <a class="cta" href="https://tally.so/r/rjd8Rv">Revisar mi CV gratis</a>
+    <p class="under">Sin costo y sin registro · <b>Llega a tu correo en minutos</b></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <a href="https://optimizatucvia.com">optimizatucvia.com</a> &nbsp;·&nbsp; contacto@optimizatucvia.com
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nums = document.querySelectorAll('.num');
+  function render(el, v){
+    var dec = parseInt(el.dataset.dec || 0, 10);
+    var txt = dec ? v.toFixed(dec).replace('.', ',') : Math.round(v).toString();
+    el.textContent = (el.dataset.prefix || '') + txt + (el.dataset.suffix || '');
+  }
+  function run(el){
+    var to = parseFloat(el.dataset.to), start = null, dur = 1500;
+    if (reduce){ render(el, to); return; }
+    function step(ts){
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      render(el, to * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if (!('IntersectionObserver' in window)){
+    nums.forEach(function(el){ render(el, parseFloat(el.dataset.to)); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ run(e.target); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  nums.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
