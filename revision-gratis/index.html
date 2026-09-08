@@ -3,203 +3,207 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Revisión gratis de CV | OptimizaTuCV.IA</title>
-<meta name="description" content="Sube tu CV y recibe un análisis escrito de tu caso: qué está frenando tus postulaciones y qué cambiar primero. Sin costo, llega a tu correo en minutos.">
+<title>Revisión gratis de tu CV: qué está frenando tus postulaciones</title>
+<meta name="description" content="Envía tu CV y recibe un análisis escrito de tu caso, con frases citadas de tu propio documento. Sin costo, sin registro, llega a tu correo en minutos.">
+<link rel="canonical" href="https://optimizatucvia.com/revision-gratis/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Karin Sandoval — OptimizaTuCV.IA">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OptimizaTuCV.IA">
+<meta property="og:locale" content="es_LA">
+<meta property="og:url" content="https://optimizatucvia.com/revision-gratis/">
+<meta property="og:title" content="Tu CV no está mal escrito. Está contando lo que no importa.">
+<meta property="og:description" content="Análisis gratuito de tu currículum, con ejemplos citados de tu propio documento. Llega a tu correo en minutos.">
+<meta property="og:image" content="https://optimizatucvia.com/imagenes/og-revision.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Revisión gratis de tu CV">
+<meta name="twitter:description" content="Qué está frenando tus postulaciones, con frases citadas de tu propio CV. Sin costo.">
+<meta name="twitter:image" content="https://optimizatucvia.com/imagenes/og-revision.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service",
+"name":"Revisión gratuita de CV",
+"description":"Análisis escrito y personalizado de un currículum, con ejemplos citados del propio documento del usuario, entregado por correo sin costo.",
+"provider":{"@type":"Organization","name":"OptimizaTuCV.IA","url":"https://optimizatucvia.com"},
+"areaServed":"Latinoamérica y España",
+"inLanguage":"es",
+"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..900,0..100,0..1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
---bg:#05121F; --ink:#F7F1E3; --muted:#A79madeF; --muted:#AB9E86;
-  --brand-dot:#E8C77F; --focus:#2DE2C5; --under-hi:#E8C77F;
-  --h1-a:#F7F1E3; --h1-b:#E8C77F; --h2-accent:#E8C77F;
-  --btn-bg:linear-gradient(180deg,#F9E3B0 0%,#D9AE5C 52%,#C0913C 100%);
-  --btn-ink:#2A1B04; --btn-border:#FFEFC9;
-  --btn-shine:rgba(255,255,255,.62);
-  --btn-glow:0 0 44px -6px rgba(232,199,127,.55),0 18px 46px -18px rgba(0,0,0,.85);
-  --btn-bg-h:#0A1D2E; --btn-ink-h:#F9E3B0; --btn-border-h:#E8C77F;
-  --btn-glow-h:0 0 0 5px rgba(232,199,127,.20),0 0 60px -4px rgba(232,199,127,.55);
-  --hero-glow:radial-gradient(closest-side,rgba(232,199,127,.30),rgba(212,175,110,.10) 50%,transparent 76%);
-  --cierre-glow:radial-gradient(closest-side,rgba(232,199,127,.24),transparent 74%);
+  --bg:#05121F; --bg-2:#0A1B2B; --ink:#F7F1E3; --muted:#AB9E86;
+  --oro:#E8C77F; --oro-claro:#F9E3B0; --oro-osc:#C0913C;
+  --menta:#2DE2C5; --azul:#4FA8E8;
+  --panel:linear-gradient(160deg,#0F2033,#071523);
+  --panel-line:rgba(232,199,127,.26);
+  --panel-shadow:0 26px 62px -30px rgba(0,0,0,.95);
   --band-bg:linear-gradient(180deg,#14293D,#0A1B2B);
   --band-line:rgba(232,199,127,.38); --band-ink:#D8CDB6; --fuente:#7E7461;
-  --num-1:#E8C77F; --num-2:#F9E3B0; --num-3:#C0913C;
-  --panel:linear-gradient(160deg,#0F2033,#071523); --panel-line:rgba(232,199,127,.26);
-  --panel-shadow:0 26px 62px -30px rgba(0,0,0,.95);
   --bar:#26364A; --bar-lit:#6E5C36;
-  --sweep:#FFEFC9; --sweep-glow:rgba(232,199,127,.50);
-  --flag-bg:#E8C77F; --flag-ink:#2A1B04;
-
-  --rule-1:#E8C77F; --rule-2:#C0913C; --rule-3:#8C6C28;
-  --voces-bg:#0A1B2B; --voces-ink:#E4DCC9; --cite:#E8C77F; --mark:rgba(232,199,127,.55);
+  --aurora:linear-gradient(115deg,#F9E3B0 0%,#E8C77F 38%,#2DE2C5 100%);
+  --aurora-2:linear-gradient(120deg,#2DE2C5 0%,#4FA8E8 50%,#E8C77F 100%);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{
-  background:var(--bg);
-  color:var(--ink);
-  font-family:'Inter',system-ui,-apple-system,sans-serif;
-  font-size:17px;line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+h1,h2,h3,.num,.brand,.mark{font-family:'Fraunces',Georgia,serif;font-variation-settings:'SOFT' 20,'WONK' 1;letter-spacing:-.022em;line-height:1.05}
+a{color:inherit}
 
-h1,h2,h3,.num,.brand,.mark{
-  font-family:'Fraunces',Georgia,serif;
-  font-variation-settings:'SOFT' 20,'WONK' 1;
-  letter-spacing:-.022em;line-height:1.05;
-}
-
-/* ---------- boton ---------- */
-.cta{
-  position:relative;overflow:hidden;
-  display:inline-block;
-  background:var(--btn-bg);
-  color:var(--btn-ink);
-  border:2px solid var(--btn-border);
-  border-radius:8px;
-  font-family:'Inter',sans-serif;
-  font-weight:800;font-size:1.36rem;
-  letter-spacing:-.015em;
-  padding:28px 66px;
-  text-decoration:none;
-  box-shadow:var(--btn-glow);
-  transition:background .22s ease,color .22s ease,box-shadow .22s ease,transform .2s ease,border-color .22s ease;
-}
-.cta::after{
-  content:"";position:absolute;top:0;left:-60%;width:38%;height:100%;
-  background:linear-gradient(100deg,transparent,var(--btn-shine),transparent);
-  animation:shine 4.5s ease-in-out infinite;
-}
+/* ---------- animaciones ---------- */
+@keyframes auroraMove{0%,100%{transform:translate3d(-50%,0,0) scale(1)}33%{transform:translate3d(-46%,-3%,0) scale(1.14)}66%{transform:translate3d(-54%,3%,0) scale(1.06)}}
+@keyframes barrido{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@keyframes rise{to{opacity:1;transform:none}}
 @keyframes shine{0%,72%{left:-60%}88%,100%{left:132%}}
-.cta:hover,.cta:focus-visible{
-  background:var(--btn-bg-h);
-  color:var(--btn-ink-h);
-  border-color:var(--btn-border-h);
-  transform:translateY(-3px);
-  box-shadow:var(--btn-glow-h);
-}
-.cta:focus-visible{outline:3px solid var(--focus);outline-offset:5px}
-.under{margin-top:20px;font-size:.96rem;color:var(--muted)}
-.under b{color:var(--under-hi);font-weight:700}
-
-/* ---------- encabezado ---------- */
-.top{padding:28px 0 0}
-.brand{font-weight:700;font-size:21px;color:var(--ink);text-decoration:none}
-.brand em{font-style:normal;color:var(--brand-dot)}
-
-/* ---------- hero ---------- */
-.hero{position:relative;text-align:center;padding:82px 0 74px}
-.hero::before{
-  content:"";position:absolute;z-index:-1;
-  top:-200px;left:50%;transform:translateX(-50%);
-  width:1040px;height:760px;
-  background:var(--hero-glow);
-  pointer-events:none;
-}
-h1{font-weight:800;font-size:clamp(2.25rem,5.4vw,4rem);margin:0 auto 28px}
-.t1,.t2{display:block}
-.t1{color:var(--h1-a)}
-.t2{color:var(--h1-b);max-width:22ch;margin:.12em auto 0;text-wrap:balance}
-@media (min-width:720px){.t1{white-space:nowrap}}
-.lede{
-  font-size:clamp(1.06rem,1.7vw,1.22rem);
-  color:var(--muted);max-width:56ch;margin:0 auto 46px;
-}
-
-/* ---------- cifras ---------- */
-.stats{
-  background:var(--band-bg);
-  border-top:1px solid var(--band-line);
-  border-bottom:1px solid var(--band-line);
-  padding:58px 0 44px;
-}
-.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:46px}
-.stat{text-align:center}
-.num{font-weight:900;font-size:clamp(3.1rem,7vw,5rem);display:block;line-height:1;color:var(--num-1)}
-.stat:nth-child(2) .num{color:var(--num-2)}
-.stat:nth-child(3) .num{color:var(--num-3)}
-.stat p{font-size:1rem;color:var(--band-ink);margin:15px auto 0;max-width:30ch}
-.fuente{text-align:center;font-size:.79rem;color:var(--fuente);margin-top:38px;line-height:1.6}
-
-/* ---------- escaneo + entregables ---------- */
-.como{
-  display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);
-  gap:66px;align-items:center;padding:90px 0;
-}
-h2{font-weight:800;font-size:clamp(1.85rem,3.5vw,2.6rem)}
-.h2a,.h2b{display:block}
-.h2b{color:var(--h2-accent)}
-.como h2{margin-bottom:16px}
-.como-lede{color:var(--muted);font-size:1.03rem;max-width:50ch;margin-bottom:34px}
-
-.scan{
-  position:relative;background:var(--panel);
-  border:1px solid var(--panel-line);
-  border-radius:10px;padding:34px 30px;overflow:hidden;
-  box-shadow:var(--panel-shadow);
-}
-.line{height:9px;border-radius:3px;background:var(--bar);margin-bottom:15px;animation:lit 5s linear infinite}
-.line:last-of-type{margin-bottom:0}
-.line.head{height:14px;background:var(--bar-lit);width:56%;margin-bottom:26px}
-.sweep{
-  position:absolute;left:0;right:0;height:2px;top:0;
-  background:linear-gradient(90deg,transparent,var(--sweep),transparent);
-  box-shadow:0 0 24px 5px var(--sweep-glow);
-  animation:sweep 5s cubic-bezier(.5,0,.5,1) infinite;
-}
-.flag{
-  position:absolute;right:20px;
-  font-size:10px;font-weight:800;letter-spacing:.01em;
-  color:var(--flag-ink);background:var(--flag-bg);
-  padding:3px 9px;border-radius:20px;
-  opacity:0;animation:flag 5s linear infinite;
-}
 @keyframes sweep{0%{top:5%;opacity:0}8%{opacity:1}86%{opacity:1}96%,100%{top:95%;opacity:0}}
 @keyframes lit{0%,100%{background:var(--bar)}50%{background:var(--bar-lit)}}
 @keyframes flag{0%,100%{opacity:0;transform:translateX(10px)}55%,90%{opacity:1;transform:none}}
+@keyframes latido{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.85)}}
+@keyframes flota{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
-.items{display:grid;gap:26px}
-.item{border-left:3px solid var(--rule-1);padding:2px 0 2px 20px}
-.item:nth-child(2){border-left-color:var(--rule-2)}
-.item:nth-child(3){border-left-color:var(--rule-3)}
+.rise{opacity:0;transform:translateY(18px);animation:rise .75s cubic-bezier(.2,.75,.3,1) forwards}
+.d1{animation-delay:.06s}.d2{animation-delay:.2s}.d3{animation-delay:.34s}.d4{animation-delay:.48s}
+.fade{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade.in{opacity:1;transform:none}
+
+/* ---------- botón ---------- */
+.cta{
+  position:relative;overflow:hidden;display:inline-block;
+  background:var(--aurora);background-size:200% auto;
+  color:#20180A;border:0;border-radius:10px;
+  font-family:'Inter',sans-serif;font-weight:800;font-size:1.32rem;letter-spacing:-.015em;
+  padding:26px 62px;text-decoration:none;
+  box-shadow:0 0 48px -8px rgba(232,199,127,.6),0 18px 46px -18px rgba(0,0,0,.85);
+  animation:barrido 8s linear infinite;
+  transition:transform .2s cubic-bezier(.2,.8,.3,1),box-shadow .22s ease;
+}
+.cta::after{content:"";position:absolute;top:0;left:-60%;width:38%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.62),transparent);animation:shine 4.5s ease-in-out infinite}
+.cta:hover{transform:translateY(-3px) scale(1.015);box-shadow:0 0 64px -6px rgba(232,199,127,.75),0 24px 54px -18px rgba(0,0,0,.9)}
+.cta:focus-visible{outline:3px solid var(--menta);outline-offset:5px}
+.under{margin-top:20px;font-size:.96rem;color:var(--muted)}
+.under b{color:var(--oro);font-weight:700}
+.under .punto{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--menta);margin-right:8px;animation:latido 2s ease-in-out infinite}
+
+/* ---------- encabezado ---------- */
+.top{padding:26px 0 0;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{font-weight:700;font-size:21px;text-decoration:none}
+.brand em{font-style:normal;color:var(--oro)}
+.top-link{font-size:.92rem;color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(171,158,134,.4)}
+.top-link:hover{color:var(--oro);border-color:var(--oro)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;text-align:center;padding:78px 0 70px;isolation:isolate}
+.hero::before{
+  content:"";position:absolute;z-index:-1;top:-210px;left:50%;
+  width:1080px;height:800px;
+  background:
+    radial-gradient(36% 44% at 70% 22%,rgba(232,199,127,.30),transparent 70%),
+    radial-gradient(32% 38% at 26% 70%,rgba(45,226,197,.16),transparent 72%),
+    radial-gradient(28% 34% at 52% 6%,rgba(79,168,232,.14),transparent 74%);
+  filter:blur(12px);animation:auroraMove 24s ease-in-out infinite;pointer-events:none;
+}
+.pre{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:.82rem;font-weight:700;letter-spacing:.04em;
+  color:var(--menta);background:rgba(45,226,197,.1);
+  border:1px solid rgba(45,226,197,.34);
+  padding:7px 16px;border-radius:100px;margin-bottom:24px;
+}
+.pre i{width:7px;height:7px;border-radius:50%;background:var(--menta);animation:latido 2s ease-in-out infinite;font-style:normal}
+h1{font-weight:800;font-size:clamp(2.25rem,5.4vw,4rem);margin:0 auto 28px}
+.t1,.t2{display:block}
+.t1{color:var(--ink)}
+.t2{background:var(--aurora);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:barrido 7s linear infinite;max-width:22ch;margin:.12em auto 0;text-wrap:balance}
+@media (min-width:720px){.t1{white-space:nowrap}}
+.lede{font-size:clamp(1.06rem,1.7vw,1.22rem);color:var(--muted);max-width:56ch;margin:0 auto 44px}
+
+/* ---------- cifras ---------- */
+.stats{position:relative;background:var(--band-bg);border-top:1px solid var(--band-line);border-bottom:1px solid var(--band-line);padding:56px 0 42px;overflow:hidden}
+.stats::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--aurora);background-size:200% auto;animation:barrido 6s linear infinite}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:46px}
+.stat{text-align:center}
+.num{font-weight:900;font-size:clamp(3.1rem,7vw,5rem);display:block;line-height:1;background:var(--aurora);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:barrido 9s linear infinite}
+.stat:nth-child(2) .num{background:var(--aurora-2);background-size:200% auto;-webkit-background-clip:text;background-clip:text}
+.stat p{font-size:1rem;color:var(--band-ink);margin:15px auto 0;max-width:30ch}
+.fuente{text-align:center;font-size:.79rem;color:var(--fuente);margin-top:36px;line-height:1.6}
+
+/* ---------- escaneo ---------- */
+.como{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:64px;align-items:center;padding:88px 0}
+h2{font-weight:800;font-size:clamp(1.85rem,3.5vw,2.6rem)}
+.h2a,.h2b{display:block}
+.h2b{background:var(--aurora);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:barrido 8s linear infinite}
+.como h2{margin-bottom:16px}
+.como-lede{color:var(--muted);font-size:1.03rem;max-width:50ch;margin-bottom:32px}
+.scan{position:relative;background:var(--panel);border:1px solid var(--panel-line);border-radius:12px;padding:34px 30px;overflow:hidden;box-shadow:var(--panel-shadow);animation:flota 7s ease-in-out infinite}
+.line{height:9px;border-radius:3px;background:var(--bar);margin-bottom:15px;animation:lit 5s linear infinite}
+.line:last-of-type{margin-bottom:0}
+.line.head{height:14px;background:var(--bar-lit);width:56%;margin-bottom:26px}
+.sweep{position:absolute;left:0;right:0;height:2px;top:0;background:linear-gradient(90deg,transparent,var(--oro-claro),transparent);box-shadow:0 0 24px 5px rgba(232,199,127,.5);animation:sweep 5s cubic-bezier(.5,0,.5,1) infinite}
+.flag{position:absolute;right:20px;font-size:10px;font-weight:800;color:#2A1B04;background:var(--oro);padding:3px 9px;border-radius:20px;opacity:0;animation:flag 5s linear infinite}
+.items{display:grid;gap:24px}
+.item{border-left:3px solid var(--oro);padding:2px 0 2px 20px;transition:transform .2s ease,border-color .2s ease}
+.item:hover{transform:translateX(5px);border-left-color:var(--menta)}
+.item:nth-child(2){border-left-color:var(--oro-osc)}
+.item:nth-child(3){border-left-color:var(--menta)}
 .item h3{font-weight:700;font-size:1.22rem;margin-bottom:7px}
 .item p{font-size:1rem;color:var(--muted)}
 
+/* ---------- antes y después ---------- */
+.ejemplo{padding:20px 0 88px}
+.ej-cab{text-align:center;margin-bottom:40px}
+.ej-cab h2{margin-bottom:12px}
+.ej-cab p{color:var(--muted);max-width:50ch;margin:0 auto}
+.ej-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+.ej{background:var(--panel);border:1px solid var(--panel-line);border-radius:14px;padding:26px;position:relative;overflow:hidden;transition:transform .22s ease,box-shadow .22s ease}
+.ej:hover{transform:translateY(-5px);box-shadow:0 24px 50px -28px rgba(0,0,0,.9)}
+.ej.antes{border-color:rgba(255,120,120,.3)}
+.ej.despues::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--aurora);background-size:200% auto;animation:barrido 6s linear infinite}
+.ej-tag{display:inline-block;font-size:.74rem;font-weight:800;letter-spacing:.05em;padding:5px 12px;border-radius:100px;margin-bottom:16px}
+.ej.antes .ej-tag{background:rgba(255,120,120,.14);color:#FF9A9A}
+.ej.despues .ej-tag{background:rgba(45,226,197,.14);color:var(--menta)}
+.ej-texto{font-size:1.02rem;line-height:1.6;margin-bottom:16px}
+.ej.antes .ej-texto{color:#C4BBA8}
+.ej-nota{font-size:.88rem;color:var(--muted);border-top:1px solid rgba(232,199,127,.15);padding-top:14px}
+
 /* ---------- testimonios ---------- */
-.voces{background:var(--voces-bg);border-top:1px solid var(--panel-line);padding:72px 0}
-.voces-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
-.voz p{font-size:1.02rem;line-height:1.62;margin-bottom:14px;color:var(--voces-ink)}
-.voz cite{font-style:normal;font-size:.89rem;color:var(--cite);font-weight:700}
-.mark{font-weight:900;font-size:2.5rem;color:var(--mark);display:block;line-height:.7;margin-bottom:10px}
+.voces{background:var(--bg-2);border-top:1px solid var(--panel-line);padding:70px 0}
+.voces-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.voz{transition:transform .2s ease}
+.voz:hover{transform:translateY(-5px)}
+.voz p{font-size:1.02rem;line-height:1.62;margin-bottom:14px;color:#E4DCC9}
+.voz cite{font-style:normal;font-size:.89rem;color:var(--oro);font-weight:700}
+.mark{font-weight:900;font-size:2.5rem;background:var(--aurora);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;display:block;line-height:.7;margin-bottom:10px;animation:barrido 9s linear infinite}
+
+/* ---------- apuro ---------- */
+.apuro{padding:64px 0}
+.apuro-caja{background:linear-gradient(150deg,rgba(45,226,197,.1),rgba(232,199,127,.07));border:1px solid rgba(45,226,197,.3);border-radius:16px;padding:30px 34px;display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;position:relative;overflow:hidden}
+.apuro-caja::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--aurora-2);background-size:200% auto;animation:barrido 6s linear infinite}
+.apuro h3{font-size:1.4rem;margin-bottom:8px}
+.apuro p{color:var(--muted);font-size:.98rem;margin:0;max-width:48ch}
+.btn-linea{display:inline-block;font-weight:700;font-size:.98rem;text-decoration:none;border:2px solid var(--menta);color:var(--menta);padding:14px 26px;border-radius:100px;white-space:nowrap;transition:all .18s ease}
+.btn-linea:hover{background:var(--menta);color:#04231C;transform:translateY(-2px)}
+.btn-linea:focus-visible{outline:3px solid var(--oro);outline-offset:3px}
 
 /* ---------- cierre ---------- */
-.cierre{position:relative;text-align:center;padding:98px 0 106px}
-.cierre::before{
-  content:"";position:absolute;z-index:-1;top:0;left:50%;transform:translateX(-50%);
-  width:900px;height:540px;background:var(--cierre-glow);
-}
-.cierre h2{margin:0 auto 20px;max-width:20ch;font-size:clamp(2.2rem,4.9vw,3.5rem);color:var(--h2-accent)}
-.cierre-lede{color:var(--muted);font-size:1.09rem;max-width:46ch;margin:0 auto 40px}
+.cierre{position:relative;text-align:center;padding:92px 0 100px;isolation:isolate}
+.cierre::before{content:"";position:absolute;z-index:-1;top:0;left:50%;width:940px;height:560px;background:radial-gradient(closest-side,rgba(232,199,127,.24),transparent 74%);animation:auroraMove 26s ease-in-out infinite}
+.cierre h2{margin:0 auto 20px;max-width:20ch;font-size:clamp(2.2rem,4.9vw,3.5rem);background:var(--aurora);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:barrido 8s linear infinite}
+.cierre-lede{color:var(--muted);font-size:1.09rem;max-width:46ch;margin:0 auto 38px}
 footer{border-top:1px solid var(--panel-line);padding:26px 0 44px;font-size:.9rem;color:var(--muted)}
-footer a{color:var(--muted)}
-
-/* ---------- entrada ---------- */
-.rise{opacity:0;transform:translateY(18px);animation:rise .75s cubic-bezier(.2,.75,.3,1) forwards}
-.d1{animation-delay:.06s}.d2{animation-delay:.2s}.d3{animation-delay:.34s}
-@keyframes rise{to{opacity:1;transform:none}}
 
 @media (max-width:900px){
-  .stats-grid{grid-template-columns:1fr;gap:38px}
-  .como{grid-template-columns:1fr;gap:44px;padding:66px 0}
-  .scan{order:2;max-width:420px}
-  .voces-grid{grid-template-columns:1fr;gap:30px}
-  .cta{display:block;padding:24px 18px;font-size:1.18rem}
+  .stats-grid{grid-template-columns:1fr;gap:36px}
+  .como{grid-template-columns:1fr;gap:42px;padding:64px 0}
+  .scan{order:2;max-width:420px;animation:none}
+  .ej-grid,.voces-grid{grid-template-columns:1fr;gap:20px}
+  .apuro-caja{grid-template-columns:1fr;gap:20px}
+  .cta{display:block;padding:22px 18px;font-size:1.15rem}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
-  .rise{opacity:1;transform:none}
+  .rise,.fade{opacity:1;transform:none}
   .sweep{display:none}.flag{opacity:1}
 }
 </style>
@@ -209,9 +213,11 @@ footer a{color:var(--muted)}
 <div class="wrap">
   <header class="top">
     <a class="brand" href="https://optimizatucvia.com">OptimizaTuCV<em>.IA</em></a>
+    <a class="top-link" href="https://optimizatucvia.com/cv-express-ia/">¿Tienes apuro? CV Express · $27</a>
   </header>
 
   <section class="hero">
+    <div class="pre rise d1"><i></i>GRATIS · SIN REGISTRO · RESPUESTA POR CORREO</div>
     <h1 class="rise d1">
       <span class="t1">Tu CV no está mal escrito</span>
       <span class="t2">Está contando lo que no importa</span>
@@ -219,7 +225,7 @@ footer a{color:var(--muted)}
     <p class="lede rise d2">La mayoría describe funciones cuando debería mostrar resultados. Te muestro exactamente dónde pasa eso en el tuyo, citando tus propias frases.</p>
     <div class="rise d3">
       <a class="cta" href="https://tally.so/r/rjd8Rv">Revisar mi CV gratis</a>
-      <p class="under">Sin costo y sin registro · <b>Llega a tu correo en minutos</b></p>
+      <p class="under"><span class="punto"></span>Sin costo y sin registro · <b>Llega a tu correo en minutos</b></p>
     </div>
   </section>
 </div>
@@ -228,15 +234,15 @@ footer a{color:var(--muted)}
   <div class="wrap">
     <div class="stats-grid">
       <div class="stat">
-        <span class="num" data-to="88" data-suffix="%">0%</span>
+        <span class="num" data-to="88" data-suffix="%">88%</span>
         <p>de las empresas reconoce que su sistema descarta candidatos calificados por no coincidir con los términos exactos del aviso.</p>
       </div>
       <div class="stat">
-        <span class="num" data-to="90" data-prefix="+" data-suffix="%">0%</span>
+        <span class="num" data-to="90" data-prefix="+" data-suffix="%">+90%</span>
         <p>de los empleadores usa un sistema automático para filtrar o rankear las postulaciones antes de que alguien las lea.</p>
       </div>
       <div class="stat">
-        <span class="num" data-to="7.4" data-dec="1" data-suffix="s">0s</span>
+        <span class="num" data-to="7.4" data-dec="1" data-suffix="s">7,4s</span>
         <p>dura en promedio la primera revisión humana de un CV, medida con seguimiento ocular.</p>
       </div>
     </div>
@@ -245,7 +251,7 @@ footer a{color:var(--muted)}
 </section>
 
 <div class="wrap">
-  <section class="como">
+  <section class="como fade">
     <div class="scan" aria-hidden="true">
       <div class="sweep"></div>
       <div class="line head" style="animation-delay:.15s"></div>
@@ -259,26 +265,32 @@ footer a{color:var(--muted)}
       <div class="line" style="width:71%;animation-delay:2.35s"></div>
       <div class="line" style="width:85%;animation-delay:2.7s"></div>
     </div>
-
     <div>
-      <h2>
-        <span class="h2a">El error que más te cuesta</span>
-        <span class="h2b">no se ve a simple vista</span>
-      </h2>
+      <h2><span class="h2a">El error que más te cuesta</span><span class="h2b">no se ve a simple vista</span></h2>
       <p class="como-lede">No es el formato ni la ortografía. Es que tu CV enumera responsabilidades donde debería probar resultados. Esto es lo que reviso:</p>
       <div class="items">
-        <div class="item">
-          <h3>Cómo te lee un sistema</h3>
-          <p>Qué partes de tu CV no está capturando el filtro automático, y qué términos de tu cargo faltan.</p>
-        </div>
-        <div class="item">
-          <h3>Funciones o resultados</h3>
-          <p>Dónde estás contando lo que hacías en vez de lo que lograste. Es el error más caro y el más común.</p>
-        </div>
-        <div class="item">
-          <h3>Ejemplos de tu propio CV</h3>
-          <p>Cito frases textuales de tu documento y te muestro cómo se leerían reescritas. Nada genérico.</p>
-        </div>
+        <div class="item"><h3>Cómo te lee un sistema</h3><p>Qué partes de tu CV no está capturando el filtro automático, y qué términos de tu cargo faltan.</p></div>
+        <div class="item"><h3>Funciones o resultados</h3><p>Dónde estás contando lo que hacías en vez de lo que lograste. Es el error más caro y el más común.</p></div>
+        <div class="item"><h3>Ejemplos de tu propio CV</h3><p>Cito frases textuales de tu documento y te muestro cómo se leerían reescritas. Nada genérico.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ejemplo fade">
+    <div class="ej-cab">
+      <h2><span class="h2a">Así se ve el cambio</span><span class="h2b">en una sola línea</span></h2>
+      <p>Misma persona, mismo trabajo, misma verdad. Lo único que cambia es qué se está probando.</p>
+    </div>
+    <div class="ej-grid">
+      <div class="ej antes">
+        <span class="ej-tag">COMO SUELE ESTAR ESCRITO</span>
+        <p class="ej-texto">"Encargado de la gestión de inventario y coordinación con proveedores del área de bodega."</p>
+        <p class="ej-nota">Describe funciones. No hay ni una cifra, ni una herramienta, ni un resultado. El filtro no encuentra nada que medir y la persona que lee no encuentra nada que recordar.</p>
+      </div>
+      <div class="ej despues">
+        <span class="ej-tag">COMO DEBERÍA ESTAR ESCRITO</span>
+        <p class="ej-texto">"Gestioné inventario de 1.200 SKU en SAP, reduciendo quiebres de stock de 14% a 4% en ocho meses y coordinando a 9 proveedores."</p>
+        <p class="ej-nota">Mismo cargo, misma experiencia. Ahora tiene volumen, herramienta, resultado medible y plazo. Eso es lo que busca el filtro y lo que retiene el reclutador.</p>
       </div>
     </div>
   </section>
@@ -286,30 +298,28 @@ footer a{color:var(--muted)}
 
 <section class="voces">
   <div class="wrap voces-grid">
-    <div class="voz">
-      <span class="mark">&ldquo;</span>
-      <p>Realicé los cambios según tu sugerencia y a los dos días ya me había llamado una empresa. Con el CV antiguo estuve un año y medio sin que me llamara nadie.</p>
-      <cite>Robert F.</cite>
-    </div>
-    <div class="voz">
-      <span class="mark">&ldquo;</span>
-      <p>Después de arreglarlo, a la semana me llamaron de una empresa y empiezo a trabajar en noviembre.</p>
-      <cite>Aracelly P.</cite>
-    </div>
-    <div class="voz">
-      <span class="mark">&ldquo;</span>
-      <p>Con esta mejora pude postular y quedar en un empleo. Mi CV quedó de tal forma que me permitió pasar las etapas con mayor facilidad.</p>
-      <cite>José Tomás</cite>
-    </div>
+    <div class="voz fade"><span class="mark">&ldquo;</span><p>Realicé los cambios según tu sugerencia y a los dos días ya me había llamado una empresa. Con el CV antiguo estuve un año y medio sin que me llamara nadie.</p><cite>Robert F.</cite></div>
+    <div class="voz fade"><span class="mark">&ldquo;</span><p>Después de arreglarlo, a la semana me llamaron de una empresa y empiezo a trabajar en noviembre.</p><cite>Aracelly P.</cite></div>
+    <div class="voz fade"><span class="mark">&ldquo;</span><p>Con esta mejora pude postular y quedar en un empleo. Mi CV quedó de tal forma que me permitió pasar las etapas con mayor facilidad.</p><cite>José Tomás</cite></div>
   </div>
 </section>
 
 <div class="wrap">
+  <section class="apuro fade">
+    <div class="apuro-caja">
+      <div>
+        <h3>¿La postulación cierra esta semana?</h3>
+        <p>La revisión gratis es un análisis escrito, no un CV terminado. Si necesitas el documento listo ahora, CV Express IA te lo entrega por correo en menos de una hora.</p>
+      </div>
+      <a class="btn-linea" href="https://optimizatucvia.com/cv-express-ia/">Ver CV Express · $27</a>
+    </div>
+  </section>
+
   <section class="cierre">
     <h2>¿Por qué no te llaman?</h2>
     <p class="cierre-lede">Rara vez es falta de experiencia. Averígualo en dos minutos y recibe el análisis hoy mismo.</p>
     <a class="cta" href="https://tally.so/r/rjd8Rv">Revisar mi CV gratis</a>
-    <p class="under">Sin costo y sin registro · <b>Llega a tu correo en minutos</b></p>
+    <p class="under"><span class="punto"></span>Sin costo y sin registro · <b>Llega a tu correo en minutos</b></p>
   </section>
 </div>
 
@@ -322,6 +332,8 @@ footer a{color:var(--muted)}
 <script>
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* contadores */
   var nums = document.querySelectorAll('.num');
   function render(el, v){
     var dec = parseInt(el.dataset.dec || 0, 10);
@@ -339,18 +351,34 @@ footer a{color:var(--muted)}
     }
     requestAnimationFrame(step);
   }
+
   if (!('IntersectionObserver' in window)){
     nums.forEach(function(el){ render(el, parseFloat(el.dataset.to)); });
+    document.querySelectorAll('.fade').forEach(function(el){ el.classList.add('in'); });
     return;
   }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting){ run(e.target); io.unobserve(e.target); }
-    });
+
+  var ioNum = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ run(e.target); ioNum.unobserve(e.target); } });
   }, { threshold: 0.5 });
-  nums.forEach(function(el){ io.observe(el); });
+  nums.forEach(function(el){ ioNum.observe(el); });
+
+  /* aparición al hacer scroll */
+  if (reduce){
+    document.querySelectorAll('.fade').forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var ioFade = new IntersectionObserver(function(es){
+      es.forEach(function(e, i){
+        if (e.isIntersecting){
+          e.target.style.transitionDelay = (i * 90) + 'ms';
+          e.target.classList.add('in');
+          ioFade.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade').forEach(function(el){ ioFade.observe(el); });
+  }
 })();
 </script>
-
 </body>
 </html>
