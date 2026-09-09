@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nadie va a preguntar lo que tu CV no dice | OptimizaTuCV.IA</title>
+<meta name="description" content="Cómo evalúa un headhunter el currículum de un ejecutivo, cómo te busca realmente un reclutador en LinkedIn y por qué una trayectoria sólida deja de recibir llamados.">
+<link rel="canonical" href="https://optimizatucvia.com/ejecutivos-diagnostico/">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nadie va a preguntar lo que tu CV no dice">
+<meta property="og:description" content="Los cargos como el tuyo no se publican, se buscan. Cómo te lee un headhunter y cómo te encuentra un reclutador en LinkedIn.">
+<meta property="og:url" content="https://optimizatucvia.com/ejecutivos-diagnostico/">
+<meta property="og:locale" content="es_CL">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --tinta:#070F1A;
+  --tinta-2:#0B1826;
+  --papel:#F5F1E8;
+  --papel-2:#EDE6D8;
+  --oro:#D4AF6E;
+  --oro-claro:#F0D9A6;
+  --oro-hondo:#A87F3B;
+  --jade:#2DE2C5;
+  --jade-claro:#7BF5E1;
+  --jade-hondo:#12B79C;
+  --humo:#94A9BA;
+  --grafito:#20262D;
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --texto:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--tinta);color:#E9F0F6;
+  font-family:var(--texto);font-size:17px;line-height:1.72;font-weight:400;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+.envoltura{max-width:1120px;margin:0 auto;padding:0 26px;}
+.angosto{max-width:720px;margin:0 auto;padding:0 26px;}
+
+h1,h2,h3,.cifra-n{font-family:var(--display);font-weight:800;line-height:1.06;letter-spacing:-0.032em;}
+h1{font-size:clamp(2.6rem,6.6vw,4.9rem);}
+h2{font-size:clamp(2rem,4.6vw,3.4rem);}
+h3{font-size:clamp(1.2rem,2.3vw,1.55rem);font-weight:700;letter-spacing:-0.02em;}
+p{margin-bottom:1.1em;}
+a{color:inherit;}
+
+.oro-degradado{
+  background:linear-gradient(118deg,var(--oro-claro) 0%,var(--oro) 42%,var(--oro-hondo) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* ---------- BARRA ---------- */
+.barra{
+  position:fixed;top:0;left:0;right:0;z-index:120;
+  display:flex;align-items:center;justify-content:space-between;padding:18px 26px;
+  transition:background .35s ease,padding .35s ease,border-color .35s ease;
+  border-bottom:1px solid transparent;
+}
+.barra.fija{background:rgba(7,15,26,.9);backdrop-filter:blur(14px);padding:12px 26px;border-bottom-color:rgba(212,175,110,.2);}
+.marca{font-family:var(--display);font-weight:800;font-size:1.05rem;text-decoration:none;letter-spacing:-.03em;}
+.marca span{color:var(--oro);}
+.barra-cta{
+  font-size:.83rem;font-weight:700;text-decoration:none;padding:10px 20px;border-radius:100px;
+  color:#04222020;color:#052A26;background:var(--jade);
+  box-shadow:0 6px 20px -8px rgba(45,226,197,.85);
+  transition:transform .22s ease,box-shadow .22s ease,background .22s ease;
+}
+.barra-cta:hover{background:var(--jade-claro);transform:translateY(-1px);box-shadow:0 10px 26px -8px rgba(45,226,197,1);}
+
+/* ---------- NAV LATERAL + FLECHAS ---------- */
+.puntos{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:110;display:flex;flex-direction:column;gap:13px;}
+.puntos b{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.22);cursor:pointer;transition:background .3s ease,transform .3s ease;display:block;}
+.puntos b.on{background:var(--jade);transform:scale(1.5);}
+.puntos.claro b{background:rgba(0,0,0,.2);}
+.puntos.claro b.on{background:var(--jade-hondo);}
+
+.flechas{position:fixed;right:22px;bottom:26px;z-index:110;display:flex;flex-direction:column;gap:9px;}
+.flechas button{
+  width:46px;height:46px;border-radius:50%;cursor:pointer;
+  background:rgba(45,226,197,.1);border:1px solid rgba(45,226,197,.45);
+  color:var(--jade);display:grid;place-items:center;
+  backdrop-filter:blur(8px);transition:background .22s ease,transform .22s ease,opacity .3s ease,color .22s ease;
+}
+.flechas button:hover{background:var(--jade);color:#052A26;transform:translateY(-2px);}
+.flechas button svg{width:17px;height:17px;}
+.flechas button.oculta{opacity:0;pointer-events:none;transform:scale(.8);}
+
+/* ---------- HERO ---------- */
+.hero{min-height:100svh;display:flex;align-items:center;padding:130px 0 90px;position:relative;overflow:hidden;}
+.mancha{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;}
+.m1{width:640px;height:640px;top:-160px;right:-120px;background:radial-gradient(circle,rgba(212,175,110,.28),transparent 68%);animation:flota 17s ease-in-out infinite;}
+.m2{width:520px;height:520px;bottom:-180px;left:-140px;background:radial-gradient(circle,rgba(45,226,197,.16),transparent 70%);animation:flota 21s ease-in-out infinite reverse;}
+@keyframes flota{0%,100%{transform:translate(0,0);}50%{transform:translate(-40px,44px);}}
+
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:58px;align-items:center;position:relative;z-index:2;}
+.hero h1 .linea{display:block;overflow:hidden;}
+.hero h1 .linea i{display:block;font-style:normal;transform:translateY(108%);animation:sube .95s cubic-bezier(.16,1,.3,1) forwards;}
+.hero h1 .linea:nth-child(2) i{animation-delay:.12s;}
+@keyframes sube{to{transform:translateY(0);}}
+
+.subtitulo{
+  font-family:var(--display);font-weight:700;letter-spacing:-.028em;line-height:1.14;
+  font-size:clamp(1.4rem,2.7vw,2.05rem);margin-top:22px;max-width:19ch;
+}
+.subtitulo .sep{display:block;height:3px;width:64px;border-radius:3px;margin-bottom:20px;
+  background:linear-gradient(90deg,var(--jade),rgba(45,226,197,0));}
+
+.entrada{opacity:0;transform:translateY(18px);animation:aparece .85s ease forwards;}
+.d1{animation-delay:.4s;} .d2{animation-delay:.55s;} .d3{animation-delay:.7s;} .d4{animation-delay:.84s;}
+@keyframes aparece{to{opacity:1;transform:translateY(0);}}
+
+.bajada{font-size:1.13rem;color:var(--humo);max-width:47ch;margin-top:22px;font-weight:300;}
+.bajada strong{color:#E9F0F6;font-weight:600;}
+
+.boton{
+  display:inline-block;padding:18px 36px;border-radius:100px;text-decoration:none;
+  background:var(--jade);color:#052A26;font-weight:700;font-size:1.02rem;letter-spacing:-.01em;
+  box-shadow:0 0 0 0 rgba(45,226,197,.55),0 16px 38px -14px rgba(45,226,197,.95);
+  transition:transform .22s ease,background .22s ease,box-shadow .22s ease;
+  animation:latido 3.4s ease-in-out infinite;
+}
+.boton:hover{background:var(--jade-claro);transform:translateY(-2px);animation:none;
+  box-shadow:0 0 0 8px rgba(45,226,197,.14),0 22px 46px -14px rgba(45,226,197,1);}
+@keyframes latido{
+  0%,100%{box-shadow:0 0 0 0 rgba(45,226,197,.5),0 16px 38px -14px rgba(45,226,197,.95);}
+  55%{box-shadow:0 0 0 12px rgba(45,226,197,0),0 16px 38px -14px rgba(45,226,197,.95);}
+}
+.nota-cta{display:block;margin-top:14px;font-size:.86rem;color:var(--humo);}
+
+/* ---------- DOCUMENTO ESCANEADO ---------- */
+.doc{
+  background:linear-gradient(155deg,#14304a,#0A1B29 70%);
+  border:1px solid rgba(212,175,110,.24);border-radius:16px;padding:26px 24px 22px;
+  position:relative;overflow:hidden;box-shadow:0 40px 70px -34px rgba(0,0,0,.9);
+}
+.doc-cabecera{border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:13px;margin-bottom:16px;}
+.doc-nombre{font-family:var(--display);font-size:1.1rem;font-weight:700;}
+.doc-cargo{font-size:.8rem;color:var(--humo);margin-top:2px;}
+.fila{display:flex;gap:10px;margin-bottom:12px;align-items:flex-start;}
+.punto{width:7px;height:7px;border-radius:50%;background:rgba(212,175,110,.2);margin-top:7px;flex-shrink:0;}
+.fila.mirada .punto{background:var(--oro);box-shadow:0 0 0 4px rgba(212,175,110,.18);}
+.lineas{flex:1;}
+.ln{display:block;height:7px;background:rgba(255,255,255,.1);border-radius:2px;margin-bottom:6px;}
+.ln.corta{width:50%;} .ln.media{width:74%;} .ln.larga{width:93%;}
+.fila.mirada .ln:first-child{background:linear-gradient(90deg,var(--oro-claro),rgba(212,175,110,.35));}
+.escaner{
+  position:absolute;left:0;right:0;height:70px;top:-76px;
+  background:linear-gradient(180deg,transparent,rgba(212,175,110,.17),transparent);
+  border-top:1px solid rgba(240,217,166,.6);
+  animation:barre 3.6s cubic-bezier(.4,0,.5,1) 1.2s forwards;
+}
+@keyframes barre{0%{top:-76px;}100%{top:100%;}}
+.doc-pie{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid rgba(255,255,255,.1);margin-top:16px;padding-top:14px;}
+.doc-pie .seg{font-family:var(--display);font-size:2rem;font-weight:800;line-height:1;}
+.doc-pie .et{font-size:.74rem;color:var(--humo);max-width:20ch;text-align:right;line-height:1.45;}
+
+/* ---------- CIFRAS ---------- */
+.cifras{background:linear-gradient(180deg,var(--tinta),#0C2233 55%,var(--tinta));border-top:1px solid rgba(212,175,110,.16);border-bottom:1px solid rgba(212,175,110,.16);}
+.cifras-grid{display:grid;grid-template-columns:repeat(3,1fr);}
+.cifra{padding:56px 32px;border-right:1px solid rgba(255,255,255,.06);}
+.cifra:last-child{border-right:none;}
+.cifra-n{font-size:clamp(2.7rem,5.2vw,3.7rem);line-height:1;}
+.cifra .t{margin-top:14px;font-size:.98rem;color:#CFDCE6;line-height:1.55;}
+.cifra .f{margin-top:12px;font-size:.75rem;color:var(--humo);}
+.cifra .f a{color:var(--humo);text-decoration:underline;text-underline-offset:2px;}
+
+/* ---------- SECCIONES ---------- */
+.seccion{padding:104px 0;position:relative;}
+.rotulo{font-family:var(--display);font-weight:700;font-size:.95rem;color:var(--jade);margin-bottom:16px;display:block;letter-spacing:-.01em;}
+.plomo{font-size:1.19rem;color:var(--humo);font-weight:300;max-width:54ch;}
+
+.papel{background:linear-gradient(180deg,var(--papel),var(--papel-2));color:var(--grafito);}
+.papel h2{color:var(--tinta);}
+.papel .rotulo{color:var(--jade-hondo);}
+.papel p{color:#39424C;}
+.papel .plomo{color:#4C5661;}
+
+.lectura{max-width:670px;margin:0 auto;font-size:1.08rem;line-height:1.85;padding:0 26px;}
+.destacado{
+  border-left:3px solid transparent;
+  border-image:linear-gradient(180deg,var(--oro-claro),var(--oro-hondo)) 1;
+  padding:2px 0 2px 22px;margin:34px 0;
+  font-family:var(--display);font-weight:700;font-size:1.32rem;line-height:1.36;color:var(--tinta);letter-spacing:-.02em;
+}
+
+/* ---------- CRITERIOS ---------- */
+.criterios{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;margin-top:50px;align-items:start;}
+.lista-crit{list-style:none;border-top:1px solid rgba(0,0,0,.12);}
+.lista-crit li{border-bottom:1px solid rgba(0,0,0,.12);}
+.lista-crit button{
+  width:100%;text-align:left;background:none;border:none;cursor:pointer;
+  font-family:var(--display);font-size:1.1rem;font-weight:700;color:#6E7883;letter-spacing:-.02em;
+  padding:18px 6px 18px 0;display:flex;justify-content:space-between;align-items:center;gap:14px;
+  transition:color .2s ease,padding-left .2s ease;
+}
+.lista-crit button:hover,.lista-crit button[aria-selected="true"]{color:var(--tinta);padding-left:7px;}
+.lista-crit .marca-sel{width:22px;height:2px;background:var(--jade-hondo);opacity:0;transition:opacity .2s ease;flex-shrink:0;border-radius:2px;}
+.lista-crit button[aria-selected="true"] .marca-sel{opacity:1;}
+
+.panel-crit{background:#fff;border:1px solid rgba(0,0,0,.08);padding:32px 30px;border-radius:14px;box-shadow:0 30px 56px -38px rgba(0,0,0,.45);}
+.panel-crit h3{margin:0 0 12px;color:var(--tinta);}
+.par{margin-top:20px;}
+.par .et{font-size:.78rem;color:#8C959E;margin-bottom:7px;font-weight:600;}
+.par .txt{font-size:1rem;line-height:1.6;}
+.par.malo .txt{color:#7E868E;text-decoration:line-through;text-decoration-color:rgba(185,60,60,.45);}
+.par.bueno .txt{color:var(--tinta);border-left:2px solid var(--jade-hondo);padding-left:14px;}
+.panel-crit.cambia{animation:destella .32s ease;}
+@keyframes destella{from{opacity:.3;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+/* ---------- BLOQUE LINKEDIN ---------- */
+.linkedin{background:linear-gradient(165deg,#071019,#0B2A3D 46%,#08131F);}
+.dos-col{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;margin-top:52px;}
+.tarjeta-vidrio{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px 26px;backdrop-filter:blur(6px);}
+.tarjeta-vidrio h3{margin-bottom:10px;color:var(--jade);}
+.tarjeta-vidrio p{color:#C4D2DD;font-size:.99rem;margin-bottom:0;}
+
+.mock{background:linear-gradient(160deg,#12283A,#0A1A27);border:1px solid rgba(255,255,255,.11);border-radius:14px;overflow:hidden;}
+.mock-top{padding:12px 18px;background:rgba(255,255,255,.05);font-size:.76rem;color:var(--humo);border-bottom:1px solid rgba(255,255,255,.08);}
+.mock-fila{display:flex;gap:14px;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.06);align-items:center;}
+.mock-fila:last-child{border-bottom:none;}
+.av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#2B4A63,#16303F);flex-shrink:0;}
+.mock-fila.destaca .av{background:linear-gradient(135deg,var(--jade),var(--jade-hondo));}
+.mock-info{flex:1;min-width:0;}
+.mock-info .n{font-weight:600;font-size:.94rem;}
+.mock-info .c{font-size:.82rem;color:var(--humo);}
+.etq{font-size:.68rem;padding:4px 9px;border-radius:100px;background:rgba(45,226,197,.14);color:var(--jade);border:1px solid rgba(45,226,197,.3);white-space:nowrap;}
+.etq.gris{background:rgba(255,255,255,.06);color:var(--humo);border-color:rgba(255,255,255,.12);}
+
+.escalones{list-style:none;counter-reset:paso;margin-top:14px;}
+.escalones li{counter-increment:paso;position:relative;padding:16px 0 16px 52px;border-bottom:1px solid rgba(255,255,255,.08);color:#C4D2DD;font-size:1rem;}
+.escalones li:last-child{border-bottom:none;}
+.escalones li::before{
+  content:counter(paso);position:absolute;left:0;top:14px;
+  width:32px;height:32px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--display);font-weight:700;font-size:.9rem;color:#052A26;
+  background:linear-gradient(135deg,var(--jade-claro),var(--jade));
+}
+.escalones li b{color:#fff;font-weight:600;}
+
+.pastillas{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+.pastilla{border:1px solid rgba(45,226,197,.38);border-radius:100px;padding:9px 16px;font-size:.88rem;color:var(--jade);background:rgba(45,226,197,.07);}
+.fuente{font-size:.78rem;color:var(--humo);margin-top:20px;}
+.fuente a{color:var(--humo);text-decoration:underline;text-underline-offset:2px;}
+
+/* ---------- DIAGRAMA RED ---------- */
+.red-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;margin-top:48px;}
+svg .anillo{fill:none;stroke:rgba(45,226,197,.28);stroke-dasharray:3 6;}
+svg .nodo{fill:rgba(148,169,186,.55);}
+svg .nodo-2{fill:rgba(45,226,197,.7);}
+svg .rotulo-svg{font-family:'Manrope',sans-serif;font-size:11px;fill:#94A9BA;}
+svg .centro{fill:url(#gJade);}
+
+/* ---------- TESTIMONIOS ---------- */
+.testimonios{background:linear-gradient(180deg,var(--tinta),#0A1D2C);}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px;}
+.t-card{background:linear-gradient(165deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.09);padding:28px 25px;border-radius:16px;display:flex;flex-direction:column;}
+.t-card .comilla{font-family:var(--display);font-size:3.2rem;line-height:.55;height:26px;}
+.t-card p{font-size:.99rem;color:#D5E1EA;line-height:1.62;flex:1;}
+.t-firma{border-top:1px solid rgba(255,255,255,.1);padding-top:14px;margin-top:8px;}
+.t-firma .nom{font-family:var(--display);font-weight:700;color:var(--jade);font-size:1rem;}
+.t-firma .rol{font-size:.83rem;color:var(--humo);margin-top:1px;}
+
+/* ---------- CIERRE ---------- */
+.cierre{text-align:center;padding:112px 0;background:radial-gradient(700px 420px at 50% 0%,rgba(45,226,197,.13),transparent 70%),var(--tinta);}
+.cierre h2{max-width:18ch;margin:0 auto 20px;}
+.incluye{list-style:none;max-width:560px;margin:36px auto 40px;text-align:left;border-top:1px solid rgba(45,226,197,.24);}
+.incluye li{padding:15px 0 15px 30px;border-bottom:1px solid rgba(255,255,255,.07);position:relative;color:#CFDCE6;font-size:1.01rem;}
+.incluye li::before{content:'';position:absolute;left:2px;top:24px;width:13px;height:2px;border-radius:2px;background:var(--jade);}
+.salto{margin-top:46px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);font-size:.93rem;color:var(--humo);}
+.salto a{color:var(--jade);text-decoration:underline;text-underline-offset:3px;}
+
+footer{background:#040A11;padding:36px 0;text-align:center;font-size:.85rem;color:#6B8093;}
+footer a{color:#8CA1B2;text-decoration:none;}
+footer a:hover{color:var(--jade);}
+
+.revela{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease;}
+.revela.visible{opacity:1;transform:none;}
+:focus-visible{outline:2px solid var(--jade);outline-offset:3px;}
+
+@media(max-width:960px){
+  .hero-grid,.dos-col,.red-grid{grid-template-columns:1fr;gap:40px;}
+  .cifras-grid{grid-template-columns:1fr;}
+  .cifra{border-right:none;border-bottom:1px solid rgba(255,255,255,.06);padding:40px 26px;}
+  .criterios{grid-template-columns:1fr;gap:28px;}
+  .t-grid{grid-template-columns:1fr;}
+  .seccion{padding:76px 0;}
+  .puntos{display:none;}
+  .subtitulo{max-width:24ch;}
+  body{font-size:16px;}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;}
+  .hero h1 .linea i{transform:none;}
+  .entrada,.revela{opacity:1;transform:none;}
+  .escaner{display:none;}
+  html{scroll-behavior:auto;}
+}
+</style>
+</head>
+<body>
+
+<nav class="barra" id="barra">
+  <a href="https://optimizatucvia.com/" class="marca">OptimizaTuCV<span>.IA</span></a>
+  <a href="https://optimizatucvia.com/revision-gratis/" class="barra-cta">Revisión sin costo</a>
+</nav>
+
+<div class="puntos" id="puntos" aria-hidden="true"></div>
+
+<div class="flechas">
+  <button id="btnArriba" class="oculta" aria-label="Sección anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+  <button id="btnAbajo" aria-label="Sección siguiente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+</div>
+
+<!-- 1. HERO -->
+<header class="hero sec" id="s1">
+  <div class="mancha m1"></div>
+  <div class="mancha m2"></div>
+  <div class="envoltura hero-grid">
+    <div>
+      <h1>
+        <span class="linea"><i>Nadie va a preguntar</i></span>
+        <span class="linea"><i>lo que tu CV no dice</i></span>
+      </h1>
+
+      <p class="subtitulo entrada d1">
+        <span class="sep"></span>
+        Los cargos como el tuyo <span class="oro-degradado">no se publican, se buscan</span>
+      </p>
+
+      <p class="bajada entrada d2">
+        Y quien te busca decide en segundos, con lo que encuentra escrito. <strong>El problema casi nunca es la carrera: es lo que el documento alcanza a transmitir de ella antes de que lo cierren.</strong>
+      </p>
+
+      <div class="entrada d3" style="margin-top:32px;">
+        <a href="https://optimizatucvia.com/revision-gratis/" class="boton">Quiero una revisión de mi CV y LinkedIn</a>
+        <span class="nota-cta">Sin costo y sin compromiso</span>
+      </div>
+    </div>
+
+    <div class="doc entrada d4" aria-hidden="true">
+      <div class="escaner"></div>
+      <div class="doc-cabecera">
+        <div class="doc-nombre">Currículum</div>
+        <div class="doc-cargo">Lo que mira un evaluador, en orden</div>
+      </div>
+      <div class="fila mirada"><span class="punto"></span><span class="lineas"><span class="ln media"></span><span class="ln corta"></span></span></div>
+      <div class="fila mirada"><span class="punto"></span><span class="lineas"><span class="ln corta"></span></span></div>
+      <div class="fila"><span class="punto"></span><span class="lineas"><span class="ln larga"></span><span class="ln larga"></span><span class="ln media"></span></span></div>
+      <div class="fila"><span class="punto"></span><span class="lineas"><span class="ln larga"></span><span class="ln media"></span></span></div>
+      <div class="fila mirada"><span class="punto"></span><span class="lineas"><span class="ln corta"></span></span></div>
+      <div class="doc-pie">
+        <span class="seg oro-degradado">7,4 s</span>
+        <span class="et">es lo que dura la primera lectura</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 2. CIFRAS -->
+<section class="cifras sec" id="s2">
+  <div class="cifras-grid">
+    <div class="cifra revela">
+      <div class="cifra-n oro-degradado">7,4 s</div>
+      <div class="t">Dura el primer barrido de un currículum. En ese lapso se mira el cargo actual, la empresa y las fechas: casi nada más.</div>
+      <div class="f">Ladders, <a href="https://www.theladders.com/career-advice/why-do-recruiters-spend-only-7-4-seconds-on-resumes" target="_blank" rel="noopener">Eye-Tracking Study</a>, 2018</div>
+    </div>
+    <div class="cifra revela">
+      <div class="cifra-n oro-degradado">1 de 5</div>
+      <div class="t">Ejecutivos de primera línea calcula que menos del 10% de los cargos de su nivel se publica de forma abierta.</div>
+      <div class="f">TopResume, <a href="https://topresume.com/career-advice/executive-job-market-report" target="_blank" rel="noopener">Executive Job Market Report</a>, 2026</div>
+    </div>
+    <div class="cifra revela">
+      <div class="cifra-n oro-degradado">30%</div>
+      <div class="t">Llegó a su cargo actual por un contacto personal o profesional, y más de la mitad espera moverse otra vez por esa vía.</div>
+      <div class="f">TopResume, <a href="https://topresume.com/career-advice/executive-job-market-report" target="_blank" rel="noopener">Executive Job Market Report</a>, 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. EL TECHO INVISIBLE -->
+<section class="seccion papel sec" id="s3">
+  <div class="lectura">
+    <span class="rotulo revela">El techo invisible</span>
+    <h2 class="revela">Lo que funcionó veinte años deja de funcionar justo cuando más lo necesitas</h2>
+
+    <p class="revela" style="margin-top:26px;">Hay un patrón que se repite en casi todos los currículums ejecutivos que reviso, y no tiene que ver con la carrera. Tiene que ver con cómo está contada.</p>
+
+    <p class="revela">Durante buena parte de tu trayectoria no necesitaste un buen CV. Los movimientos llegaron por desempeño, por una promoción interna, por alguien que te conocía y levantó el teléfono. El documento existía como formalidad, se actualizaba a último minuto y cumplía. Nunca tuvo que convencer a nadie que no te conociera.</p>
+
+    <p class="revela">El día que sí tiene que hacerlo, aparece el problema: está escrito para alguien que ya sabe quién eres.</p>
+
+    <div class="destacado revela">Un currículum senior no falla por falta de contenido. Falla porque describe funciones cuando a ese nivel lo que se evalúa son decisiones, y el costo de haberlas tomado</div>
+
+    <p class="revela">Se nota en detalles concretos. Aparece "responsable de la gestión comercial de la compañía" sin decir de qué tamaño era esa compañía. Aparece "lideré el equipo" sin decir cuántas personas ni en cuántos países. Aparece una carrera de dieciocho años comprimida en cuatro páginas, donde el primer trabajo ocupa el mismo espacio que la gerencia.</p>
+
+    <p class="revela">Nada de eso es falso. Todo eso es cierto y probablemente costó años conseguirlo. Pero quien lo lee no puede dimensionarlo, y no va a preguntar. Va a pasar al siguiente.</p>
+  </div>
+</section>
+
+<!-- 4. CRITERIOS -->
+<section class="seccion papel sec" id="s4" style="padding-top:0;">
+  <div class="envoltura">
+    <span class="rotulo revela">Cómo te lee un headhunter</span>
+    <h2 class="revela" style="max-width:22ch;">Cinco cosas que busca, y que la mayoría de los CV ejecutivos no responde</h2>
+    <p class="plomo revela" style="margin-top:18px;">Cuando alguien evalúa a un candidato para un cargo de dirección no está midiendo experiencia: está midiendo riesgo. Estas son las preguntas que necesita responder. Toca cada una.</p>
+
+    <div class="criterios">
+      <ul class="lista-crit" id="listaCrit" role="tablist">
+        <li><button role="tab" data-i="0" aria-selected="true">Escala del negocio<span class="marca-sel"></span></button></li>
+        <li><button role="tab" data-i="1" aria-selected="false">Responsabilidad sobre resultados<span class="marca-sel"></span></button></li>
+        <li><button role="tab" data-i="2" aria-selected="false">Tamaño y tipo de equipo<span class="marca-sel"></span></button></li>
+        <li><button role="tab" data-i="3" aria-selected="false">Alcance geográfico<span class="marca-sel"></span></button></li>
+        <li><button role="tab" data-i="4" aria-selected="false">Contexto al llegar y al salir<span class="marca-sel"></span></button></li>
+      </ul>
+
+      <div class="panel-crit" id="panelCrit" role="tabpanel" aria-live="polite">
+        <h3 id="critTitulo">Escala del negocio</h3>
+        <p id="critIntro" style="color:#4C5661;margin:0;">Un gerente de una empresa de 40 personas y uno de una de 4.000 tienen el mismo cargo y trabajos completamente distintos. Si el CV no lo aclara, el evaluador asume el escenario más pequeño.</p>
+        <div class="par malo">
+          <div class="et">Lo que suele decir el CV</div>
+          <div class="txt" id="critMalo">Gerente Comercial. Responsable de la gestión comercial de la compañía.</div>
+        </div>
+        <div class="par bueno">
+          <div class="et">Lo que el evaluador necesita saber</div>
+          <div class="txt" id="critBueno">Gerente Comercial de una operación con facturación y número de puntos de venta declarados, de modo que el tamaño del cargo se entienda en la primera línea.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CÓMO TE BUSCA UN RECLUTADOR -->
+<section class="seccion linkedin sec" id="s5">
+  <div class="envoltura">
+    <span class="rotulo revela">Del otro lado de la pantalla</span>
+    <h2 class="revela" style="max-width:20ch;">Un reclutador no navega LinkedIn: lo consulta como una base de datos</h2>
+    <p class="plomo revela" style="margin-top:18px;">Quien te busca en serio no usa el LinkedIn que tú ves. Trabaja dentro de LinkedIn Recruiter, una herramienta aparte donde tu perfil llega convertido en datos y donde el diseño de tu banner, tus publicaciones destacadas y tu foto de portada simplemente no existen.</p>
+
+    <div class="dos-col">
+      <div class="revela">
+        <div class="mock">
+          <div class="mock-top">Resultados de búsqueda &nbsp;·&nbsp; "Gerente de Operaciones" AND "planificación"</div>
+          <div class="mock-fila destaca">
+            <span class="av"></span>
+            <span class="mock-info"><span class="n">Perfil con el cargo escrito igual que el aviso</span><span class="c">Gerente de Operaciones · Santiago</span></span>
+            <span class="etq">Open to Work</span>
+          </div>
+          <div class="mock-fila">
+            <span class="av"></span>
+            <span class="mock-info"><span class="n">Perfil de 2° grado, contacto en común</span><span class="c">Jefe de Operaciones · Antofagasta</span></span>
+            <span class="etq">2° grado</span>
+          </div>
+          <div class="mock-fila">
+            <span class="av"></span>
+            <span class="mock-info"><span class="n">Perfil completo y activo esta semana</span><span class="c">Gerente de Planta · Concepción</span></span>
+            <span class="etq gris">Activo</span>
+          </div>
+          <div class="mock-fila" style="opacity:.42;">
+            <span class="av"></span>
+            <span class="mock-info"><span class="n">Perfil sin foto, sin "Acerca de", sin habilidades</span><span class="c">Gerente · Chile</span></span>
+            <span class="etq gris">Página 6</span>
+          </div>
+        </div>
+        <p class="fuente">Vista simplificada de LinkedIn Recruiter, según <a href="https://www.careerflow.ai/blog/how-recruiters-use-linkedin" target="_blank" rel="noopener">documentación pública sobre la herramienta</a></p>
+      </div>
+
+      <div class="revela">
+        <h3 style="color:var(--jade);">Cómo se ordena esa lista</h3>
+        <ol class="escalones">
+          <li><b>Coincidencia de palabras</b><br>Si los términos que buscó el reclutador no están escritos en tu perfil, no apareces. No importa que tengas la experiencia: importa que esté escrita con las palabras que él usó.</li>
+          <li><b>Perfil completo y activo</b><br>Entre dos perfiles que calzan, sube el que tiene todas las secciones llenas y actividad reciente. Un perfil dormido se interpreta como abandonado.</li>
+          <li><b>Cercanía de red</b><br>Un contacto de primer o segundo grado aparece antes que un desconocido, incluso cuando el desconocido calza mejor con la búsqueda.</li>
+        </ol>
+        <p class="fuente">Factores de ranking descritos en <a href="https://saganrecruitment.com/what-recruiters-actually-see-on-linkedin-and-how-to-show-up-in-their-searches/" target="_blank" rel="noopener">análisis de la vista de reclutador</a> y en <a href="https://linkedinrank.com/blogs/linkedin-search-algorithm-explained" target="_blank" rel="noopener">documentación sobre el algoritmo de búsqueda</a></p>
+      </div>
+    </div>
+
+    <div style="max-width:760px;margin-top:60px;">
+      <h3 class="revela" style="color:#fff;">Tres detalles que casi nadie de tu nivel tiene resueltos</h3>
+      <p class="revela" style="color:#C4D2DD;margin-top:14px;">Las habilidades no son un adorno del final del perfil: son uno de los campos por donde se te busca. Quien declara cinco o más recibe <strong style="color:var(--jade);">hasta 17 veces más visitas</strong> a su perfil y hasta 33 veces más mensajes de reclutadores y otros miembros.</p>
+      <p class="revela" style="color:#C4D2DD;">La foto tampoco es un tema de vanidad. Según datos publicados por la propia plataforma, un perfil con foto recibe <strong style="color:var(--jade);">21 veces más visitas</strong>, 9 veces más solicitudes de contacto y 36 veces más mensajes que uno sin ella.</p>
+      <p class="revela" style="color:#C4D2DD;">Y el titular es el campo que más pesa para ser encontrado. Repetir ahí tu cargo exacto desperdicia el espacio donde deberían estar las palabras con las que te van a buscar.</p>
+      <div class="pastillas revela">
+        <span class="pastilla">5+ habilidades → hasta 17× más visitas</span>
+        <span class="pastilla">Foto → 21× más visitas</span>
+        <span class="pastilla">Perfil completo → 36× más mensajes</span>
+      </div>
+      <p class="fuente revela">Cifras publicadas por LinkedIn, recopiladas en <a href="https://passport-photo.online/blog/linkedin-statistics/" target="_blank" rel="noopener">estadísticas de la plataforma</a> y en <a href="https://www.gradguide.nl/en/blog/linkedin-profile-optimization" target="_blank" rel="noopener">guías de optimización de perfil</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- 6. RED Y PUBLICACIONES -->
+<section class="seccion sec" id="s6" style="background:linear-gradient(180deg,#08131F,#0A1C2B);">
+  <div class="envoltura">
+    <span class="rotulo revela">Por qué publicar cambia quién te ve</span>
+    <h2 class="revela" style="max-width:22ch;">Cada publicación te expone a la red de tu red</h2>
+
+    <div class="red-grid">
+      <div class="revela">
+        <svg viewBox="0 0 320 320" width="100%" role="img" aria-label="Diagrama de alcance por grados de contacto">
+          <defs>
+            <radialGradient id="gJade" cx="50%" cy="50%">
+              <stop offset="0%" stop-color="#7BF5E1"/><stop offset="100%" stop-color="#12B79C"/>
+            </radialGradient>
+          </defs>
+          <circle class="anillo" cx="160" cy="160" r="52"/>
+          <circle class="anillo" cx="160" cy="160" r="98"/>
+          <circle class="anillo" cx="160" cy="160" r="146"/>
+          <circle class="centro" cx="160" cy="160" r="15"/>
+          <g class="nodo-2">
+            <circle cx="160" cy="108" r="5"/><circle cx="205" cy="185" r="5"/><circle cx="114" cy="188" r="5"/>
+            <circle cx="199" cy="128" r="5"/><circle cx="120" cy="132" r="5"/>
+          </g>
+          <g class="nodo">
+            <circle cx="160" cy="62" r="4"/><circle cx="243" cy="205" r="4"/><circle cx="76" cy="207" r="4"/>
+            <circle cx="238" cy="105" r="4"/><circle cx="84" cy="110" r="4"/><circle cx="160" cy="258" r="4"/>
+            <circle cx="207" cy="245" r="4"/><circle cx="112" cy="248" r="4"/>
+            <circle cx="160" cy="16" r="3.4"/><circle cx="286" cy="215" r="3.4"/><circle cx="34" cy="215" r="3.4"/>
+            <circle cx="272" cy="82" r="3.4"/><circle cx="48" cy="86" r="3.4"/><circle cx="160" cy="303" r="3.4"/>
+            <circle cx="248" cy="270" r="3.4"/><circle cx="72" cy="272" r="3.4"/>
+          </g>
+          <text class="rotulo-svg" x="160" y="190" text-anchor="middle">tú</text>
+          <text class="rotulo-svg" x="160" y="92" text-anchor="middle">1er grado</text>
+          <text class="rotulo-svg" x="160" y="46" text-anchor="middle">2do grado</text>
+          <text class="rotulo-svg" x="160" y="8" text-anchor="middle">3er grado</text>
+        </svg>
+      </div>
+
+      <div class="revela">
+        <p style="color:#C4D2DD;">Cuando alguien de tu red comenta o reacciona a lo que publicaste, ese contenido aparece en el muro de <em>sus</em> contactos, que en su mayoría no te conocen. Ese salto es el mecanismo completo: no ganas alcance escribiendo mejor, lo ganas cuando otros interactúan y te prestan su red.</p>
+        <p style="color:#C4D2DD;">Por eso la actividad tiene un efecto doble. Hacia afuera te muestra a gente nueva. Hacia adentro, le dice al buscador de reclutadores que tu perfil está vivo, y los perfiles vivos suben en los resultados.</p>
+        <p style="color:#C4D2DD;">No hace falta convertirse en creador de contenido. La diferencia real está entre publicar nunca y publicar algo con criterio cada semana o cada dos.</p>
+        <div class="tarjeta-vidrio" style="margin-top:26px;">
+          <h3>Lo que suele pasar con un ejecutivo que empieza a publicar</h3>
+          <p>Deja de depender de que alguien lo recuerde. Cuando una consultora recibe su nombre, lo primero que hace es abrir su perfil: si encuentra un profesional que opina de su industria con criterio, la conversación parte en otro punto que si encuentra un perfil vacío actualizado hace tres años.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="angosto revela" style="margin-top:66px;padding:0;">
+      <h3 style="color:#fff;">Y una cosa más sobre los contactos</h3>
+      <p style="color:#C4D2DD;margin-top:12px;">Tu red no es una colección de tarjetas: es un factor de posicionamiento. Como la cercanía pesa en el orden de los resultados, conectar con pares de tu industria, con consultoras de búsqueda y con gente de las empresas donde te gustaría estar te vuelve visible en búsquedas donde hoy no apareces. No es networking en el sentido incómodo de la palabra. Es aparecer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. TESTIMONIOS -->
+<section class="seccion testimonios sec" id="s7">
+  <div class="envoltura">
+    <span class="rotulo revela">Resultados</span>
+    <h2 class="revela" style="max-width:20ch;">Lo que pasó cuando el documento cambió</h2>
+
+    <div class="t-grid">
+      <div class="t-card revela">
+        <div class="comilla oro-degradado">&ldquo;</div>
+        <p>Llevaba 7 meses sin ninguna entrevista, hoy tengo varias. Ya tengo 2 ofertas laborales con carta de oferta.</p>
+        <div class="t-firma"><div class="nom">Gonzalo</div><div class="rol">Perfil Gerencial</div></div>
+      </div>
+
+      <div class="t-card revela">
+        <div class="comilla oro-degradado">&ldquo;</div>
+        <p>Trabajé más de 18 años en la misma empresa hasta llegar a Gerente. Me despidieron y me costó muchísimo encontrar trabajo, porque tenía un CV de 4 páginas que contaba todo desde que salí del colegio. Cuando lo dejé en 2 y ordené los logros del cargo, me llamaron de 3 empresas. Quedé como Gerente de Sucursal.</p>
+        <div class="t-firma"><div class="nom">Guido</div><div class="rol">Gerente de Sucursal, Retail</div></div>
+      </div>
+
+      <div class="t-card revela">
+        <div class="comilla oro-degradado">&ldquo;</div>
+        <p>Recibí los dos informes y superaron mis expectativas. La consultora a cargo del proceso me llamó el lunes y alcancé a actualizar mi CV con las mejoras a tiempo. Con la guía de LinkedIn actualicé el titular y el "Acerca de", y mi primera publicación superó las 2.000 impresiones en menos de 48 horas.</p>
+        <div class="t-firma"><div class="nom">Gonzalo R.</div><div class="rol">Gerente Técnico, Agroindustria</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. CIERRE -->
+<section class="cierre sec" id="s8">
+  <div class="envoltura">
+    <span class="rotulo revela">Revisión sin costo</span>
+    <h2 class="revela">Antes de cambiar nada, conviene saber qué está fallando</h2>
+    <p class="plomo revela" style="margin:0 auto;">Envías tu CV y, si quieres, tu perfil de LinkedIn. Recibes un diagnóstico escrito con lo que un evaluador ve primero, lo que no está encontrando y por dónde partir.</p>
+
+    <ul class="incluye revela">
+      <li>Qué transmite tu CV en los primeros segundos de lectura</li>
+      <li>Qué información de tu cargo no está quedando dimensionada</li>
+      <li>Cómo se ve tu perfil de LinkedIn para quien te busca sin conocerte</li>
+      <li>El punto más urgente de corregir, y por qué ese antes que los otros</li>
+    </ul>
+
+    <a href="https://optimizatucvia.com/revision-gratis/" class="boton revela">Enviar mi CV para revisión</a>
+    <span class="nota-cta revela">Sin costo y sin compromiso</span>
+
+    <p class="salto revela">Si prefieres saltarte el diagnóstico y trabajar el documento completo, acá está el <a href="https://optimizatucvia.com/ejecutivos/">Servicio Ejecutivo</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="envoltura">
+    OptimizaTuCV.IA &nbsp;·&nbsp; <a href="mailto:contacto@optimizatucvia.com">contacto@optimizatucvia.com</a>
+  </div>
+</footer>
+
+<script>
+var barra=document.getElementById('barra');
+window.addEventListener('scroll',function(){barra.classList.toggle('fija',window.scrollY>60);},{passive:true});
+
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.revela').forEach(function(el){io.observe(el);});
+
+var secciones=Array.prototype.slice.call(document.querySelectorAll('.sec'));
+var puntos=document.getElementById('puntos');
+secciones.forEach(function(s){
+  var b=document.createElement('b');
+  b.addEventListener('click',function(){s.scrollIntoView({behavior:'smooth'});});
+  puntos.appendChild(b);
+});
+var bolitas=puntos.querySelectorAll('b');
+var btnAbajo=document.getElementById('btnAbajo'),btnArriba=document.getElementById('btnArriba');
+
+function indiceActual(){
+  var y=window.scrollY+window.innerHeight*0.35,idx=0;
+  secciones.forEach(function(s,i){if(s.offsetTop<=y)idx=i;});
+  return idx;
+}
+function pinta(){
+  var i=indiceActual();
+  bolitas.forEach(function(b,j){b.classList.toggle('on',j===i);});
+  puntos.classList.toggle('claro',secciones[i].classList.contains('papel'));
+  btnArriba.classList.toggle('oculta',i===0);
+  btnAbajo.classList.toggle('oculta',i===secciones.length-1);
+}
+btnAbajo.addEventListener('click',function(){
+  secciones[Math.min(indiceActual()+1,secciones.length-1)].scrollIntoView({behavior:'smooth'});
+});
+btnArriba.addEventListener('click',function(){
+  secciones[Math.max(indiceActual()-1,0)].scrollIntoView({behavior:'smooth'});
+});
+window.addEventListener('scroll',pinta,{passive:true});
+pinta();
+
+var CRITERIOS=[
+ {t:'Escala del negocio',
+  i:'Un gerente de una empresa de 40 personas y uno de una de 4.000 tienen el mismo cargo y trabajos completamente distintos. Si el CV no lo aclara, el evaluador asume el escenario más pequeño.',
+  m:'Gerente Comercial. Responsable de la gestión comercial de la compañía.',
+  b:'Gerente Comercial de una operación con facturación y número de puntos de venta declarados, de modo que el tamaño del cargo se entienda en la primera línea.'},
+ {t:'Responsabilidad sobre resultados',
+  i:'La pregunta de fondo es si administraste un presupuesto o si respondiste por un resultado. Son dos niveles de exposición distintos y el evaluador necesita distinguirlos.',
+  m:'Encargado de cumplir las metas del área y controlar el presupuesto asignado.',
+  b:'Responsable del resultado de la unidad, con presupuesto propio y rendición ante el directorio, indicando el punto de partida y dónde quedó al final del período.'},
+ {t:'Tamaño y tipo de equipo',
+  i:'Dirigir cinco personas directas y una estructura de doscientos indirectos son escenarios opuestos. Sin ese dato, la experiencia de conducción no se puede evaluar.',
+  m:'Lideré el equipo del área, promoviendo un buen clima laboral y el trabajo colaborativo.',
+  b:'Conducción de un equipo con número de reportes directos e indirectos declarado, señalando si eran perfiles operativos, técnicos o jefaturas.'},
+ {t:'Alcance geográfico',
+  i:'Un cargo nacional, uno regional y uno de una sola planta se escriben igual y valen distinto. El alcance define la complejidad real del rol.',
+  m:'Gerente de Operaciones en empresa del rubro logístico.',
+  b:'Gerente de Operaciones con responsabilidad sobre las plantas o mercados que efectivamente cubrías, y las ciudades o países involucrados.'},
+ {t:'Contexto al llegar y al salir',
+  i:'Es lo que casi nadie escribe y lo que más pesa. No es lo mismo sostener una operación sana que dar vuelta una quebrada, y quien evalúa quiere saber en cuál de las dos estuviste.',
+  m:'Logré mejorar los indicadores del área durante mi gestión.',
+  b:'Cómo estaba la operación cuando llegaste, qué decidiste hacer y en qué estado quedó cuando saliste. Ahí está la evidencia de criterio, que es lo que se contrata a este nivel.'}
+];
+var panel=document.getElementById('panelCrit');
+var elT=document.getElementById('critTitulo'),elI=document.getElementById('critIntro'),
+    elM=document.getElementById('critMalo'),elB=document.getElementById('critBueno');
+document.getElementById('listaCrit').addEventListener('click',function(ev){
+  var btn=ev.target.closest('button'); if(!btn)return;
+  var c=CRITERIOS[+btn.dataset.i];
+  this.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-selected','false');});
+  btn.setAttribute('aria-selected','true');
+  elT.textContent=c.t; elI.textContent=c.i; elM.textContent=c.m; elB.textContent=c.b;
+  panel.classList.remove('cambia'); void panel.offsetWidth; panel.classList.add('cambia');
+});
+</script>
+
+</body>
+</html>
