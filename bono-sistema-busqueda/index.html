@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sistema de búsqueda de trabajo con IA | OptimizaTuCV.IA</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: guía de una columna con bandas a todo el ancho que alternan blanco, negro y lima; números gigantes por paso y flechas que guían la lectura */
+:root{
+  --ink:#111111;
+  --paper:#FFFFFF;
+  --lime:#C6F432;
+  --lime-soft:#EEFBC4;
+  --grey:#5C5F57;
+  --line:#D9D9D4;
+  --display:"Archivo Black","Arial Black",Impact,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+[hidden]{display:none!important}
+img{max-width:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.progress{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:6px;width:0;background:var(--lime);z-index:20;border-right:3px solid var(--ink)}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band{padding-block:72px}
+.band.dark{background:var(--ink);color:var(--paper)}
+.band.limeband{background:var(--lime);color:var(--ink)}
+.band.soft{background:#F4F4F0}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;line-height:1}
+h2{font-size:clamp(34px,6vw,54px);text-transform:uppercase;letter-spacing:-1px}
+h3{font-size:clamp(20px,3vw,26px);text-transform:uppercase;margin-top:8px}
+p{margin:0;max-width:65ch}
+.stack{display:flex;flex-direction:column;gap:20px}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:2px;text-transform:uppercase}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--lime);outline-offset:3px;box-shadow:0 0 0 6px var(--ink)}
+svg.ico{flex-shrink:0}
+
+/* Portada */
+.cover{padding-block:56px 64px;border-bottom:8px solid var(--ink)}
+.cover-top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:13px;letter-spacing:2px;text-transform:uppercase}
+.cover-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;margin-top:40px}
+.cover h1{font-size:clamp(48px,11vw,112px);text-transform:uppercase;letter-spacing:-3px;line-height:.92}
+.cover h1 mark{background:var(--lime);color:var(--ink);padding:0 .08em}
+.big5{font-family:var(--display);font-size:clamp(120px,22vw,220px);line-height:.75;-webkit-text-stroke:3px var(--ink);color:transparent}
+.sticker{display:inline-flex;align-items:center;gap:10px;background:var(--lime);border:3px solid var(--ink);padding:8px 16px;font-family:var(--display);font-size:18px;text-transform:uppercase;transform:rotate(-3deg);box-shadow:5px 5px 0 var(--ink)}
+.cover-sub{display:flex;gap:16px;align-items:flex-start;margin-top:28px}
+.cover-sub p{font-size:clamp(18px,2.4vw,22px);font-weight:500;line-height:1.45}
+.signature{margin-top:32px;font-family:var(--mono);font-size:14px;letter-spacing:1px}
+
+/* Ticker */
+.ticker{background:var(--ink);color:var(--lime);overflow:hidden;white-space:nowrap;border-block:3px solid var(--ink)}
+.ticker-track{display:inline-flex;gap:32px;padding-block:14px;font-family:var(--display);font-size:20px;text-transform:uppercase;animation:tick 28s linear infinite}
+.ticker-track span{display:inline-flex;align-items:center;gap:32px}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Mapa */
+.map{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;margin-top:28px}
+.map a{display:flex;justify-content:space-between;align-items:center;gap:12px;border:3px solid var(--ink);padding:14px 16px;text-decoration:none;font-weight:600;background:var(--paper);transition:transform .15s,box-shadow .15s}
+.map a:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink);background:var(--lime)}
+.map a .n{font-family:var(--display);font-size:22px}
+
+/* Encabezado de paso */
+.step-head{display:flex;gap:20px;align-items:flex-end;flex-wrap:wrap}
+.step-num{font-family:var(--display);font-size:clamp(110px,20vw,180px);line-height:.78;color:var(--lime);-webkit-text-stroke:3px var(--ink)}
+.dark .step-num{-webkit-text-stroke:3px var(--lime);color:transparent}
+.step-head .stack{gap:10px;min-width:0;flex:1 1 280px}
+
+/* Prompt */
+.prompt{border:3px solid var(--ink);background:var(--paper);color:var(--ink);position:relative}
+.prompt-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--ink);color:var(--paper);padding:8px 8px 8px 16px}
+.prompt-bar .eyebrow{font-size:12px}
+.copy{display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:var(--ink);border:2px solid var(--lime);font-family:var(--body);font-weight:700;font-size:14px;padding:8px 14px;cursor:pointer;min-height:44px}
+.copy:hover{background:var(--paper)}
+.copy.done{background:var(--paper)}
+.prompt pre{margin:0;padding:20px;white-space:pre-wrap;word-break:break-word;font-family:var(--body);font-size:15px;line-height:1.65}
+.prompt pre .ph{background:var(--lime-soft);font-weight:600;padding:0 3px}
+.dark .prompt{border-color:var(--lime)}
+
+/* Tips y notas */
+.tip{display:flex;gap:16px;align-items:flex-start;background:var(--lime);border:3px solid var(--ink);padding:18px 20px}
+.tip strong{font-family:var(--display);text-transform:uppercase;font-weight:400;display:block;font-size:18px;margin-bottom:4px}
+.dark .tip{color:var(--ink)}
+.note{border-left:8px solid var(--lime);padding:6px 0 6px 18px;font-weight:500}
+.dark .note{color:var(--paper)}
+.pointer{display:flex;align-items:center;gap:12px;font-family:var(--display);text-transform:uppercase;font-size:16px}
+.pointer svg{transform:rotate(8deg)}
+
+/* Listas */
+ul.clean,ol.clean{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+ul.clean li,ol.clean li{display:flex;gap:12px;align-items:flex-start}
+ol.steps{counter-reset:s}
+ol.steps li{counter-increment:s}
+ol.steps li::before{content:counter(s);flex-shrink:0;width:32px;height:32px;display:grid;place-items:center;background:var(--ink);color:var(--lime);font-family:var(--display);font-size:15px}
+.dark ol.steps li::before{background:var(--lime);color:var(--ink)}
+
+/* Tablas */
+.table-box{overflow-x:auto;border:3px solid var(--ink)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th{background:var(--ink);color:var(--lime);text-align:left;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:12px 14px}
+td{padding:12px 14px;border-top:2px solid var(--line);vertical-align:top;background:var(--paper);color:var(--ink)}
+td:first-child{font-weight:600}
+.dark .table-box{border-color:var(--lime)}
+
+/* Ejemplos antes y después */
+.examples{display:flex;flex-direction:column;gap:20px}
+.ex{border:3px solid var(--ink);background:var(--paper)}
+.ex-q{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;padding:16px 20px;border-bottom:3px solid var(--ink)}
+.ex-q .area{font-family:var(--mono);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;background:var(--ink);color:var(--lime);padding:3px 8px}
+.ex-q q{font-family:var(--display);font-size:20px;text-transform:uppercase;quotes:none}
+.ex-body{display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1.5fr)}
+.ex-before,.ex-after{padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+.ex-before{color:var(--grey);text-decoration:line-through;text-decoration-color:rgba(17,17,17,.35)}
+.ex-after{background:var(--lime-soft)}
+.ex-arrow{display:grid;place-items:center;background:var(--paper)}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;display:inline-block}
+.ex-why{padding:12px 20px;border-top:2px dashed var(--ink);font-size:15px;font-weight:500;display:flex;gap:10px;align-items:center}
+
+/* Checklist */
+.check{display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:2px solid var(--line);cursor:pointer}
+.check input{appearance:none;width:26px;height:26px;border:3px solid var(--ink);flex-shrink:0;display:grid;place-items:center;cursor:pointer;background:var(--paper)}
+.check input:checked{background:var(--lime)}
+.check input:checked::after{content:"";width:10px;height:6px;border-left:3px solid var(--ink);border-bottom:3px solid var(--ink);transform:rotate(-45deg) translate(1px,-1px)}
+.check input:checked + span{text-decoration:line-through;color:var(--grey)}
+
+/* Rutina */
+.routine{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px}
+.slot{border:3px solid var(--ink);padding:16px;display:flex;flex-direction:column;gap:8px;background:var(--paper)}
+.slot .min{font-family:var(--display);font-size:34px;line-height:1}
+.slot .paso{font-family:var(--mono);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-top:auto}
+.weeks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:0;border:3px solid var(--ink)}
+.week{padding:18px;display:flex;flex-direction:column;gap:8px;border-right:3px solid var(--ink);background:var(--paper)}
+.week:last-child{border-right:0}
+.week .w{font-family:var(--display);font-size:16px;text-transform:uppercase;background:var(--ink);color:var(--lime);align-self:flex-start;padding:2px 10px}
+.week .goal{font-weight:700;margin-top:auto;display:flex;gap:8px;align-items:center}
+
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.card{border:3px solid var(--ink);padding:20px;display:flex;flex-direction:column;gap:12px;background:var(--paper);color:var(--ink)}
+.card h3{margin:0}
+.badge{align-self:flex-start;background:var(--lime);border:2px solid var(--ink);font-weight:700;font-size:13px;padding:4px 10px}
+
+.closing{font-size:clamp(20px,3vw,26px);font-weight:500;line-height:1.5}
+.firma{font-family:var(--display);font-size:42px;text-transform:uppercase;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+
+@media (max-width:640px){
+  .band{padding-block:52px}
+  .cover-grid{grid-template-columns:1fr}
+  .big5{display:none}
+  .ex-body{grid-template-columns:1fr}
+  .ex-arrow{padding:6px 0}
+  .ex-arrow svg{transform:rotate(90deg)}
+  .week{border-right:0;border-bottom:3px solid var(--ink)}
+  .week:last-child{border-bottom:0}
+  .prompt-bar{flex-wrap:wrap}
+}
+@media (prefers-reduced-motion:reduce){
+  .ticker-track{animation:none}
+  html{scroll-behavior:auto}
+  .map a{transition:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="a-long" viewBox="0 0 120 24"><path d="M2 12H112" stroke="currentColor" stroke-width="4" fill="none"/><path d="M100 2L116 12L100 22" stroke="currentColor" stroke-width="4" fill="none" stroke-linejoin="miter"/></symbol>
+    <symbol id="a-curve" viewBox="0 0 90 70"><path d="M6 8C30 6 62 18 66 52" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M52 44L66 60L78 42" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="a-scribble" viewBox="0 0 110 60"><path d="M4 40C18 10 34 52 50 28C62 10 76 30 96 26" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M84 14L100 25L86 38" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="a-down" viewBox="0 0 40 48"><path d="M6 6L20 20L34 6M6 26L20 40L34 26" stroke="currentColor" stroke-width="5" fill="none"/></symbol>
+    <symbol id="a-circle" viewBox="0 0 44 44"><circle cx="22" cy="22" r="19" stroke="currentColor" stroke-width="3.5" fill="none"/><path d="M13 22H30M23 14L31 22L23 30" stroke="currentColor" stroke-width="3.5" fill="none"/></symbol>
+    <symbol id="a-dash" viewBox="0 0 120 24"><path d="M2 12H108" stroke="currentColor" stroke-width="4" stroke-dasharray="10 8" fill="none"/><path d="M100 4L114 12L100 20Z" fill="currentColor"/></symbol>
+    <symbol id="a-ne" viewBox="0 0 24 24"><path d="M6 18L18 6M8 6H18V16" stroke="currentColor" stroke-width="3" fill="none"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none"/><path d="M4 16V4H16" stroke="currentColor" stroke-width="2.5" fill="none"/></symbol>
+    <symbol id="i-bang" viewBox="0 0 32 32"><rect x="2" y="2" width="28" height="28" fill="#111111"/><path d="M16 7V19" stroke="#C6F432" stroke-width="4"/><rect x="14" y="22" width="4" height="4" fill="#C6F432"/></symbol>
+  </defs>
+</svg>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="cover">
+  <div class="wrap">
+    <div class="cover-top"><span>OptimizaTuCV.IA</span><span>Bono exclusivo CV Express IA</span></div>
+    <div class="cover-grid">
+      <div class="stack" style="gap:28px;min-width:0">
+        <span class="sticker">30 min al día <svg class="ico" width="22" height="22" aria-hidden="true"><use href="#a-ne"/></svg></span>
+        <h1>Busca trabajo con un <mark>sistema</mark></h1>
+      </div>
+      <div class="big5" aria-hidden="true">5</div>
+    </div>
+    <div class="cover-sub">
+      <svg class="ico" width="64" height="50" aria-hidden="true" style="margin-top:4px"><use href="#a-curve"/></svg>
+      <p>Sistema de búsqueda de trabajo con IA… 5 pasos para dejar de postular al azar y llegar a más entrevistas</p>
+    </div>
+    <p class="signature">Por Karin · OptimizaTuCV.IA</p>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Ficha de búsqueda <svg class="ico" width="40" height="16"><use href="#a-long"/></svg> Ofertas filtradas <svg class="ico" width="40" height="16"><use href="#a-long"/></svg> CV a medida <svg class="ico" width="40" height="16"><use href="#a-long"/></svg> Seguimiento simple <svg class="ico" width="40" height="16"><use href="#a-long"/></svg> Entrevistas preparadas <svg class="ico" width="40" height="16"><use href="#a-long"/></svg></span>
+    <span>Ficha de búsqueda <svg class="ico" width="40" height="16"><use href="#a-long"/></svg> Ofertas filtradas <svg class="ico" width="40" height="16"><use href="#a-long"/></svg> CV a medida <svg class="ico" width="40" height="16"><use href="#a-long"/></svg> Seguimiento simple <svg class="ico" width="40" height="16"><use href="#a-long"/></svg> Entrevistas preparadas <svg class="ico" width="40" height="16"><use href="#a-long"/></svg></span>
+  </div>
+</div>
+
+<main>
+
+<section class="band" id="bienvenida">
+  <div class="wrap stack">
+    <span class="eyebrow">Bienvenida</span>
+    <h2>Hola… soy Karin</h2>
+    <p>Si estás leyendo esto, ya tienes tu CV optimizado con CV Express IA. Ahora viene la parte que más cansa… buscar, postular y quedarte esperando sin saber si alguien te va a llamar.</p>
+    <p>Armé este sistema para que tu búsqueda deje de ser al azar. Son 5 pasos que configuras una sola vez y una rutina diaria de 30 a 45 minutos… nada más. La IA hace el trabajo pesado y tú tomas las decisiones.</p>
+    <h3>Cómo usar esta guía</h3>
+    <ol class="clean steps">
+      <li><span>El primer día haz los pasos 1 al 5 (te tomará cerca de una hora y media).</span></li>
+      <li><span>Desde el segundo día sigue la rutina diaria.</span></li>
+      <li><span>Cada prompt tiene su botón para copiarlo completo. Donde veas texto entre corchetes [ASÍ], reemplázalo por tu información.</span></li>
+    </ol>
+    <nav class="map" aria-label="Contenido de la guía">
+      <a href="#antes"><span>Antes de empezar</span><svg class="ico" width="20" height="20" aria-hidden="true"><use href="#a-ne"/></svg></a>
+      <a href="#paso-1"><span>Ficha de búsqueda</span><span class="n">1</span></a>
+      <a href="#paso-2"><span>Busca y filtra ofertas</span><span class="n">2</span></a>
+      <a href="#paso-3"><span>Adapta tu CV</span><span class="n">3</span></a>
+      <a href="#paso-4"><span>Anota tus postulaciones</span><span class="n">4</span></a>
+      <a href="#paso-5"><span>Prepara tus entrevistas</span><span class="n">5</span></a>
+      <a href="#rutina"><span>Rutina y plan de 30 días</span><svg class="ico" width="20" height="20" aria-hidden="true"><use href="#a-ne"/></svg></a>
+      <a href="#plus"><span>Plus con IA de pago</span><svg class="ico" width="20" height="20" aria-hidden="true"><use href="#a-ne"/></svg></a>
+      <a href="#extra"><span>Detrás de una entrevista</span><svg class="ico" width="20" height="20" aria-hidden="true"><use href="#a-ne"/></svg></a>
+    </nav>
+  </div>
+</section>
+
+<section class="band soft" id="antes">
+  <div class="wrap stack">
+    <span class="eyebrow">Antes de empezar</span>
+    <h2>Todo funciona gratis</h2>
+    <p>Esto es lo que necesitas tener a mano…</p>
+    <ul class="clean">
+      <li><svg class="ico" width="28" height="28" aria-hidden="true"><use href="#a-circle"/></svg><span><strong>Una IA gratis.</strong> ChatGPT o Claude, la que te acomode más. No necesitas pagar ningún plan.</span></li>
+      <li><svg class="ico" width="28" height="28" aria-hidden="true"><use href="#a-circle"/></svg><span><strong>Una cuenta de Google.</strong> Para tu correo y, si quieres, para anotar tus postulaciones.</span></li>
+      <li><svg class="ico" width="28" height="28" aria-hidden="true"><use href="#a-circle"/></svg><span><strong>Tu CV de CV Express</strong> en Word, listo para copiar su texto.</span></li>
+      <li><svg class="ico" width="28" height="28" aria-hidden="true"><use href="#a-circle"/></svg><span><strong>Tu perfil de LinkedIn</strong> actualizado con la misma información de tu CV.</span></li>
+      <li><svg class="ico" width="28" height="28" aria-hidden="true"><use href="#a-circle"/></svg><span><strong>Facebook</strong> (opcional). Solo si en tu país o tu área se publican ofertas en grupos.</span></li>
+    </ul>
+    <div class="tip"><svg class="ico" width="32" height="32" aria-hidden="true"><use href="#i-bang"/></svg><div><strong>Un consejo antes de partir</strong>Crea una conversación nueva en la IA y ponle de nombre "Mi búsqueda de trabajo". Úsala siempre para lo mismo, así la IA recuerda tu perfil. Si la conversación se vuelve muy larga o lenta, abre una nueva y pega tu Ficha de búsqueda.</div></div>
+  </div>
+</section>
+
+<section class="band" id="paso-1">
+  <div class="wrap stack">
+    <div class="step-head"><span class="step-num" aria-hidden="true">1</span><div class="stack"><span class="eyebrow">Paso 1 de 5 · se hace una vez</span><h2>Arma tu Ficha de búsqueda</h2></div></div>
+    <p>Este es el paso más importante… y lo haces una sola vez. La IA te va a entrevistar, pregunta por pregunta, para saber exactamente qué buscas. Con eso arma tu Ficha de búsqueda, que vas a usar en todos los pasos siguientes.</p>
+    <div class="pointer"><span>Copia, pega tu CV al final y envía</span><svg class="ico" width="60" height="46" aria-hidden="true"><use href="#a-curve"/></svg></div>
+    <div class="prompt"><div class="prompt-bar"><span class="eyebrow">Prompt · Ficha de búsqueda</span><button class="copy" type="button" id="copy-1"><svg class="ico" width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar prompt</span></button></div><pre>Quiero que actúes como mi asesora de búsqueda de empleo. Más abajo te pego mi CV. Antes de entregarme cualquier cosa, hazme preguntas UNA A LA VEZ y espera mi respuesta antes de pasar a la siguiente. Necesito que me preguntes por el cargo que busco, otros cargos parecidos que también me servirían, mi país y ciudad, si busco trabajo presencial, híbrido o remoto, mi expectativa de sueldo, la jornada que puedo cumplir, las industrias o tipos de empresa que me interesan, lo que no estoy dispuesto o dispuesta a aceptar y mis 3 logros laborales más importantes. Si una respuesta mía es muy general, pídeme un ejemplo concreto. Cuando tengas todo, entrégame mi FICHA DE BÚSQUEDA con estas partes. 1) Cargo principal y 4 a 6 nombres alternativos con que se suelen publicar esas ofertas. 2) Palabras clave para buscar ofertas. 3) Condiciones (ubicación, modalidad, sueldo y jornada). 4) Filtros de descarte, o sea, lo que hace que una oferta no me sirva. 5) Mis 3 logros, en una frase cada uno y con números si los hay. Escribe en español simple y no inventes nada que no esté en mi CV o en mis respuestas.
+
+Mi CV es este
+<span class="ph">[PEGA AQUÍ EL TEXTO DE TU CV]</span></pre></div>
+    <div class="tip"><svg class="ico" width="32" height="32" aria-hidden="true"><use href="#i-bang"/></svg><div><strong>Guárdala</strong>Cuando la IA te entregue la ficha, cópiala en un documento de Google llamado "Ficha de búsqueda". La vas a pegar muchas veces, así que tenla siempre a mano.</div></div>
+  </div>
+</section>
+
+<section class="band soft" id="paso-2">
+  <div class="wrap stack">
+    <div class="step-head"><span class="step-num" aria-hidden="true">2</span><div class="stack"><span class="eyebrow">Paso 2 de 5</span><h2>Busca y filtra ofertas</h2></div></div>
+    <p>La idea no es postular a todo lo que aparezca… es encontrar las ofertas que de verdad calzan contigo. Primero le pides a la IA tus búsquedas listas y después la usas para filtrar.</p>
+    <h3>Tus búsquedas listas</h3>
+    <p>Pega este prompt en tu conversación (la IA ya tiene tu ficha, si no, pégala al final).</p>
+    <div class="prompt"><div class="prompt-bar"><span class="eyebrow">Prompt · Búsquedas listas</span><button class="copy" type="button" id="copy-2"><svg class="ico" width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar prompt</span></button></div><pre>Con mi Ficha de búsqueda, prepárame mis búsquedas de empleo listas para copiar y pegar. 1) Para LinkedIn Empleos, entrégame 3 búsquedas con los nombres de cargo combinados con OR y entre comillas, más los filtros que me conviene activar. 2) Para Google, entrégame 5 búsquedas usando site: con los portales de empleo más usados en mi país (por ejemplo Computrabajo, Indeed, Bumeran, Laborum, Trabajando.com, OCC o InfoJobs, según corresponda) y dime que use el filtro de fecha "Última semana". 3) Para Facebook, dame 6 palabras o frases para buscar grupos de empleo de mi área y mi ciudad o país, y 5 palabras para buscar ofertas dentro de esos grupos. 4) Dame 3 a 5 portales de empleo especializados en mi rubro y en mi país (por ejemplo, en Chile existen Get on Board para tecnología, ProfeJOBS para docentes y Work on Law para abogados), más el portal de empleo público de mi país. Si no estás segura de que un portal existe, no lo incluyas. No me expliques cómo funcionan, solo entrégame las búsquedas ordenadas.</pre></div>
+    <div class="pointer"><span>Con esas búsquedas</span><svg class="ico" width="34" height="40" aria-hidden="true"><use href="#a-down"/></svg></div>
+    <div class="split">
+      <div class="card"><span class="badge">LinkedIn</span><p>Guarda cada búsqueda y activa la alerta de empleo. Así las ofertas nuevas te llegan solas al correo.</p></div>
+      <div class="card"><span class="badge">Google</span><p>Guarda las búsquedas en un documento y úsalas cada día con el filtro de fecha.</p></div>
+      <div class="card"><span class="badge">Portales de tu rubro</span><p>Crea tu perfil y activa las alertas. Ahí hay menos competencia que en los portales grandes.</p></div>
+      <div class="card"><span class="badge">Facebook</span><p>Únete a 5 a 10 grupos activos (que tengan publicaciones de esta semana) y busca dentro de ellos con tus palabras.</p></div>
+    </div>
+    <h3>Filtra antes de postular</h3>
+    <p>Cada vez que una oferta te interese, copia su texto completo y pégalo con este prompt. En menos de un minuto sabes si vale la pena.</p>
+    <div class="prompt"><div class="prompt-bar"><span class="eyebrow">Prompt · Filtro de ofertas</span><button class="copy" type="button" id="copy-3"><svg class="ico" width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar prompt</span></button></div><pre>Evalúa esta oferta según mi Ficha de búsqueda. Dame 1) un puntaje de compatibilidad del 1 al 10, 2) los requisitos que cumplo y los que no, 3) si choca con alguno de mis filtros de descarte, 4) señales de alerta de posible estafa (por ejemplo, que pidan pagar para postular, datos bancarios, un sueldo demasiado alto para el cargo o contacto solo por WhatsApp sin nombre de empresa) y 5) tu recomendación en una frase, postular o no postular. Sé directa y breve.
+
+Oferta
+<span class="ph">[PEGA AQUÍ EL TEXTO DE LA OFERTA]</span></pre></div>
+    <p class="note">Mi recomendación… postula solo a las que tengan 7 o más. Es mejor enviar 3 postulaciones buenas al día que 20 a ciegas.</p>
+  </div>
+</section>
+
+<section class="band" id="paso-3">
+  <div class="wrap stack">
+    <div class="step-head"><span class="step-num" aria-hidden="true">3</span><div class="stack"><span class="eyebrow">Paso 3 de 5</span><h2>Adapta tu CV a cada oferta</h2></div></div>
+    <p>Tu CV de CV Express ya está optimizado para filtros ATS. Ahora solo le haces pequeños ajustes para cada oferta, sobre todo en el perfil profesional y en los logros, para que use las mismas palabras que la empresa… así el sistema y el reclutador te reconocen de inmediato.</p>
+    <div class="prompt"><div class="prompt-bar"><span class="eyebrow">Prompt · CV a medida</span><button class="copy" type="button" id="copy-4"><svg class="ico" width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar prompt</span></button></div><pre>Te pego mi CV y una oferta de trabajo. Quiero que adaptes mi CV a esta oferta sin cambiar el formato. 1) Identifica las palabras clave de la oferta que no aparecen en mi CV. 2) Reescribe mi perfil profesional usando esas palabras, en máximo 4 líneas. 3) Reordena o ajusta mis logros para que aparezcan primero los que más se relacionan con la oferta. 4) Dime qué palabras clave no pudiste incluir porque no tengo esa experiencia. Muy importante, no inventes experiencia, cargos, estudios ni números que no estén en mi CV. Entrégame solo las secciones modificadas, listas para copiar.
+
+Mi CV
+<span class="ph">[PEGA AQUÍ EL TEXTO DE TU CV]</span>
+
+Oferta
+<span class="ph">[PEGA AQUÍ EL TEXTO DE LA OFERTA]</span></pre></div>
+    <p>Copia los cambios en tu Word y guárdalo con un nombre claro, por ejemplo "CV_TuNombre_Empresa". Después lo exportas en PDF, salvo que la oferta pida Word.</p>
+    <h3>Tu mensaje de postulación</h3>
+    <p>Muchas ofertas piden un correo o un mensaje corto (sobre todo en Facebook y en LinkedIn). Este prompt te lo deja listo.</p>
+    <div class="prompt"><div class="prompt-bar"><span class="eyebrow">Prompt · Mensaje de postulación</span><button class="copy" type="button" id="copy-5"><svg class="ico" width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar prompt</span></button></div><pre>Con mi CV adaptado y la oferta anterior, escríbeme un mensaje de postulación breve, máximo 6 líneas, en primera persona, cálido y profesional, que no suene a plantilla. Menciona el cargo, una razón concreta de por qué calzo y uno de mis logros con número. Termina con una invitación simple a conversar. Si es un correo, agrega un asunto corto. Formato <span class="ph">[CORREO / MENSAJE DE LINKEDIN / COMENTARIO O MENSAJE EN FACEBOOK]</span>.</pre></div>
+    <div class="tip"><svg class="ico" width="32" height="32" aria-hidden="true"><use href="#i-bang"/></svg><div><strong>La IA prepara, tú postulas</strong>Revisa el mensaje, cámbiale lo que no suene a ti… y envíalo tú. Las plataformas como LinkedIn y Facebook pueden restringir las cuentas que postulan de forma automática, así que este paso siempre lo haces a mano.</div></div>
+    <h3>Si pasa una semana y no te responden</h3>
+    <p>Puedes enviar un solo seguimiento, amable y corto. Si después de eso no responden, o te contestan algo como "gracias, lo revisaremos", no insistas más… tu energía va mejor en postulaciones nuevas.</p>
+    <div class="prompt"><div class="prompt-bar"><span class="eyebrow">Prompt · Seguimiento</span><button class="copy" type="button" id="copy-6"><svg class="ico" width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar prompt</span></button></div><pre>Escríbeme un mensaje de seguimiento muy breve (máximo 4 líneas) para la postulación a <span class="ph">[CARGO]</span> en <span class="ph">[EMPRESA]</span>, que envié el <span class="ph">[FECHA]</span>. Tono cercano y profesional, sin sonar insistente. Solo quiero confirmar que recibieron mi postulación y reiterar mi interés.</pre></div>
+  </div>
+</section>
+
+<section class="band limeband" id="paso-4">
+  <div class="wrap stack">
+    <div class="step-head"><span class="step-num" aria-hidden="true" style="color:var(--paper)">4</span><div class="stack"><span class="eyebrow">Paso 4 de 5</span><h2>Anota tus postulaciones (sin complicarte)</h2></div></div>
+    <p>No necesitas saber Excel… solo anotar. Los cálculos y los resúmenes los hace la IA por ti.</p>
+    <h3>Dónde anotar</h3>
+    <p>Elige lo que te resulte más cómodo, una nota en tu celular, un documento de Google o una planilla. Lo importante es escribir una línea por cada postulación, siempre en este orden.</p>
+    <div class="prompt"><div class="prompt-bar"><span class="eyebrow">El orden de cada línea</span><button class="copy" type="button" id="copy-7"><svg class="ico" width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar</span></button></div><pre>Fecha – Empresa – Cargo – Dónde postulé – Estado – Notas</pre></div>
+    <div class="pointer"><span>Por ejemplo</span><svg class="ico" width="80" height="44" aria-hidden="true"><use href="#a-scribble"/></svg></div>
+    <div class="prompt"><div class="prompt-bar"><span class="eyebrow">Ejemplo</span><button class="copy" type="button" id="copy-8"><svg class="ico" width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar</span></button></div><pre>03/11 – Transportes Andes – Asistente administrativa – LinkedIn – Postulé – Envié CV adaptado
+04/11 – Clínica Norte – Recepcionista – Computrabajo – Me llamaron – Entrevista el jueves 10:00 con Paula</pre></div>
+    <p class="note" style="border-color:var(--ink)">Para el estado usa siempre las mismas palabras… Postulé, Me llamaron, Entrevista, Oferta o No quedé. Cuando algo cambie, solo actualiza esa palabra.</p>
+    <h3>Cuando recibas un correo de una empresa</h3>
+    <p>Si no sabes bien qué responder, pégalo con este prompt.</p>
+    <div class="prompt"><div class="prompt-bar"><span class="eyebrow">Prompt · Responder correos</span><button class="copy" type="button" id="copy-9"><svg class="ico" width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar prompt</span></button></div><pre>Te pego un correo que recibí sobre una postulación. Dime en una frase qué me están pidiendo, qué estado debo anotar (Me llamaron, Entrevista, Oferta o No quedé) y escríbeme una respuesta breve, cercana y profesional en primera persona. Si es un rechazo, dame una respuesta corta y agradecida que deje la puerta abierta.
+
+Correo
+<span class="ph">[PEGA AQUÍ EL CORREO]</span></pre></div>
+    <h3>Tu resumen de cada viernes</h3>
+    <p>Copia todas tus líneas de postulaciones y pégalas con este prompt. La IA te entrega tus números y qué ajustar, sin que tengas que calcular nada.</p>
+    <div class="prompt"><div class="prompt-bar"><span class="eyebrow">Prompt · Resumen semanal</span><button class="copy" type="button" id="copy-10"><svg class="ico" width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar prompt</span></button></div><pre>Te pego la lista de mis postulaciones. Hazme un resumen simple con 1) cuántas postulaciones llevo en total y cuántas esta semana, 2) cuántas me respondieron y qué porcentaje es, 3) cuántas entrevistas y ofertas tengo, 4) desde qué plataforma me responden más, 5) qué tipo de cargo o empresa me responde más y 6) tres ajustes concretos para la próxima semana. Usa frases cortas y lenguaje simple.
+
+<span class="ph">[PEGA AQUÍ TU LISTA]</span></pre></div>
+  </div>
+</section>
+
+<section class="band dark" id="paso-5">
+  <div class="wrap stack">
+    <div class="step-head"><span class="step-num" aria-hidden="true">5</span><div class="stack"><span class="eyebrow">Paso 5 de 5</span><h2>Prepara tus entrevistas con el simulador</h2></div></div>
+    <p>Te llamaron… ¡bien! Ahora toca prepararse. Como fonoaudióloga, te cuento algo que veo siempre… muchas personas saben hacer muy bien su trabajo, pero no saben contarlo. Este simulador te hace las preguntas que probablemente te van a hacer y te ayuda a armar respuestas claras, concretas y con tus propias palabras.</p>
+    <div class="prompt"><div class="prompt-bar"><span class="eyebrow">Prompt · Simulador de entrevista</span><button class="copy" type="button" id="copy-11"><svg class="ico" width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar prompt</span></button></div><pre>Quiero que actúes como la persona que me va a entrevistar para el cargo de <span class="ph">[CARGO]</span> en <span class="ph">[EMPRESA]</span>. Más abajo te pego la oferta y mi CV. Hazme una entrevista realista de 8 preguntas, UNA A LA VEZ, y espera mi respuesta antes de seguir. Mezcla preguntas de presentación, de motivación, de experiencia (pídeme ejemplos concretos), técnicas del cargo, situaciones difíciles y expectativa de sueldo. Después de cada respuesta mía, dime 1) qué estuvo bien, 2) qué le falta (claridad, un ejemplo concreto, un resultado con números o una idea más corta) y 3) una versión mejorada que suene natural y en primera persona, usando solo información real que yo te haya dado. Mi respuesta ideal debería durar entre 1 y 2 minutos hablada. Al final, entrégame un resumen con mis 3 mejores respuestas, los 2 puntos que más debo practicar y 3 preguntas inteligentes que yo puedo hacerle a la empresa.
+
+Oferta
+<span class="ph">[PEGA AQUÍ LA OFERTA]</span>
+
+Mi CV
+<span class="ph">[PEGA AQUÍ TU CV]</span></pre></div>
+    <h3>Cómo hablar para que te entiendan y te recuerden</h3>
+    <ul class="clean">
+      <li><svg class="ico" width="40" height="16" aria-hidden="true" style="color:var(--lime);margin-top:6px"><use href="#a-long"/></svg><span><strong>Habla en primera persona.</strong> Di "yo coordiné" en vez de "se coordinó" o "participé en". Tu aporte tiene que escucharse.</span></li>
+      <li><svg class="ico" width="40" height="16" aria-hidden="true" style="color:var(--lime);margin-top:6px"><use href="#a-long"/></svg><span><strong>Cuenta tus ejemplos en tres partes.</strong> La situación, lo que hiciste tú y el resultado (mejor si tiene un número).</span></li>
+      <li><svg class="ico" width="40" height="16" aria-hidden="true" style="color:var(--lime);margin-top:6px"><use href="#a-long"/></svg><span><strong>Frases cortas.</strong> Una idea por frase. Si te pierdes, respira y vuelve a la idea principal.</span></li>
+      <li><svg class="ico" width="40" height="16" aria-hidden="true" style="color:var(--lime);margin-top:6px"><use href="#a-long"/></svg><span><strong>Practica en voz alta.</strong> Lee tus respuestas 3 veces en voz alta y después dilas sin leer. No las memorices palabra por palabra… se nota.</span></li>
+      <li><svg class="ico" width="40" height="16" aria-hidden="true" style="color:var(--lime);margin-top:6px"><use href="#a-long"/></svg><span><strong>Grábate una vez con el celular.</strong> Fíjate en las muletillas ("eh", "o sea", "¿me entiendes?"). Solo con notarlas, empiezan a bajar.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band soft" id="ejemplos">
+  <div class="wrap stack">
+    <span class="eyebrow">Paso 5 · ejemplos</span>
+    <h2>Antes y después</h2>
+    <p>Lee estos ejemplos de distintas áreas para ver la diferencia entre una respuesta que se olvida y una que se queda en la memoria de quien entrevista.</p>
+    <div class="examples">
+      <article class="ex">
+        <div class="ex-q"><span class="area">Primer empleo</span><q>"Háblame de ti"</q></div>
+        <div class="ex-body">
+          <div class="ex-before"><span class="tag">Antes</span><span>"Bueno, soy egresada de Contabilidad, soy responsable, proactiva y me gusta aprender cosas nuevas."</span></div>
+          <div class="ex-arrow"><svg class="ico" width="40" height="40" aria-hidden="true"><use href="#a-circle"/></svg></div>
+          <div class="ex-after"><span class="tag">Después</span><span>"Soy contadora recién titulada. En mi práctica en una empresa de transporte me encargué de conciliar las cuentas bancarias de 3 sucursales, y logré dejarlas al día en dos semanas cuando tenían un mes de atraso. Me gusta el trabajo ordenado y con plazos claros, y por eso me interesa este cargo de asistente contable."</span></div>
+        </div>
+        <div class="ex-why"><svg class="ico" width="22" height="22" aria-hidden="true"><use href="#a-ne"/></svg><span>En vez de adjetivos que dice todo el mundo, hay un ejemplo real con un resultado.</span></div>
+      </article>
+      <article class="ex">
+        <div class="ex-q"><span class="area">Atención al cliente</span><q>"Cuéntame de una vez que resolviste un problema con un cliente"</q></div>
+        <div class="ex-body">
+          <div class="ex-before"><span class="tag">Antes</span><span>"Siempre trato de ayudar a los clientes y de mantener la calma."</span></div>
+          <div class="ex-arrow"><svg class="ico" width="40" height="40" aria-hidden="true"><use href="#a-circle"/></svg></div>
+          <div class="ex-after"><span class="tag">Después</span><span>"Un cliente llegó muy molesto porque su pedido se había atrasado dos veces. Primero lo escuché sin interrumpir, después revisé el sistema con él y le di una fecha de entrega concreta. Lo llamé ese mismo día para confirmarle el despacho. Terminó comprando de nuevo al mes siguiente y nos dejó una buena reseña."</span></div>
+        </div>
+        <div class="ex-why"><svg class="ico" width="22" height="22" aria-hidden="true"><use href="#a-ne"/></svg><span>Se entiende la situación, lo que hizo la persona y cómo terminó.</span></div>
+      </article>
+      <article class="ex">
+        <div class="ex-q"><span class="area">Administración</span><q>"¿Cuál es tu principal fortaleza?"</q></div>
+        <div class="ex-body">
+          <div class="ex-before"><span class="tag">Antes</span><span>"Soy muy organizada."</span></div>
+          <div class="ex-arrow"><svg class="ico" width="40" height="40" aria-hidden="true"><use href="#a-circle"/></svg></div>
+          <div class="ex-after"><span class="tag">Después</span><span>"Mi fortaleza es la organización. En mi último trabajo armé una planilla para controlar las facturas pendientes, y en tres meses bajamos los pagos atrasados a proveedores casi a cero. Desde entonces el equipo la sigue usando."</span></div>
+        </div>
+        <div class="ex-why"><svg class="ico" width="22" height="22" aria-hidden="true"><use href="#a-ne"/></svg><span>La fortaleza viene con una prueba.</span></div>
+      </article>
+      <article class="ex">
+        <div class="ex-q"><span class="area">Salud</span><q>"¿Cómo manejas la presión en un turno con mucha demanda?"</q></div>
+        <div class="ex-body">
+          <div class="ex-before"><span class="tag">Antes</span><span>"Trabajo bien bajo presión."</span></div>
+          <div class="ex-arrow"><svg class="ico" width="40" height="40" aria-hidden="true"><use href="#a-circle"/></svg></div>
+          <div class="ex-after"><span class="tag">Después</span><span>"En urgencias tuve turnos con el doble de pacientes de lo normal. Lo que me funciona es priorizar según la gravedad, avisar a tiempo cuando necesito apoyo y dejar todo registrado antes de pasar al siguiente paciente. Así no se me escapa nada y el cambio de turno queda ordenado."</span></div>
+        </div>
+        <div class="ex-why"><svg class="ico" width="22" height="22" aria-hidden="true"><use href="#a-ne"/></svg><span>En vez de afirmar algo, cuenta cómo lo hace.</span></div>
+      </article>
+      <article class="ex">
+        <div class="ex-q"><span class="area">Tecnología</span><q>"Háblame de un proyecto del que te sientas orgulloso u orgullosa"</q></div>
+        <div class="ex-body">
+          <div class="ex-before"><span class="tag">Antes</span><span>"Trabajé en varios proyectos de desarrollo web con distintas tecnologías."</span></div>
+          <div class="ex-arrow"><svg class="ico" width="40" height="40" aria-hidden="true"><use href="#a-circle"/></svg></div>
+          <div class="ex-after"><span class="tag">Después</span><span>"Rehíce el formulario de compra de una tienda en línea porque muchas personas lo abandonaban a la mitad. Lo reduje de 4 pasos a 2 y lo probé con usuarios reales antes de lanzarlo. En el primer mes, las compras terminadas subieron cerca de un 20 %."</span></div>
+        </div>
+        <div class="ex-why"><svg class="ico" width="22" height="22" aria-hidden="true"><use href="#a-ne"/></svg><span>Un proyecto concreto, explicado en simple y con un resultado medible.</span></div>
+      </article>
+      <article class="ex">
+        <div class="ex-q"><span class="area">Logística y operaciones</span><q>"¿Por qué dejaste tu último trabajo?"</q></div>
+        <div class="ex-body">
+          <div class="ex-before"><span class="tag">Antes</span><span>"Porque había muchos problemas con la jefatura y no me valoraban."</span></div>
+          <div class="ex-arrow"><svg class="ico" width="40" height="40" aria-hidden="true"><use href="#a-circle"/></svg></div>
+          <div class="ex-after"><span class="tag">Después</span><span>"Estuve 4 años en la bodega y aprendí mucho, sobre todo a manejar inventarios grandes. Llegué a un punto en que no había posibilidades de crecer, y quiero un cargo donde pueda coordinar un equipo, como el que ustedes ofrecen."</span></div>
+        </div>
+        <div class="ex-why"><svg class="ico" width="22" height="22" aria-hidden="true"><use href="#a-ne"/></svg><span>No habla mal del trabajo anterior y conecta su motivo con el cargo al que postula.</span></div>
+      </article>
+    </div>
+    <h3>El día antes</h3>
+    <div>
+      <label class="check" for="d1"><input type="checkbox" id="d1"><span>Revisa la oferta y tu CV adaptado.</span></label>
+      <label class="check" for="d2"><input type="checkbox" id="d2"><span>Busca la empresa en Google y en LinkedIn (qué hace, novedades recientes, quién te va a entrevistar).</span></label>
+      <label class="check" for="d3"><input type="checkbox" id="d3"><span>Lee tus respuestas mejoradas en voz alta.</span></label>
+      <label class="check" for="d4"><input type="checkbox" id="d4"><span>Si es en línea, prueba la cámara, el audio y el enlace.</span></label>
+      <label class="check" for="d5"><input type="checkbox" id="d5"><span>Ten a mano tus 3 preguntas para la empresa.</span></label>
+      <label class="check" for="d6"><input type="checkbox" id="d6"><span>Anota la fecha y la hora en tu lista de postulaciones.</span></label>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="rutina">
+  <div class="wrap stack">
+    <span class="eyebrow">Desde el día 2</span>
+    <h2>Tu rutina diaria y plan de 30 días</h2>
+    <p>Ya tienes todo configurado. Desde ahora tu búsqueda se reduce a 30 o 45 minutos al día, de lunes a viernes.</p>
+    <div class="routine">
+      <div class="slot"><span class="min">10'</span><span>Revisa correos, mensajes y alertas de empleo. Anota tus postulaciones</span><span class="paso">Paso 4</span></div>
+      <div class="slot"><span class="min">15'</span><span>Busca ofertas nuevas en LinkedIn, Google y Facebook, y filtra las que te interesan</span><span class="paso">Paso 2</span></div>
+      <div class="slot"><span class="min">15'</span><span>Adapta tu CV y postula a 2 o 3 ofertas con puntaje 7 o más</span><span class="paso">Paso 3</span></div>
+      <div class="slot" style="background:var(--lime)"><span class="min">5'</span><span>Si tienes una entrevista cerca, practica una pregunta con el simulador</span><span class="paso">Paso 5</span></div>
+    </div>
+    <p class="note">Los viernes suma 10 minutos para revisar tus números con la IA.</p>
+
+    <h3>Tus tareas y recordatorios en Todoist</h3>
+    <p>Si te cuesta ser constante, Todoist te muestra cada día lo que te toca hacer. Es una app gratis para celular y computador.</p>
+    <ol class="clean steps">
+      <li><span>Descarga Todoist en tu celular o entra a todoist.com.</span></li>
+      <li><span>Crea tu cuenta gratis.</span></li>
+      <li><span>Crea un proyecto llamado "Búsqueda de trabajo".</span></li>
+      <li><span>Dentro del proyecto, agrega cada tarea de la tabla tal como está escrita.</span></li>
+      <li><span>Antes de guardar cada tarea, revisa que la fecha aparezca marcada.</span></li>
+      <li><span>Cada vez que termines una tarea, márcala como hecha.</span></li>
+    </ol>
+    <div class="table-box"><table>
+      <thead><tr><th scope="col">Escribe esta tarea</th><th scope="col">Se repite</th></tr></thead>
+      <tbody>
+        <tr><td>Revisar correos y anotar postulaciones cada día laborable</td><td>De lunes a viernes</td></tr>
+        <tr><td>Buscar y filtrar ofertas nuevas cada día laborable</td><td>De lunes a viernes</td></tr>
+        <tr><td>Adaptar CV y postular a 2 o 3 ofertas cada día laborable</td><td>De lunes a viernes</td></tr>
+        <tr><td>Pedir mi resumen semanal a la IA cada viernes</td><td>Todos los viernes</td></tr>
+        <tr><td>Contactar a un reclutador por LinkedIn cada miércoles</td><td>Todos los miércoles (desde la semana 3)</td></tr>
+      </tbody>
+    </table></div>
+    <p>Si la app no reconoce la repetición, toca Fecha y elígela a mano.</p>
+
+    <h3>Plan de 30 días</h3>
+    <div class="weeks">
+      <div class="week"><span class="w">Semana 1</span><span>Configura los pasos 1 al 5 y empieza la rutina</span><span class="goal"><svg class="ico" width="20" height="20" aria-hidden="true"><use href="#a-ne"/></svg>10 a 15 postulaciones de calidad</span></div>
+      <div class="week"><span class="w">Semana 2</span><span>Sigue la rutina y ajusta tus búsquedas según lo que te dijo la IA el viernes</span><span class="goal"><svg class="ico" width="20" height="20" aria-hidden="true"><use href="#a-ne"/></svg>Tus primeras respuestas</span></div>
+      <div class="week"><span class="w">Semana 3</span><span>Además de postular, contacta a 2 o 3 reclutadores por LinkedIn a la semana</span><span class="goal"><svg class="ico" width="20" height="20" aria-hidden="true"><use href="#a-ne"/></svg>Al menos 1 o 2 entrevistas</span></div>
+      <div class="week" style="background:var(--lime)"><span class="w">Semana 4</span><span>Prepara cada entrevista con el simulador y revisa tus números del mes</span><span class="goal"><svg class="ico" width="20" height="20" aria-hidden="true"><use href="#a-ne"/></svg>Saber qué funciona y repetirlo</span></div>
+    </div>
+    <p>No te frustres si la primera semana nadie responde… es normal. Las respuestas suelen llegar desde la segunda o tercera semana, cuando ya tienes varias postulaciones en movimiento.</p>
+    <div class="pointer"><span>Para contactar reclutadores</span><svg class="ico" width="90" height="18" aria-hidden="true"><use href="#a-dash"/></svg></div>
+    <div class="prompt"><div class="prompt-bar"><span class="eyebrow">Prompt · Mensaje a reclutadores</span><button class="copy" type="button" id="copy-12"><svg class="ico" width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar prompt</span></button></div><pre>Escríbeme un mensaje corto para LinkedIn (máximo 5 líneas) para una persona de reclutamiento de <span class="ph">[EMPRESA]</span>. Quiero presentarme para cargos de <span class="ph">[CARGO]</span>, mencionar un logro concreto mío y preguntar si tienen o tendrán procesos abiertos. Tono cercano y profesional, en primera persona, sin sonar a plantilla ni a venta.</pre></div>
+  </div>
+</section>
+
+<section class="band dark" id="plus">
+  <div class="wrap stack">
+    <span class="sticker" style="color:var(--ink)">Opcional</span>
+    <h2>Plus… si usas una IA de pago</h2>
+    <p>Todo lo anterior funciona gratis. Pero si estás dispuesto o dispuesta a pagar un plan de IA (desde unos 20 USD al mes), la IA puede recorrer las páginas de empleo por ti y entregarte las ofertas ya filtradas. Es como tener a alguien que te hace la primera búsqueda del día.</p>
+    <div class="split">
+      <div class="card"><span class="badge">Claude in Chrome</span><p>La extensión de Claude trabaja dentro de tu propio navegador, con tus sesiones abiertas, así que puede revisar LinkedIn, tus grupos de Facebook y los portales donde ya entraste.</p><p style="font-weight:600">Necesitas el plan pagado de Claude (Pro o superior) y Google Chrome en tu computador.</p></div>
+      <div class="card"><span class="badge">Agente de ChatGPT</span><p>Navega por internet desde ChatGPT para buscar ofertas y armar listas.</p><p style="font-weight:600">Necesitas el plan pagado de ChatGPT (Plus o superior).</p></div>
+    </div>
+    <p class="note">Ninguna de las dos funciona con la cuenta gratis.</p>
+    <div class="split">
+      <div class="stack" style="gap:14px"><h3>Cómo activar Claude in Chrome</h3>
+        <ol class="clean steps">
+          <li><span>Contrata el plan Pro en claude.ai.</span></li>
+          <li><span>En tu computador, abre Google Chrome.</span></li>
+          <li><span>Entra a la Chrome Web Store y busca "Claude" (de Anthropic).</span></li>
+          <li><span>Haz clic en Agregar a Chrome.</span></li>
+          <li><span>Inicia sesión con tu cuenta de Claude.</span></li>
+          <li><span>Abre LinkedIn en otra pestaña y deja tu sesión iniciada.</span></li>
+          <li><span>Abre la extensión y pega el prompt de abajo.</span></li>
+        </ol>
+      </div>
+      <div class="stack" style="gap:14px"><h3>Cómo activar el agente de ChatGPT</h3>
+        <ol class="clean steps">
+          <li><span>Contrata el plan Plus en chatgpt.com.</span></li>
+          <li><span>Abre una conversación nueva.</span></li>
+          <li><span>Toca el ícono de herramientas y elige Agente.</span></li>
+          <li><span>Pega el prompt de abajo.</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="pointer" style="color:var(--lime)"><span>El prompt para tu búsqueda diaria</span><svg class="ico" width="34" height="40" aria-hidden="true"><use href="#a-down"/></svg></div>
+    <div class="prompt"><div class="prompt-bar"><span class="eyebrow">Prompt · Búsqueda automática</span><button class="copy" type="button" id="copy-13"><svg class="ico" width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar prompt</span></button></div><pre>Busca ofertas de trabajo publicadas en los últimos 2 días que calcen con mi Ficha de búsqueda. Revisa LinkedIn Empleos, Google y estos portales de mi rubro <span class="ph">[NOMBRES DE LOS PORTALES QUE TE DIO LA IA EN EL PASO 2]</span>. Entrégame una lista ordenada de mayor a menor compatibilidad, con empresa, cargo, enlace, fecha de publicación, puntaje del 1 al 10 y una frase de por qué calza conmigo. Descarta las que choquen con mis filtros de descarte o tengan señales de estafa. Muy importante, solo busca y lee. No postules, no envíes mensajes, no comentes ni completes formularios por mí.
+
+<span class="ph">[PEGA AQUÍ TU FICHA DE BÚSQUEDA]</span></pre></div>
+    <p>Con esa lista sigues desde el Paso 2 (filtrar) y el Paso 3 (adaptar tu CV). La regla es la misma de siempre… la IA busca y prepara, tú revisas y postulas. Las plataformas pueden restringir las cuentas que actúan de forma automática, y no vale la pena arriesgar tu perfil.</p>
+  </div>
+</section>
+
+<section class="band" id="extra">
+  <div class="wrap stack">
+    <span class="eyebrow">Extra</span>
+    <h2>Lo que pasa detrás de una entrevista</h2>
+    <p>Cuando entiendes cómo funciona un proceso de selección, llegas con más calma… y sin ponerte a la defensiva.</p>
+    <h3>Las etapas más comunes</h3>
+    <div class="table-box"><table>
+      <thead><tr><th scope="col">Etapa</th><th scope="col">Qué es</th><th scope="col">Cómo prepararte</th></tr></thead>
+      <tbody>
+        <tr><td>Llamada de filtro</td><td>Una conversación corta con alguien de selección para confirmar tus datos, disponibilidad y expectativa de sueldo</td><td>Ten a mano tu Ficha de búsqueda y tu rango de sueldo</td></tr>
+        <tr><td>Entrevista por competencias</td><td>Te piden ejemplos reales, como "cuéntame de una vez que…"</td><td>Prepara 4 o 5 historias con situación, acción y resultado</td></tr>
+        <tr><td>Entrevista técnica</td><td>Preguntas o una prueba práctica sobre el trabajo del cargo</td><td>Repasa las herramientas y conocimientos que pide la oferta</td></tr>
+        <tr><td>Entrevista grabada en video</td><td>Respondes preguntas frente a la cámara, sin nadie del otro lado</td><td>Practica con el simulador mirando a la cámara y con buena luz</td></tr>
+        <tr><td>Evaluación psicolaboral</td><td>Tests y a veces una entrevista con una psicóloga o un psicólogo</td><td>Lee la sección de tests de aquí abajo</td></tr>
+        <tr><td>Entrevista con la jefatura</td><td>Quien sería tu jefe o jefa revisa si encajas en el equipo</td><td>Lleva preguntas sobre el equipo y los desafíos del cargo</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Los tests más usados</h3>
+    <div class="split">
+      <div class="card"><span class="badge">Razonamiento</span><p>Numérico, verbal y lógico. Tienen respuestas correctas y mejoran mucho con práctica. Suelen tener tiempo límite y muchos están hechos para que casi nadie alcance a terminar… así que no te asustes si te quedan preguntas sin responder.</p></div>
+      <div class="card"><span class="badge">Personalidad</span><p>No hay respuestas buenas ni malas. Responde con honestidad, porque repiten preguntas parecidas para detectar contradicciones.</p></div>
+      <div class="card"><span class="badge">Dibujo</span><p>En varios países de Latinoamérica te pueden pedir dibujar una persona o completar figuras. No se evalúa si dibujas bonito. Hazlo con calma, completo y sin apuro.</p></div>
+      <div class="card"><span class="badge">Situacionales</span><p>Te presentan un problema del trabajo y eliges qué harías. Responde como trabajarías de verdad, pensando en el cliente y en el equipo.</p></div>
+    </div>
+
+    <h3>Dónde practicar gratis</h3>
+    <ul class="clean">
+      <li><svg class="ico" width="22" height="22" aria-hidden="true"><use href="#a-ne"/></svg><span><a href="https://jobcannon.io/es/assessments/psychometric-test" target="_blank" rel="noopener"><strong>JobCannon</strong></a>, en español. Un test de 30 preguntas de razonamiento con resultado al instante.</span></li>
+      <li><svg class="ico" width="22" height="22" aria-hidden="true"><use href="#a-ne"/></svg><span><a href="https://www.assessmentday.co.uk" target="_blank" rel="noopener"><strong>Assessment Day</strong></a>, en inglés. Ejercicios gratis de razonamiento numérico, verbal, inductivo y de juicio situacional.</span></li>
+      <li><svg class="ico" width="22" height="22" aria-hidden="true"><use href="#a-ne"/></svg><span><a href="https://www.practiceaptitudetests.com/free-aptitude-tests/" target="_blank" rel="noopener"><strong>Practice Aptitude Tests</strong></a>, en inglés. Tests gratis de razonamiento y juicio situacional. Solo te pide registrarte con tu correo.</span></li>
+      <li><svg class="ico" width="22" height="22" aria-hidden="true"><use href="#a-ne"/></svg><span><strong>Tu IA.</strong> También puedes practicar en español con este prompt.</span></li>
+    </ul>
+    <div class="prompt"><div class="prompt-bar"><span class="eyebrow">Prompt · Practicar tests</span><button class="copy" type="button" id="copy-14"><svg class="ico" width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar prompt</span></button></div><pre>Hazme 10 preguntas de <span class="ph">[RAZONAMIENTO NUMÉRICO / VERBAL / LÓGICO]</span> como las de un test de selección para el cargo de <span class="ph">[CARGO]</span>, una a la vez. Después de cada respuesta dime si está bien y explícame el truco para resolverla más rápido.</pre></div>
+
+    <h3>¿Por qué me preguntan eso?</h3>
+    <p>Algunas preguntas parecen personales o incómodas, pero casi siempre tienen una razón práctica detrás.</p>
+    <div class="table-box"><table>
+      <thead><tr><th scope="col">Pregunta</th><th scope="col">Por qué la hacen</th><th scope="col">Cómo responder</th></tr></thead>
+      <tbody>
+        <tr><td>¿Estás casado o casada? ¿Tienes hijos? ¿Con quién vives?</td><td>Casi siempre quieren saber tu disponibilidad para horarios, turnos o viajes. En muchos países la ley prohíbe discriminar por estos motivos, pero igual se pregunta</td><td>Responde breve y lleva la respuesta a tu disponibilidad. "Tengo dos hijos y cuento con apoyo, así que puedo cumplir el horario sin problema"</td></tr>
+        <tr><td>¿Dónde vives?</td><td>Calculan tu tiempo de traslado y tu puntualidad</td><td>"Vivo en [comuna o barrio], a unos 40 minutos, y llego sin problema"</td></tr>
+        <tr><td>¿Cuál es tu mayor defecto?</td><td>Buscan autoconocimiento y ganas de mejorar</td><td>Un defecto real que no sea clave para el cargo y lo que haces para mejorarlo</td></tr>
+        <tr><td>¿Dónde te ves en 5 años?</td><td>Quieren saber si te vas a quedar y si tus metas calzan con la empresa</td><td>Habla de crecer en tu área, no de cambiarte de rubro</td></tr>
+        <tr><td>¿Cuánto esperas ganar?</td><td>Revisan si calzas con su presupuesto</td><td>Investiga antes el sueldo del cargo y da un rango</td></tr>
+        <tr><td>¿Por qué tienes un tiempo sin trabajo en tu CV?</td><td>Quieren entender, no juzgar</td><td>Responde breve y con honestidad, y cuenta qué hiciste ese tiempo (cursos, cuidado familiar, proyectos)</td></tr>
+        <tr><td>¿Tienes alguna pregunta?</td><td>Miden tu interés por el cargo</td><td>Lleva siempre 2 o 3 preguntas preparadas</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><svg class="ico" width="32" height="32" aria-hidden="true"><use href="#i-bang"/></svg><div><strong>Si una pregunta te incomoda</strong>Respira, responde corto y vuelve a hablar de tu experiencia. Mostrar calma también habla bien de ti.</div></div>
+  </div>
+</section>
+
+<section class="band limeband" id="final">
+  <div class="wrap stack">
+    <span class="eyebrow">Para terminar</span>
+    <p class="closing">Buscar trabajo cansa… lo sé. Pero cuando tienes un sistema, dejas de depender del ánimo del día y empiezas a ver avances concretos en tu lista de postulaciones.</p>
+    <p>Recuerda que la constancia vale más que la cantidad. Unas pocas postulaciones bien hechas cada día, durante 30 días, hacen una diferencia enorme.</p>
+    <p>Y si en algún momento das el salto a un cargo de más responsabilidad y quieres un CV o un LinkedIn trabajado a mano, conmigo, encuéntrame en <a href="https://www.optimizatucvia.com" target="_blank" rel="noopener"><strong>optimizatucvia.com</strong></a>.</p>
+    <p>Te mando un abrazo y mucho éxito en tu búsqueda…</p>
+    <div class="firma"><svg class="ico" width="90" height="48" aria-hidden="true"><use href="#a-scribble"/></svg><span>Karin</span></div>
+    <span class="eyebrow">OptimizaTuCV.IA</span>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var bar=document.getElementById('progress');
+  function onScroll(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(h.scrollTop/max)*100:0)+'%';
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  function fallbackSelect(pre){
+    var range=document.createRange();
+    range.selectNodeContents(pre);
+    var sel=window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+  function mark(btn,text){
+    var label=btn.querySelector('span');
+    var original=label.getAttribute('data-original')||label.textContent;
+    label.setAttribute('data-original',original);
+    label.textContent=text;
+    btn.classList.add('done');
+    setTimeout(function(){label.textContent=original;btn.classList.remove('done');},2200);
+  }
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.prompt').querySelector('pre');
+      var text=pre.innerText;
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){mark(btn,'¡Copiado!');}).catch(function(){fallbackSelect(pre);mark(btn,'Texto seleccionado… usa Copiar');});
+      }else{
+        fallbackSelect(pre);mark(btn,'Texto seleccionado… usa Copiar');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
